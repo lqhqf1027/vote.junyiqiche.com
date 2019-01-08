@@ -22,3 +22,986 @@
 [ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.083492s ]
 [ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.084699s ]
 [ sql ] [ SQL ] SELECT `title`,`remark` FROM `yc_auth_rule` WHERE  `name` = 'dashboard' LIMIT 1 [ RunTime:0.082579s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:38:22+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.111077s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.072386s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.072690s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.073816s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.075449s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:38:22+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/dashboard?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.101493s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.065114s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.063958s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.066242s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.067657s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `yc_auth_rule` WHERE  `name` = 'dashboard' LIMIT 1 [ RunTime:0.065343s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:38:54+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/dashboard?ref=addtabs
+[ sql ] [ DB ] CONNECT:[ UseTime:0.113825s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.072374s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.072540s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.071343s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.074102s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:38:54+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/index/index
+[ sql ] [ DB ] CONNECT:[ UseTime:0.117273s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.084640s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.078198s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.082545s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.079021s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:38:55+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/dashboard?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.127502s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.084828s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.084852s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.084902s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.084978s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `yc_auth_rule` WHERE  `name` = 'dashboard' LIMIT 1 [ RunTime:0.085764s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:43:33+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/addon?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.114247s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.072887s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.074458s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.078839s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.076292s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `yc_auth_rule` WHERE  `name` = 'addon' LIMIT 1 [ RunTime:0.073451s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:43:41+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.100066s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.062833s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.064420s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.065374s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.066698s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.066093s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `yc_auth_rule` WHERE  `name` = 'auth/rule' LIMIT 1 [ RunTime:0.063694s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:43:42+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule/index?sort=weigh&order=desc&_=1546926222003
+[ sql ] [ DB ] CONNECT:[ UseTime:0.098904s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.064616s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.062990s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.064742s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.064956s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.065963s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:44:20+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/user/group?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.115966s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.075898s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.074609s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.075195s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.075989s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `yc_auth_rule` WHERE  `name` = 'user/group' LIMIT 1 [ RunTime:0.074320s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:44:21+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/user/group/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1546926260578
+[ sql ] [ DB ] CONNECT:[ UseTime:0.127293s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.082325s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.083568s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.082754s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.084428s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_user_group` [ RunTime:0.084391s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `yc_user_group` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.082234s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_user_group` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.082976s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:44:25+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule/index?sort=weigh&order=desc&_=1546926222004
+[ sql ] [ DB ] CONNECT:[ UseTime:0.113730s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.074895s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.075125s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.075821s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.074563s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.075471s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:44:28+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/user/group/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1546926260579
+[ sql ] [ DB ] CONNECT:[ UseTime:0.112430s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.071186s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.074012s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.072428s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.073264s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_user_group` [ RunTime:0.072521s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `yc_user_group` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.072258s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_user_group` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.072101s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:44:29+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule/index?sort=weigh&order=desc&_=1546926222005
+[ sql ] [ DB ] CONNECT:[ UseTime:0.113477s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.075870s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.076686s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.076459s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.075910s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.077673s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:44:30+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/user/group/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1546926260580
+[ sql ] [ DB ] CONNECT:[ UseTime:0.119518s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.078061s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.077694s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.078030s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.077922s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_user_group` [ RunTime:0.078085s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `yc_user_group` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.076783s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_user_group` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.078184s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:44:32+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule/index?sort=weigh&order=desc&_=1546926222006
+[ sql ] [ DB ] CONNECT:[ UseTime:0.116150s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.076777s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.081485s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.075079s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.074518s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.077486s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:44:36+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/user/group/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1546926260581
+[ sql ] [ DB ] CONNECT:[ UseTime:0.137218s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.089076s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.088813s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.089154s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.087741s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_user_group` [ RunTime:0.087023s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `yc_user_group` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.087789s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_user_group` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.088229s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:44:37+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule/index?sort=weigh&order=desc&_=1546926222007
+[ sql ] [ DB ] CONNECT:[ UseTime:0.115825s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.073680s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.073210s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.072458s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.073948s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.073940s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:44:56+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/user/group/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1546926260582
+[ sql ] [ DB ] CONNECT:[ UseTime:0.100006s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.063290s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.064165s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.064860s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.063422s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_user_group` [ RunTime:0.064883s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `yc_user_group` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.063486s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_user_group` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.062663s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:44:58+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule/index?sort=weigh&order=desc&_=1546926222008
+[ sql ] [ DB ] CONNECT:[ UseTime:0.113256s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.073400s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.074522s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.074427s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.073069s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.075352s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:44:59+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/user/group/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1546926260583
+[ sql ] [ DB ] CONNECT:[ UseTime:0.100641s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.063893s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.064819s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.065513s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.066347s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_user_group` [ RunTime:0.065574s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `yc_user_group` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.064933s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_user_group` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.064711s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:45:00+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule/index?sort=weigh&order=desc&_=1546926222009
+[ sql ] [ DB ] CONNECT:[ UseTime:0.098081s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.061511s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.062933s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.064641s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.064328s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.064200s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:45:04+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/group?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.132633s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.086894s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.086623s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.086841s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.089362s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group` [ RunTime:0.087469s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_group` WHERE  `status` = 'normal' [ RunTime:0.086692s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_group` WHERE  `id` IN (1,2,3,4,5) [ RunTime:0.087348s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `yc_auth_rule` WHERE  `name` = 'auth/group' LIMIT 1 [ RunTime:0.087933s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:45:06+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/group/index?sort=id&order=desc&_=1546926304770
+[ sql ] [ DB ] CONNECT:[ UseTime:0.133533s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.220537s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.203955s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.181430s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.248089s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group` [ RunTime:0.277234s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_group` WHERE  `status` = 'normal' [ RunTime:0.257766s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_group` WHERE  `id` IN (1,2,3,4,5) [ RunTime:0.171115s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_group` WHERE  `id` IN (1,2,3,5,4) [ RunTime:0.087942s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:45:08+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule/index?sort=weigh&order=desc&_=1546926222010
+[ sql ] [ DB ] CONNECT:[ UseTime:0.126115s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.084015s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.082875s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.083350s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.083167s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.082297s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:45:08+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/group/index?sort=id&order=desc&_=1546926304771
+[ sql ] [ DB ] CONNECT:[ UseTime:0.125358s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.084814s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.082940s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.081758s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.083350s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group` [ RunTime:0.082686s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_group` WHERE  `status` = 'normal' [ RunTime:0.082908s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_group` WHERE  `id` IN (1,2,3,4,5) [ RunTime:0.082926s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_group` WHERE  `id` IN (1,2,3,5,4) [ RunTime:0.081448s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:45:10+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule/index?sort=weigh&order=desc&_=1546926222011
+[ sql ] [ DB ] CONNECT:[ UseTime:0.135918s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.087442s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.088786s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.088995s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.089382s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.090627s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:45:12+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/group/index?sort=id&order=desc&_=1546926304772
+[ sql ] [ DB ] CONNECT:[ UseTime:0.117004s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.077229s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.076369s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.077951s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.078459s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group` [ RunTime:0.078264s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_group` WHERE  `status` = 'normal' [ RunTime:0.076997s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_group` WHERE  `id` IN (1,2,3,4,5) [ RunTime:0.077577s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_group` WHERE  `id` IN (1,2,3,5,4) [ RunTime:0.077497s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:45:13+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule/index?sort=weigh&order=desc&_=1546926222012
+[ sql ] [ DB ] CONNECT:[ UseTime:0.118119s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.075114s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.074940s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.076927s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.077458s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.076814s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:45:22+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule/index?sort=weigh&order=desc&_=1546926222013
+[ sql ] [ DB ] CONNECT:[ UseTime:0.099714s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.064895s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.064597s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.064774s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.065328s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.065282s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:45:48+08:00 ] 127.0.0.1 POST yc.jyqc.com/yc.php/auth/rule/multi/ids/4,66,67,73,79
+[ sql ] [ DB ] CONNECT:[ UseTime:0.127636s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.082697s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.082811s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.081801s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.083231s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.083720s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` WHERE  `id` IN (4,66,67,73,79) [ RunTime:0.081145s ]
+[ sql ] [ SQL ] UPDATE `yc_auth_rule`  SET `status`='hidden',`updatetime`=1546926348  WHERE  `id` = 4 [ RunTime:0.086523s ]
+[ sql ] [ SQL ] UPDATE `yc_auth_rule`  SET `status`='hidden',`updatetime`=1546926348  WHERE  `id` = 66 [ RunTime:0.086638s ]
+[ sql ] [ SQL ] UPDATE `yc_auth_rule`  SET `status`='hidden',`updatetime`=1546926348  WHERE  `id` = 67 [ RunTime:0.086686s ]
+[ sql ] [ SQL ] UPDATE `yc_auth_rule`  SET `status`='hidden',`updatetime`=1546926348  WHERE  `id` = 73 [ RunTime:0.086740s ]
+[ sql ] [ SQL ] UPDATE `yc_auth_rule`  SET `status`='hidden',`updatetime`=1546926348  WHERE  `id` = 79 [ RunTime:0.087442s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_admin_log` [ RunTime:0.082811s ]
+[ sql ] [ SQL ] INSERT INTO `yc_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('' , '{\"ids\":\"4,66,67,73,79\",\"params\":\"status=hidden\"}' , '/yc.php/auth/rule/multi/ids/4,66,67,73,79' , 1 , 'yinchuan' , 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36' , '127.0.0.1' , 1546926348) [ RunTime:0.087482s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:45:49+08:00 ] 127.0.0.1 POST yc.jyqc.com/yc.php/index/index
+[ sql ] [ DB ] CONNECT:[ UseTime:0.098680s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.065232s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.065246s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.064773s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.065696s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` WHERE  `status` = 'normal'  AND `ismenu` = 1 ORDER BY `weigh` DESC [ RunTime:0.065298s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_admin_log` [ RunTime:0.065386s ]
+[ sql ] [ SQL ] INSERT INTO `yc_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('' , '{\"action\":\"refreshmenu\"}' , '/yc.php/index/index' , 1 , 'yinchuan' , 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36' , '127.0.0.1' , 1546926349) [ RunTime:0.069130s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:45:50+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule/index?sort=weigh&order=desc&_=1546926222015
+[ sql ] [ DB ] CONNECT:[ UseTime:0.114670s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.074849s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.074821s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.075107s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.075272s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.075131s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:45:50+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule/index?sort=weigh&order=desc&_=1546926222014
+[ sql ] [ DB ] CONNECT:[ UseTime:0.131400s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.083954s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.084352s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.085274s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.083370s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.085425s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:46:06+08:00 ] 127.0.0.1 POST yc.jyqc.com/yc.php/auth/rule/multi/ids/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.118346s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.078574s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.078534s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.078226s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.078984s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.082449s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` WHERE  `id` IN (1) [ RunTime:0.078833s ]
+[ sql ] [ SQL ] UPDATE `yc_auth_rule`  SET `ismenu`=0,`updatetime`=1546926365  WHERE  `id` = 1 [ RunTime:0.083236s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_admin_log` [ RunTime:0.077054s ]
+[ sql ] [ SQL ] INSERT INTO `yc_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('' , '{\"action\":\"\",\"ids\":\"1\",\"params\":\"ismenu=0\"}' , '/yc.php/auth/rule/multi/ids/1' , 1 , 'yinchuan' , 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36' , '127.0.0.1' , 1546926366) [ RunTime:0.082661s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:46:06+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule/index?sort=weigh&order=desc&_=1546926222016
+[ sql ] [ DB ] CONNECT:[ UseTime:0.127365s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.083256s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.082922s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.081704s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.084026s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.083513s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:46:07+08:00 ] 127.0.0.1 POST yc.jyqc.com/yc.php/index/index
+[ sql ] [ DB ] CONNECT:[ UseTime:0.117776s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.077243s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.077133s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.077326s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.077525s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` WHERE  `status` = 'normal'  AND `ismenu` = 1 ORDER BY `weigh` DESC [ RunTime:0.077823s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_admin_log` [ RunTime:0.075294s ]
+[ sql ] [ SQL ] INSERT INTO `yc_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('' , '{\"action\":\"refreshmenu\"}' , '/yc.php/index/index' , 1 , 'yinchuan' , 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36' , '127.0.0.1' , 1546926367) [ RunTime:0.083005s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:46:08+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule/index?sort=weigh&order=desc&_=1546926222017
+[ sql ] [ DB ] CONNECT:[ UseTime:0.103628s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.066715s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.066772s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.068147s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.068005s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.067705s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:46:10+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule?ref=addtabs
+[ sql ] [ DB ] CONNECT:[ UseTime:0.118626s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.076986s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.076978s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.075641s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.077920s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:46:11+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/index/index
+[ sql ] [ DB ] CONNECT:[ UseTime:0.133247s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.087577s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.087402s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.088506s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.089901s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:46:12+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.116284s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.075764s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.077059s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.075692s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.076813s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.077383s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `yc_auth_rule` WHERE  `name` = 'auth/rule' LIMIT 1 [ RunTime:0.076472s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:46:13+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/general/config?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.131492s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.086488s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.085398s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.085367s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.086595s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_config` [ RunTime:0.088455s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_config` [ RunTime:0.085607s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `yc_auth_rule` WHERE  `name` = 'general/config' LIMIT 1 [ RunTime:0.085260s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:46:13+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule/index?sort=weigh&order=desc&_=1546926372132
+[ sql ] [ DB ] CONNECT:[ UseTime:0.131530s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.082452s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.082227s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.084107s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.084695s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.085589s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:46:19+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule/index?sort=weigh&order=desc&_=1546926372133
+[ sql ] [ DB ] CONNECT:[ UseTime:0.134049s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.087222s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.087208s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.087733s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.087592s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.088696s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:46:20+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule/index?sort=weigh&order=desc&_=1546926372134
+[ sql ] [ DB ] CONNECT:[ UseTime:0.101330s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.063590s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.065264s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.065496s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.066174s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.066719s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:46:21+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule?ref=addtabs
+[ sql ] [ DB ] CONNECT:[ UseTime:0.102573s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.066234s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.065386s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.066923s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.068258s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:46:22+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/index/index
+[ sql ] [ DB ] CONNECT:[ UseTime:0.104148s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.065016s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.063338s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.063967s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.066478s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:46:23+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.120019s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.078822s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.078007s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.079492s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.079950s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.078832s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `yc_auth_rule` WHERE  `name` = 'auth/rule' LIMIT 1 [ RunTime:0.076795s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:46:24+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/general/config?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.133235s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.086873s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.085838s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.085682s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.088293s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_config` [ RunTime:0.087139s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_config` [ RunTime:0.086303s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `yc_auth_rule` WHERE  `name` = 'general/config' LIMIT 1 [ RunTime:0.086498s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:46:24+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule/index?sort=weigh&order=desc&_=1546926383127
+[ sql ] [ DB ] CONNECT:[ UseTime:0.268239s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.075959s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.075414s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.076762s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.078240s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.078489s ]
+---------------------------------------------------------------
+[ 2019-01-08T13:46:27+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule/index?sort=weigh&order=desc&_=1546926383128
+[ sql ] [ DB ] CONNECT:[ UseTime:0.223546s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.073087s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.073601s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.075593s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.075364s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.074912s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:25:46+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule?ref=addtabs
+[ sql ] [ DB ] CONNECT:[ UseTime:0.119988s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.076239s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.074763s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.075714s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.077280s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:25:46+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/index/index
+[ sql ] [ DB ] CONNECT:[ UseTime:0.131672s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.085933s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.085256s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.086756s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.086287s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:25:47+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.109690s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.070866s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.071041s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.071542s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.069909s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.072039s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `yc_auth_rule` WHERE  `name` = 'auth/rule' LIMIT 1 [ RunTime:0.070508s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:25:48+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule/index?sort=weigh&order=desc&_=1546928747470
+[ sql ] [ DB ] CONNECT:[ UseTime:0.133872s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.084390s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.083030s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.084670s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.083477s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.085673s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:25:49+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/general/config?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.121024s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.076983s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.076603s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.076718s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.077524s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_config` [ RunTime:0.075736s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_config` [ RunTime:0.077145s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `yc_auth_rule` WHERE  `name` = 'general/config' LIMIT 1 [ RunTime:0.076143s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:25:50+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule/index?sort=weigh&order=desc&_=1546928747471
+[ sql ] [ DB ] CONNECT:[ UseTime:0.118364s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.074309s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.076892s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.076510s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.076663s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.076648s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:26:09+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/category?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.172599s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.087142s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.087190s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.086116s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.089048s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_category` [ RunTime:0.087954s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_category` ORDER BY `weigh` DESC,`id` DESC [ RunTime:0.087934s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `yc_auth_rule` WHERE  `name` = 'category' LIMIT 1 [ RunTime:0.086555s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:26:10+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/category/index?sort=weigh&order=desc&_=1546928769399
+[ sql ] [ DB ] CONNECT:[ UseTime:0.387323s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.088309s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.088612s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.088397s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.088810s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_category` [ RunTime:0.089155s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_category` ORDER BY `weigh` DESC,`id` DESC [ RunTime:0.087228s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:26:13+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule/index?sort=weigh&order=desc&_=1546928747472
+[ sql ] [ DB ] CONNECT:[ UseTime:0.118764s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.076858s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.076364s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.076677s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.077290s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.077272s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:26:17+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule/index?sort=weigh&order=desc&_=1546928747473
+[ sql ] [ DB ] CONNECT:[ UseTime:0.124653s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.078193s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.077182s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.077228s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.079059s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.078026s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:27:10+08:00 ] 127.0.0.1 POST yc.jyqc.com/yc.php/auth/rule/multi/ids/2,7,8,3
+[ sql ] [ DB ] CONNECT:[ UseTime:0.104028s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.065106s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.065288s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.065818s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.067053s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.065805s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` WHERE  `id` IN (2,7,8,3) [ RunTime:0.065496s ]
+[ sql ] [ SQL ] UPDATE `yc_auth_rule`  SET `status`='hidden',`updatetime`=1546928829  WHERE  `id` = 2 [ RunTime:0.069619s ]
+[ sql ] [ SQL ] UPDATE `yc_auth_rule`  SET `status`='hidden',`updatetime`=1546928830  WHERE  `id` = 3 [ RunTime:0.069054s ]
+[ sql ] [ SQL ] UPDATE `yc_auth_rule`  SET `status`='hidden',`updatetime`=1546928830  WHERE  `id` = 7 [ RunTime:0.066002s ]
+[ sql ] [ SQL ] UPDATE `yc_auth_rule`  SET `status`='hidden',`updatetime`=1546928830  WHERE  `id` = 8 [ RunTime:0.068887s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_admin_log` [ RunTime:0.064484s ]
+[ sql ] [ SQL ] INSERT INTO `yc_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('' , '{\"ids\":\"2,7,8,3\",\"params\":\"status=hidden\"}' , '/yc.php/auth/rule/multi/ids/2,7,8,3' , 1 , 'yinchuan' , 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36' , '127.0.0.1' , 1546928830) [ RunTime:0.068763s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:27:10+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule/index?sort=weigh&order=desc&_=1546928747474
+[ sql ] [ DB ] CONNECT:[ UseTime:0.100150s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.065435s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.065276s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.067523s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.064058s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.064939s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:27:11+08:00 ] 127.0.0.1 POST yc.jyqc.com/yc.php/index/index
+[ sql ] [ DB ] CONNECT:[ UseTime:0.115698s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.074575s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.075536s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.076177s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.076930s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` WHERE  `status` = 'normal'  AND `ismenu` = 1 ORDER BY `weigh` DESC [ RunTime:0.076104s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_admin_log` [ RunTime:0.075773s ]
+[ sql ] [ SQL ] INSERT INTO `yc_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('' , '{\"action\":\"refreshmenu\"}' , '/yc.php/index/index' , 1 , 'yinchuan' , 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36' , '127.0.0.1' , 1546928831) [ RunTime:0.079516s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:27:12+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule/index?sort=weigh&order=desc&_=1546928747475
+[ sql ] [ DB ] CONNECT:[ UseTime:0.127627s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.082921s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.081390s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.083537s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.084949s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.083936s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:27:16+08:00 ] 127.0.0.1 POST yc.jyqc.com/yc.php/auth/rule/multi/ids/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.114770s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.074813s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.074123s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.074407s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.076416s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.076112s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` WHERE  `id` IN (1) [ RunTime:0.073590s ]
+[ sql ] [ SQL ] UPDATE `yc_auth_rule`  SET `ismenu`=1,`updatetime`=1546928836  WHERE  `id` = 1 [ RunTime:0.077614s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_admin_log` [ RunTime:0.073883s ]
+[ sql ] [ SQL ] INSERT INTO `yc_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('' , '{\"action\":\"\",\"ids\":\"1\",\"params\":\"ismenu=1\"}' , '/yc.php/auth/rule/multi/ids/1' , 1 , 'yinchuan' , 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36' , '127.0.0.1' , 1546928836) [ RunTime:0.078691s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:27:16+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule/index?sort=weigh&order=desc&_=1546928747476
+[ sql ] [ DB ] CONNECT:[ UseTime:0.100752s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.064982s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.063909s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.064709s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.066202s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.067311s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:27:17+08:00 ] 127.0.0.1 POST yc.jyqc.com/yc.php/index/index
+[ sql ] [ DB ] CONNECT:[ UseTime:0.128203s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.084178s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.084447s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.084296s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.085365s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` WHERE  `status` = 'normal'  AND `ismenu` = 1 ORDER BY `weigh` DESC [ RunTime:0.084940s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_admin_log` [ RunTime:0.084363s ]
+[ sql ] [ SQL ] INSERT INTO `yc_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('' , '{\"action\":\"refreshmenu\"}' , '/yc.php/index/index' , 1 , 'yinchuan' , 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36' , '127.0.0.1' , 1546928837) [ RunTime:0.089073s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:27:18+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule/index?sort=weigh&order=desc&_=1546928747477
+[ sql ] [ DB ] CONNECT:[ UseTime:0.100109s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.064193s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.062229s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.061815s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.065772s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.065819s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:27:23+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule?ref=addtabs
+[ sql ] [ DB ] CONNECT:[ UseTime:0.117001s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.073744s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.074130s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.075728s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.075888s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:27:23+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/index/index
+[ sql ] [ DB ] CONNECT:[ UseTime:0.122227s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.076316s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.076336s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.077445s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.076590s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:27:24+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/dashboard?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.103770s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.066638s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.065799s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.066578s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.067980s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `yc_auth_rule` WHERE  `name` = 'dashboard' LIMIT 1 [ RunTime:0.063404s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:27:25+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.109673s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.072517s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.072746s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.073740s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.073966s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.074221s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `yc_auth_rule` WHERE  `name` = 'auth/rule' LIMIT 1 [ RunTime:0.073340s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:27:26+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule/index?sort=weigh&order=desc&_=1546928845232
+[ sql ] [ DB ] CONNECT:[ UseTime:0.119595s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.077798s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.077003s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.077056s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.077397s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.078096s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:27:26+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/auth/rule/index?sort=weigh&order=desc&_=1546928845233
+[ sql ] [ DB ] CONNECT:[ UseTime:0.115341s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.073738s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.074013s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.073677s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.074280s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_auth_rule` ORDER BY `weigh` DESC [ RunTime:0.076341s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:27:29+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/dashboard?ref=addtabs
+[ sql ] [ DB ] CONNECT:[ UseTime:0.103152s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.064879s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.064480s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.065573s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.067217s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:27:30+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/index/index
+[ sql ] [ DB ] CONNECT:[ UseTime:0.131378s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.084454s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.085318s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.086108s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.085481s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:27:31+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/dashboard?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.118507s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.075924s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.076835s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.076982s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.078581s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `yc_auth_rule` WHERE  `name` = 'dashboard' LIMIT 1 [ RunTime:0.077005s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:27:34+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/dashboard?ref=addtabs
+[ sql ] [ DB ] CONNECT:[ UseTime:0.111157s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.070776s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.071811s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.072987s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.072826s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:27:34+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/index/index
+[ sql ] [ DB ] CONNECT:[ UseTime:0.101749s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.066576s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.066715s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.065708s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.068851s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:27:35+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/dashboard?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.113478s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.073829s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.075151s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.079957s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.075049s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `yc_auth_rule` WHERE  `name` = 'dashboard' LIMIT 1 [ RunTime:0.073896s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:28:26+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/dashboard?ref=addtabs
+[ sql ] [ DB ] CONNECT:[ UseTime:0.133878s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.087287s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.087254s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.086869s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.088527s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:28:26+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/index/index
+[ sql ] [ DB ] CONNECT:[ UseTime:0.112570s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.073865s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.074186s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.073482s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.074910s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:28:27+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/dashboard?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.127333s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.083877s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.083298s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.084913s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.084196s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `yc_auth_rule` WHERE  `name` = 'dashboard' LIMIT 1 [ RunTime:0.084098s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:28:39+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/dashboard?ref=addtabs
+[ sql ] [ DB ] CONNECT:[ UseTime:0.129234s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.085307s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.085148s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.086250s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.086224s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:28:40+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/index/index
+[ sql ] [ DB ] CONNECT:[ UseTime:0.132387s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.087028s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.087112s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.087550s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.091181s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:28:41+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/dashboard?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.133594s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.087424s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.087332s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.086077s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.085446s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `yc_auth_rule` WHERE  `name` = 'dashboard' LIMIT 1 [ RunTime:0.085172s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:30:51+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/dashboard?ref=addtabs
+[ sql ] [ DB ] CONNECT:[ UseTime:0.111099s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.072362s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.070237s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.072157s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.070086s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:30:52+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/index/index
+[ sql ] [ DB ] CONNECT:[ UseTime:0.113656s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.075520s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.074642s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.075523s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.077737s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:30:53+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/dashboard?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.133720s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.087272s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.087365s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.086893s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.087867s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `yc_auth_rule` WHERE  `name` = 'dashboard' LIMIT 1 [ RunTime:0.084900s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:31:15+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/dashboard?ref=addtabs
+[ sql ] [ DB ] CONNECT:[ UseTime:0.123752s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.075093s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.078736s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.077314s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.078749s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:31:15+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/index/index
+[ sql ] [ DB ] CONNECT:[ UseTime:0.102226s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.066418s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.064567s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.066249s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.067027s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:31:16+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/dashboard?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.130866s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.087383s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.085997s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.087868s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.089988s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `yc_auth_rule` WHERE  `name` = 'dashboard' LIMIT 1 [ RunTime:0.084399s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:31:40+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/dashboard?ref=addtabs
+[ sql ] [ DB ] CONNECT:[ UseTime:0.134807s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.090175s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.089626s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.088983s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.089299s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:31:41+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/index/index
+[ sql ] [ DB ] CONNECT:[ UseTime:0.101550s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.065851s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.068169s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.065499s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.064095s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:31:42+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/dashboard?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.117110s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.080346s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.074867s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.075291s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.078817s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `yc_auth_rule` WHERE  `name` = 'dashboard' LIMIT 1 [ RunTime:0.076350s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:32:15+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/dashboard?ref=addtabs
+[ sql ] [ DB ] CONNECT:[ UseTime:0.113407s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.073894s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.074152s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.075092s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.073160s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:32:16+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/index/index
+[ sql ] [ DB ] CONNECT:[ UseTime:0.134441s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.088540s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.088804s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.089274s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.089279s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:32:16+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/dashboard?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.133525s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.087421s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.087467s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.088282s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.088708s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `yc_auth_rule` WHERE  `name` = 'dashboard' LIMIT 1 [ RunTime:0.087572s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:32:48+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/dashboard?ref=addtabs
+[ sql ] [ DB ] CONNECT:[ UseTime:0.120243s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.075654s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.077074s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.078178s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.077624s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:32:48+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/index/index
+[ sql ] [ DB ] CONNECT:[ UseTime:0.110381s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.072362s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.070330s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.072144s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.074119s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:32:49+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/dashboard?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.113658s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.074422s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.073918s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.074299s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.075629s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `yc_auth_rule` WHERE  `name` = 'dashboard' LIMIT 1 [ RunTime:0.073798s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:33:18+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/dashboard?ref=addtabs
+[ sql ] [ DB ] CONNECT:[ UseTime:0.117948s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.075726s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.082682s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.082800s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.076646s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:33:18+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/index/index
+[ sql ] [ DB ] CONNECT:[ UseTime:0.116062s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.074078s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.077011s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.075208s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.076563s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:33:19+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/dashboard?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.097408s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.063745s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.065279s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.065298s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.065838s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `yc_auth_rule` WHERE  `name` = 'dashboard' LIMIT 1 [ RunTime:0.064675s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:33:24+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/dashboard?ref=addtabs
+[ sql ] [ DB ] CONNECT:[ UseTime:0.114250s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.073256s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.074373s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.074471s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.074542s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:33:24+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/index/index
+[ sql ] [ DB ] CONNECT:[ UseTime:0.113805s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.072837s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.072297s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.073700s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.073171s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:33:25+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/dashboard?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.133536s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.087808s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.087102s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.088008s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.089679s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `yc_auth_rule` WHERE  `name` = 'dashboard' LIMIT 1 [ RunTime:0.087285s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:33:33+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/dashboard?ref=addtabs
+[ sql ] [ DB ] CONNECT:[ UseTime:0.110417s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.072647s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.071135s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.072189s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.073204s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:33:34+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/index/index
+[ sql ] [ DB ] CONNECT:[ UseTime:0.112905s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.074080s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.073369s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.074490s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.074830s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:33:34+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/dashboard?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.099071s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.065489s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.066103s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.066623s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.067187s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `yc_auth_rule` WHERE  `name` = 'dashboard' LIMIT 1 [ RunTime:0.066238s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:34:22+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/dashboard?ref=addtabs
+[ sql ] [ DB ] CONNECT:[ UseTime:0.127246s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.081110s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.081439s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.082436s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.083401s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:34:23+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/index/index
+[ sql ] [ DB ] CONNECT:[ UseTime:0.100517s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.066572s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.066701s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.082052s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.066796s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:34:23+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/dashboard?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.138732s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.090369s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.089027s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.088417s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.091157s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `yc_auth_rule` WHERE  `name` = 'dashboard' LIMIT 1 [ RunTime:0.087449s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:34:28+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/general/profile?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.114904s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.072771s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.072635s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.075089s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.073812s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:34:29+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/general/profile/index?sort=id&order=desc&offset=0&limit=10&_=1546929268992
+[ sql ] [ DB ] CONNECT:[ UseTime:0.100775s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.064920s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.064591s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.063899s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.065613s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_admin_log` [ RunTime:0.065270s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `yc_admin_log` WHERE  `admin_id` = 1 ORDER BY `id` DESC LIMIT 1 [ RunTime:0.064893s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_admin_log` WHERE  `admin_id` = 1 ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.065008s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:34:36+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/general/profile/index?sort=id&order=desc&offset=0&limit=10&_=1546929268993
+[ sql ] [ DB ] CONNECT:[ UseTime:0.116379s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.075388s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.076095s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.073710s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.077498s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_admin_log` [ RunTime:0.075854s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `yc_admin_log` WHERE  `admin_id` = 1 ORDER BY `id` DESC LIMIT 1 [ RunTime:0.076037s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_admin_log` WHERE  `admin_id` = 1 ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.075995s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:34:42+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/general/profile/index?sort=id&order=desc&offset=0&limit=10&_=1546929268994
+[ sql ] [ DB ] CONNECT:[ UseTime:0.129345s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.083611s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.082381s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.083975s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.084434s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_admin_log` [ RunTime:0.080145s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `yc_admin_log` WHERE  `admin_id` = 1 ORDER BY `id` DESC LIMIT 1 [ RunTime:0.081587s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_admin_log` WHERE  `admin_id` = 1 ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.083099s ]
+---------------------------------------------------------------
+[ 2019-01-08T14:34:43+08:00 ] 127.0.0.1 GET yc.jyqc.com/yc.php/general/profile/index?sort=id&order=desc&offset=0&limit=10&_=1546929268995
+[ sql ] [ DB ] CONNECT:[ UseTime:0.103180s ] mysql:host=120.78.135.109;dbname=yinchuan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_group_access` [ RunTime:0.067654s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `yc_auth_group_access` `aga` LEFT JOIN `yc_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.067313s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_auth_rule` [ RunTime:0.066585s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `yc_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.068214s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `yc_admin_log` [ RunTime:0.066379s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `yc_admin_log` WHERE  `admin_id` = 1 ORDER BY `id` DESC LIMIT 1 [ RunTime:0.067246s ]
+[ sql ] [ SQL ] SELECT * FROM `yc_admin_log` WHERE  `admin_id` = 1 ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.068537s ]
