@@ -1,0 +1,42 @@
+
+<div class="text-center" style="padding: 10px 0 80px 0;">
+    ©  成都君忆汽车服务有限公司. All Rights Reserved
+</div>
+<div class="text-center footer_box">
+    <div class="layui-row row_style" style="">
+        <div class="layui-col-xs4 item active_s" style="">全部参赛</div>
+        <div class="layui-col-xs4 item">当前排名</div>
+        <div class="layui-col-xs4 item">活动规则</div>
+
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src=https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="https://cdn.staticfile.org/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<!--Layui CDN-->
+<script src="//layui.hcwl520.com.cn/layui/layui.js?v=201809030202"></script>
+
+<script>
+    layui.use(['carousel', 'form'], function () {
+        var carousel = layui.carousel;
+        var form = layui.form;
+        //建造实例
+        carousel.render({
+            elem: '#test1'
+            , width: '100%' //设置容器宽度
+            , height: '200px'
+            , arrow: 'none' //始终显示箭头
+            , anim: 'fade' //切换动画方式
+            , indicator: 'none'
+        });
+    });
+</script>
+</body>
+
+</html>

@@ -1,46 +1,90 @@
 <!DOCTYPE html>
-<html>
+<html lang="{$config.language}">
+{extend name="vote/layoutextend" /}
+{block name="body"}
+<style>
+    .flex{
+        flex-direction: row;
+        flex-wrap: nowrap
+    }
+</style>
+<form class="layui-form layui-form-pane" action="">
+    <div class="layui-form-item" pane>
+        <label class="layui-form-label">搜索</label>
+        <div class="layui-input-block">
+            <input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off"
+                   class="layui-input">
+        </div>
+    </div>
+</form>
+<div class="layui-row layui-col-space15 flex">
 
-    <head>
+    <div class="layui-col-xs6 ">
+        <div class="thumbnail" style="margin-bottom: 0">
+            <img src="http://pic1.win4000.com/wallpaper/2/5121c63307b3e.jpg" alt="...">
 
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
+            <div class="row text-center  ">
+                <div class="layui-col-xs6" style="padding:10px 0 ;">
+                    <h4 style="font-weight: bold" class=""><i class="fa fa-male" aria-hidden="true"
+                                                              style="color: #1296db"></i> 包大人</h4>
 
-        <title>银川君忆</title>
-
-        <!-- Bootstrap Core CSS -->
-        <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-        <link href="__CDN__/assets/css/index.css" rel="stylesheet">
-
-        <!-- Plugin CSS -->
-        <link href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href="https://cdn.staticfile.org/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
-
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://cdn.staticfile.org/html5shiv/3.7.3/html5shiv.min.js"></script>
-            <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    </head>
-
-    <body id="page-top">
-
-    <section>
-        <h1 class="text-center">成都君忆汽车服务有限公司银川分公司</h1>
-    </section>
-        <!-- jQuery -->
-        <script src=https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js></script>
-
-        <!-- Bootstrap Core JavaScript -->
-        <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-        <!-- Plugin JavaScript -->
-        <script src="https://cdn.staticfile.org/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+                    <h4 style="font-weight: bold;padding-top: 5px" class=""><i class="fa fa-line-chart"
+                                                                               aria-hidden="true"></i>139 票</h4>
+                </div>
+                <div class="layui-col-xs6" style="padding:10px 0 ;">
+                    <a href="javascript:void(0)" class="btn btn-info" style="border-radius: 0;">投票</a>
+                </div>
 
 
-    </body>
+            </div>
 
+        </div>
+
+    </div>
+    <div class="layui-col-xs6 ">
+        <div class="thumbnail" style="margin-bottom: 0">
+            <img src="http://pic25.nipic.com/20121125/6862893_025713807000_2.jpg" alt="...">
+
+            <div class="row text-center  ">
+                <div class="layui-col-xs6" style="padding:10px 0 ;">
+                    <h4 style="font-weight: bold" class=""><i class="fa fa-male" aria-hidden="true"
+                                                              style="color: #1296db"></i> 包大人</h4>
+
+                    <h4 style="font-weight: bold;padding-top: 5px" class=""><i class="fa fa-line-chart"
+                                                                               aria-hidden="true"></i>139 票</h4>
+                </div>
+                <div class="layui-col-xs6" style="padding:10px 0 ;">
+                    <a href="javascript:void(0)" class="btn btn-info" style="border-radius: 0;">投票</a>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="layui-col-xs6 ">
+        <div class="thumbnail" style="margin-bottom: 0">
+            <img src="http://pic1.win4000.com/wallpaper/2/5121c63307b3e.jpg" alt="...">
+
+            <div class="row text-center  ">
+                <div class="layui-col-xs6" style="padding:10px 0 ;">
+                    <h4 style="font-weight: bold" class=""><i class="fa fa-male" aria-hidden="true"
+                                                              style="color: #1296db"></i> 包大人</h4>
+
+                    <h4 style="font-weight: bold;padding-top: 5px" class=""><i class="fa fa-line-chart"
+                                                                               aria-hidden="true"></i>139 票</h4>
+                </div>
+                <div class="layui-col-xs6" style="padding:10px 0 ;">
+                    <a href="javascript:void(0)" class="btn btn-info" style="border-radius: 0;">投票</a>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+{/block}
 </html>
