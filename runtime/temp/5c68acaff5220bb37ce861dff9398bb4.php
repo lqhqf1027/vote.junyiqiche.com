@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:6:{s:89:"D:\phpStudy\WWW\yinchuan.junyiqiche.com\public/../application/admin\view\index\index.html";i:1544409141;s:79:"D:\phpStudy\WWW\yinchuan.junyiqiche.com\application\admin\view\common\meta.html";i:1544409141;s:81:"D:\phpStudy\WWW\yinchuan.junyiqiche.com\application\admin\view\common\header.html";i:1544409141;s:79:"D:\phpStudy\WWW\yinchuan.junyiqiche.com\application\admin\view\common\menu.html";i:1544409141;s:82:"D:\phpStudy\WWW\yinchuan.junyiqiche.com\application\admin\view\common\control.html";i:1544409141;s:81:"D:\phpStudy\WWW\yinchuan.junyiqiche.com\application\admin\view\common\script.html";i:1544409141;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:6:{s:89:"D:\phpStudy\WWW\yinchuan.junyiqiche.com\public/../application/admin\view\index\index.html";i:1544409141;s:79:"D:\phpStudy\WWW\yinchuan.junyiqiche.com\application\admin\view\common\meta.html";i:1544409141;s:81:"D:\phpStudy\WWW\yinchuan.junyiqiche.com\application\admin\view\common\header.html";i:1546928918;s:79:"D:\phpStudy\WWW\yinchuan.junyiqiche.com\application\admin\view\common\menu.html";i:1546928742;s:82:"D:\phpStudy\WWW\yinchuan.junyiqiche.com\application\admin\view\common\control.html";i:1544409141;s:81:"D:\phpStudy\WWW\yinchuan.junyiqiche.com\application\admin\view\common\script.html";i:1544409141;}*/ ?>
 <!DOCTYPE html>
 <html lang="<?php echo $config['language']; ?>">
     <head>
@@ -54,7 +54,7 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
 
-                <li>
+                <!--<li>
                     <a href="/" target="_blank"><i class="fa fa-home" style="font-size:14px;"></i></a>
                 </li>
 
@@ -66,21 +66,21 @@
                     <ul class="dropdown-menu">
                         <li class="header"><?php echo __('Latest news'); ?></li>
                         <li>
-                            <!-- FastAdmin最新更新信息,你可以替换成你自己站点的信息,请注意修改public/assets/js/backend/index.js文件 -->
+                            &lt;!&ndash; FastAdmin最新更新信息,你可以替换成你自己站点的信息,请注意修改public/assets/js/backend/index.js文件 &ndash;&gt;
                             <ul class="menu">
 
                             </ul>
                         </li>
                         <li class="footer"><a href="#" target="_blank"><?php echo __('View more'); ?></a></li>
                     </ul>
-                </li>
+                </li>-->
 
                 <!-- 账号信息下拉框 -->
-                <li class="hidden-xs">
-                    <a href="javascript:;" data-toggle="checkupdate" title="<?php echo __('Check for updates'); ?>">
-                        <i class="fa fa-refresh"></i>
-                    </a>
-                </li>
+                <!--<li class="hidden-xs">-->
+                    <!--<a href="javascript:;" data-toggle="checkupdate" title="<?php echo __('Check for updates'); ?>">-->
+                        <!--<i class="fa fa-refresh"></i>-->
+                    <!--</a>-->
+                <!--</li>-->
 
                 <!-- 清除缓存 -->
                 <li>
@@ -222,10 +222,10 @@
         <?php echo $menulist; ?>
 
         <!--以下4行可以删除或改成自己的链接,但建议你在你的网站上添加一个FastAdmin的链接-->
-        <li class="header" data-rel="external"><?php echo __('Links'); ?></li>
+      <!--  <li class="header" data-rel="external"><?php echo __('Links'); ?></li>
         <li data-rel="external"><a href="https://doc.fastadmin.net" target="_blank"><i class="fa fa-list text-red"></i> <span><?php echo __('Docs'); ?></span></a></li>
         <li data-rel="external"><a href="https://forum.fastadmin.net" target="_blank"><i class="fa fa-comment text-yellow"></i> <span><?php echo __('Forum'); ?></span></a></li>
-        <li data-rel="external"><a href="https://jq.qq.com/?_wv=1027&k=487PNBb" target="_blank"><i class="fa fa-qq text-aqua"></i> <span><?php echo __('QQ qun'); ?></span></a></li>
+        <li data-rel="external"><a href="https://jq.qq.com/?_wv=1027&k=487PNBb" target="_blank"><i class="fa fa-qq text-aqua"></i> <span><?php echo __('QQ qun'); ?></span></a></li>-->
     </ul>
 </section>
             </aside>
