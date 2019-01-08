@@ -9,7 +9,7 @@ use think\Cache;
 use think\Config;
 use think\Db;
 use think\Lang;
-
+use think\abc;
 /**
  * Ajax异步请求接口
  * @internal
