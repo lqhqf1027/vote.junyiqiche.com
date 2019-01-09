@@ -1,10 +1,10 @@
 <?php
 
-namespace app\admin\model\wechat;
+namespace app\admin\model;
 
 use think\Model;
 
-class User extends Model
+class Wechatuser extends Model
 {
     // 表名
     protected $name = 'wechat_user';

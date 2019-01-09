@@ -38,4 +38,14 @@ class Record extends Model
     }
 
 
+    public function user()
+    {
+        return $this->belongsTo('Wechatuser', 'wechat_user_id', 'id', [], 'LEFT')->setEagerlyType(0);
+    }
+
+
+    public function application()
+    {
+        return $this->belongsTo('Application', 'application_id', 'id', [], 'LEFT')->setEagerlyType(0);
+    }
 }
