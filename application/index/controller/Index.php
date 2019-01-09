@@ -11,6 +11,7 @@ use app\admin\model\Application;
 use app\admin\model\Wechatuser;
 use app\common\model\Config as ConfigModel;
 use think\Db;
+use think\Session;
 
 class Index extends Frontend
 {
@@ -22,39 +23,39 @@ class Index extends Frontend
     public function _initialize()
     {
         parent::_initialize();
+
     }
 
     public function index()
     {
-        $bannerList = collection(Banner::where('status','normal')->select())->toArray();
-        //参赛者数量
-        $applicationCount = Application::where('status', 'normal')->count('id');
-        //投票数
-        $voteCount = Application::where('status', 'normal')->sum('votes');
-        //访问量
-        $visitCount = Wechatuser::Count('id');
-
-
         //活动结束时间
         $voteEndTime = ConfigModel::where('name', 'vote_end')->value('value');
 
-        $voteEndTime = date('m月d日 H时i分s秒', strtotime($voteEndTime));
+        $voteEndTime = date('m月d日H时i分s秒', strtotime($voteEndTime));
 
+        if($voteEndTime[0]==0){
+            $len = intval(strlen($voteEndTime))-1;
+            $voteEndTime = substr($voteEndTime,-$len);
+        };
         //参选信息
-        $contestant = collection(Application::field('id,name,applicationimages,votes')
-        ->with(['wechatUser'=>function ($q){
-            $q->withField('id,sex');
-        }])->where('status','normal')->select())->toArray();
+//        $contestant = collection(Application::field('id,name,applicationimages,votes')
+//        ->with(['wechatUser'=>function ($q){
+//            $q->withField('id,sex');
+//        }])->where('status','normal')->select())->toArray();
+        $contestant = $this->test(['status'=>'normal']);
 
         foreach ($contestant as $k=>$v){
             $contestant[$k]['applicationimages'] = $v['applicationimages']?explode(';',$v['applicationimages'])[0]:'';
             $contestant[$k]['is_vote'] = 0;
         }
 
-        $user_id = 1;
+        if(Session::get('MEMBER')){
+            $user_id = Session::get('MEMBER')['id'];
+        }
+
         if(!empty($user_id)){
             //已经投票的ID
-           $voted_id = Record::where('wechat_user_id',$user_id)->column('application_id');
+           $voted_id = Record::where('wechat_user_id',$user_id)->whereTime('create_time', 'today')->column('application_id');
 
            if($voted_id){
                foreach ($contestant as $k=>$v){
@@ -65,17 +66,12 @@ class Index extends Frontend
         }
 
         $data = [
-            'bannerList'=>$bannerList,
-            'statistics'=>[
-                'applicationCount'=>$applicationCount,
-                'voteCount'=>$voteCount,
-                'visitCount'=>$visitCount
-            ],
             'voteEndTime'=>$voteEndTime,
             'contestantList'=>$contestant
         ];
+        pr(array_merge($this->statisticsBanner(),$data));
+        $this->view->assign(array_merge($this->statisticsBanner(),$data));
 
-        pr($data);
         return $this->view->fetch();
     }
 
@@ -97,5 +93,56 @@ class Index extends Frontend
         ]);
     }
 
+    /**
+     * 统计和轮播
+     * @return array
+     * @throws \think\Exception
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
+    public function statisticsBanner()
+    {
+        $bannerList = collection(Banner::where('status','normal')->select())->toArray();
+        //参赛者数量
+        $applicationCount = Application::where('status', 'normal')->count('id');
+        //投票数
+        $voteCount = Application::where('status', 'normal')->sum('votes');
+        //访问量
+        $visitCount = Wechatuser::Count('id');
+
+        return [
+            'bannerList'=>$bannerList,
+            'statistics'=>[
+                'applicationCount'=>$applicationCount,
+                'voteCount'=>$voteCount,
+                'visitCount'=>$visitCount
+            ],
+        ];
+    }
+
+    public function searchPlayer()
+    {
+//        if($this->request->isAjax()){
+            $search = input('search');
+
+            if(is_numeric($search)){
+               $result = collection(Application::all($search))->toArray();
+            }else{
+               $result = collection(Application::all(['name'=>$search]))->toArray();
+            }
+            return json_encode($result);
+//        }
+    }
+
+    public function test($where)
+    {
+        $contestant = collection(Application::field('id,name,applicationimages,votes')
+            ->with(['wechatUser'=>function ($q){
+                $q->withField('id,sex');
+            }])->where($where)->select())->toArray();
+
+        return $contestant;
+    }
 
 }
