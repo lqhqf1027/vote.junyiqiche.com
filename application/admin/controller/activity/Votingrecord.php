@@ -4,6 +4,8 @@ namespace app\admin\controller\activity;
 
 use app\common\controller\Backend;
 
+
+
 /**
  * 投票记录管理
  *

@@ -40,5 +40,5 @@ return array (
   'share_body' => '',
   'share_img' => '',
   'vote' => '',
-  'vote_end' => '',
+  'vote_end' => '2019-01-13 10:08:16',
 );
