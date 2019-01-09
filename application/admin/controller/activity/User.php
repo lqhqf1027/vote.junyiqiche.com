@@ -5,23 +5,23 @@ namespace app\admin\controller\activity;
 use app\common\controller\Backend;
 
 /**
- * 报名管理
+ * 用户管理
  *
  * @icon fa fa-circle-o
  */
-class Application extends Backend
+class User extends Backend
 {
     
     /**
-     * Application模型对象
-     * @var \app\common\model\Application
+     * User模型对象
+     * @var \app\admin\model\wechat\User
      */
     protected $model = null;
 
     public function _initialize()
     {
         parent::_initialize();
-        $this->model = new \app\admin\model\Application;
+        $this->model = new \app\admin\model\Wechatuser;
 
     }
     

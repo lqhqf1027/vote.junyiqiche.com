@@ -1,6 +1,6 @@
 <?php
 
-namespace app\admin\model\voting;
+namespace app\admin\model;
 
 use think\Model;
 
@@ -10,10 +10,10 @@ class Record extends Model
     protected $name = 'voting_record';
     
     // 自动写入时间戳字段
-    protected $autoWriteTimestamp = false;
+    protected $autoWriteTimestamp = true;
 
     // 定义时间戳字段名
-    protected $createTime = false;
+    protected $createTime = 'votetime';
     protected $updateTime = false;
     
     // 追加属性
@@ -38,4 +38,14 @@ class Record extends Model
     }
 
 
+    public function user()
+    {
+        return $this->belongsTo('Wechatuser', 'wechat_user_id', 'id', [], 'LEFT')->setEagerlyType(0);
+    }
+
+
+    public function application()
+    {
+        return $this->belongsTo('Application', 'application_id', 'id', [], 'LEFT')->setEagerlyType(0);
+    }
 }

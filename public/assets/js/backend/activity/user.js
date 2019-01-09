@@ -5,12 +5,12 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             // 初始化表格参数配置
             Table.api.init({
                 extend: {
-                    index_url: 'activity/application/index',
-                    // add_url: 'activity/application/add',
-                    edit_url: 'activity/application/edit',
-                    del_url: 'activity/application/del',
-                    multi_url: 'activity/application/multi',
-                    table: 'application',
+                    index_url: 'activity/user/index',
+                    // add_url: 'activity/user/add',
+                    // edit_url: 'activity/user/edit',
+                    del_url: 'activity/user/del',
+                    multi_url: 'activity/user/multi',
+                    table: 'wechat_user',
                 }
             });
 
@@ -25,13 +25,11 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     [
                         {checkbox: true},
                         {field: 'id', title: __('Id')},
-                        {field: 'name', title: __('Name')},
-                        {field: 'model', title: __('Model')},
-                        {field: 'daily_running_water', title: __('Daily_running_water'), operate:'BETWEEN'},
-                        {field: 'service_points', title: __('Service_points')},
-                        {field: 'applicationimages', title: __('Applicationimages'), formatter: Table.api.formatter.images},
-                        {field: 'votes', title: __('Votes')},
-                        // {field: 'wechat_user_id', title: __('Wechat_user_id')},
+                        {field: 'nickname', title: __('nickname')},
+                        {field: 'headimgurl', title: __('Headimgurl'), formatter: Table.api.formatter.image},
+                        {field: 'sex', title: __('Sex'), formatter: Controller.api.formatter.sex},
+                        {field: 'city', title: __('City')},
+                        {field: 'province', title: __('Province')},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]
@@ -49,6 +47,17 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
         api: {
             bindevent: function () {
                 Form.api.bindevent($("form[role=form]"));
+            },
+            formatter: {
+
+                sex: function (value, row, index) {
+                    if (row.sex == 1) {
+                        return "男";
+                    }
+                    if (row.sex == 2) {
+                        return "女";
+                    }
+                },
             }
         }
     };
