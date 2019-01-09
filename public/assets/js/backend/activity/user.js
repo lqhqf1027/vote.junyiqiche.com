@@ -26,10 +26,10 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {checkbox: true},
                         {field: 'id', title: __('Id')},
                         {field: 'nickname', title: __('nickname')},
-                        {field: 'sex', title: __('Sex')},
+                        {field: 'headimgurl', title: __('Headimgurl'), formatter: Table.api.formatter.image},
+                        {field: 'sex', title: __('Sex'), formatter: Controller.api.formatter.sex},
                         {field: 'city', title: __('City')},
                         {field: 'province', title: __('Province')},
-                        {field: 'headimgurl', title: __('Headimgurl'), formatter: Table.api.formatter.image},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]
@@ -47,6 +47,17 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
         api: {
             bindevent: function () {
                 Form.api.bindevent($("form[role=form]"));
+            },
+            formatter: {
+
+                sex: function (value, row, index) {
+                    if (row.sex == 1) {
+                        return "男";
+                    }
+                    if (row.sex == 2) {
+                        return "女";
+                    }
+                },
             }
         }
     };

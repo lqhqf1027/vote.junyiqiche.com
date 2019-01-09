@@ -32,10 +32,10 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'application.applicationimages', title: __('参选人图片'), formatter: Table.api.formatter.images},
                         {field: 'application.votes', title: __('参选人得票数')},
                         {field: 'user.nickname', title: __('投票人昵称')},
-                        {field: 'user.sex', title: __('投票人性别')},
+                        {field: 'user.headimgurl', title: __('投票人头像'), formatter: Table.api.formatter.image, operate: false},
+                        {field: 'user.sex', title: __('投票人性别'), formatter: Controller.api.formatter.sex},
                         {field: 'user.city', title: __('投票人城市')},
                         {field: 'user.province', title: __('投票人省份')},
-                        {field: 'user.headimgurl', title: __('投票人头像'), formatter: Table.api.formatter.image, operate: false},
                         {field: 'votetime', title: __('Votetime'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
@@ -54,6 +54,17 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
         api: {
             bindevent: function () {
                 Form.api.bindevent($("form[role=form]"));
+            },
+            formatter: {
+
+                sex: function (value, row, index) {
+                    if (row.sex == 1) {
+                        return "男";
+                    }
+                    if (row.sex == 2) {
+                        return "女";
+                    }
+                },
             }
         }
     };
