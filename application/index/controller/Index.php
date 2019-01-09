@@ -75,7 +75,7 @@ class Index extends Frontend
             'contestantList'=>$contestant
         ];
 
-        pr($data);
+        // pr($data);
         return $this->view->fetch();
     }
 
@@ -97,5 +97,16 @@ class Index extends Frontend
         ]);
     }
 
+    public function ranking()
+    {
+        
+        return $this->view->fetch();
+    }
+
+    public function rules()
+    {
+        
+        return $this->view->fetch();
+    }
 
 }

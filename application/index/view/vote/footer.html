@@ -4,10 +4,10 @@
 </div>
 </div>
 <div class="text-center footer_box">
-    <div class="layui-row row_style" style="">
-        <div class="layui-col-xs4 item active_s" style="">全部参赛</div>
-        <div class="layui-col-xs4 item">当前排名</div>
-        <div class="layui-col-xs4 item">活动规则</div>
+    <div class="layui-row row_style" id="title">
+        <div class="layui-col-xs4 item active_s" id="vote">全部参赛</div>
+        <div class="layui-col-xs4 item" id="ranking">当前排名</div>
+        <div class="layui-col-xs4 item" id="rules">活动规则</div>
 
     </div>
 </div>
@@ -41,6 +41,23 @@
             , indicator: 'none'
         });
     });
+
+    document.getElementById('vote').onclick = function () {
+        window.location = '/index/index/index';
+    };
+    document.getElementById('ranking').onclick = function () {
+        window.location = '/index/index/ranking';
+    };
+    document.getElementById('rules').onclick = function () {
+        window.location = '/index/index/rules';    
+    };
+
+    $('#title div').click(function() {
+        
+        $(this).addClass('active_s').siblings().removeClass('active_s');
+    });
+
+
 </script>
 </body>
 

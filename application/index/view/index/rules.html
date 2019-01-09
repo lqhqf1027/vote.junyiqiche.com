@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="{$config.language}">
+{extend name="vote/layoutextend" /}
+{block name="body"}
+<style>
+.pd_tb10-lr0{
+    padding: 10px 0;
+}
+    .flex{
+        column-count: 2; column-gap: 0;
+    }
+    .flex_content{
+        break-inside: avoid; box-sizing: border-box; padding: 5px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;
+    }
+    .btn.send_vote{
+        width: 100%;
+
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius:10px;
+        border-top-left-radius: 0px;
+        border-top-right-radius:0px;
+    }
+    .thumbnail.item_box{
+        margin-bottom: 0;padding:0;
+
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius:10px;
+        border: none;
+
+    }
+    #img img {
+        max-width: 100%;
+        height: auto;
+    }
+    .more {
+        width: 200px;
+        height: 35px;
+        font-size: 16px;
+        font-weight: normal;
+        background-color: rgb(255, 127, 36);
+        color: white;
+        margin: 0 auto;
+        text-align: center;
+        line-height: 35px;
+        border-radius: 5px;
+    }
+    .name {
+        font-weight: normal;
+    }
+
+</style>
+
+        <div class="layui-col-xs12"  >
+
+            <h3 style="color: gray;">活动规则</h3> 
+            <br>
+            <div style="font-weight: 800">
+                # 君忆推荐购车客户，1500-3000元现金奖励，推荐电话400-188-6061#
+            </div>
+            <br>
+            <div style="color: gray; font-weight: 800">
+                投票结果已在公众号“君忆之家”公示，请获奖人员联系客服或者后台工作人员领奖。
+            </div>
+
+            <div style="font-size: 8px">
+                本活动最终解释权归成都君忆汽车服务有限公司所有。
+            </div>
+            <br>
+            <br>
+            <div id="img">
+                <img src="http://assets.youzhan.org/img/8/f4/d8ece1342920b4388c8174d349925.jpg" alt="">
+            </div>
+            <br>
+            <br>
+        </div>
+
+{/block}
+</html>

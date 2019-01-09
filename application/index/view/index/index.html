@@ -28,43 +28,65 @@
         border: none;
 
     }
+    #img img {
+        max-width: 100%;
+        height: auto;
+    }
+    .more {
+        width: 200px;
+        height: 35px;
+        font-size: 16px;
+        font-weight: normal;
+        background-color: rgb(255, 127, 36);
+        color: white;
+        margin: 0 auto;
+        text-align: center;
+        line-height: 35px;
+        border-radius: 5px;
+    }
+    .name {
+        font-weight: normal;
+    }
 
 </style>
-<form class="layui-form layui-form-pane " action="" >
-    <div class="layui-form-item "  >
 
-        <div class=" layui-col-xs8" style="margin-left: 0;">
-            <input type="text" name="title" required lay-verify="required" placeholder="输入编号或姓名" autocomplete="off"
-                   class="layui-input" style="    border-right-style: none;">
+        <form class="layui-form layui-form-pane " action="" >
+            <div class="layui-form-item "  >
 
-        </div>
-        <div class="layui-col-xs4">
-            <label class="layui-form-label ">搜索</label>
-        </div>
-    </div>
+                <div class=" layui-col-xs8" style="margin-left: 0;">
+                    <input type="text" name="title" required lay-verify="required" placeholder="输入编号或姓名" autocomplete="off"
+                        class="layui-input" style="    border-right-style: none;">
 
-</form>
-
-<div class="layui-row  flex">
-
-    <div class=" flex_content">
-        <div class="thumbnail item_box" style="">
-            <img src="http://pic1.win4000.com/wallpaper/2/5121c63307b3e.jpg" alt="...">
-            <div class="row text-center  " style="margin: 0">
-                <div class="layui-col-xs6 pd_tb10-lr0 pull-left" >
-                    <h4 style="font-weight: bold" class=""><i class="fa fa-male" aria-hidden="true"
-                                                              style="color: #1296db"></i> 包大人</h4>
-
-                    <h4 style="font-weight: bold;padding-top: 5px" class=""><i class="fa fa-line-chart"
-                                                                               aria-hidden="true"></i>139 票</h4>
                 </div>
+                <div class="layui-col-xs4">
+                    <label class="layui-form-label ">搜索</label>
+                </div>
+            </div>
 
-                <div class="layui-col-xs12" >
-                    <a href="javascript:void(0)" class="btn btn-info send_vote" style="">投票给<strong style="font-size: 15px" class="text-danger">1</strong>号</a>
+        </form>
+
+        <div class="layui-row  flex">
+
+            <div class=" flex_content">
+                <div class="thumbnail item_box" style="">
+                    <img src="http://pic1.win4000.com/wallpaper/2/5121c63307b3e.jpg" alt="...">
+                    <div class="row text-center  " style="margin: 0">
+                        <div class="layui-col-xs6 pd_tb10-lr0 pull-left" >
+                            <h4 style="font-weight: bold" class=""><i class="fa fa-male" aria-hidden="true"
+                                                                    style="color: #1296db"></i> 包大人</h4>
+
+                            <h4 style="font-weight: bold;padding-top: 5px" class=""><i class="fa fa-line-chart"
+                                                                                    aria-hidden="true"></i>139 票</h4>
+                        </div>
+
+                        <div class="layui-col-xs12" >
+                            <a href="javascript:void(0)" class="btn btn-info send_vote" style="">投票给<strong style="font-size: 15px" class="text-danger">1</strong>号</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+
+
 {/block}
 </html>
