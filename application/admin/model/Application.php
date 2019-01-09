@@ -20,7 +20,12 @@ class Application extends Model
     protected $append = [
 
     ];
-    
+
+
+    public function user()
+    {
+        return $this->belongsTo('Models', 'models_id', 'id', [], 'LEFT')->setEagerlyType(0);
+    }
 
     
 

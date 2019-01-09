@@ -4,6 +4,8 @@ namespace app\admin\controller\activity;
 
 use app\common\controller\Backend;
 
+
+
 /**
  * 投票记录管理
  *
@@ -21,7 +23,7 @@ class Votingrecord extends Backend
     public function _initialize()
     {
         parent::_initialize();
-        $this->model = new \app\admin\model\voting\Record;
+        $this->model = new \app\admin\model\Record;
 
     }
     
