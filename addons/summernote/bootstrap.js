@@ -1,5 +1,4 @@
-define([], function () {
-    require.config({
+require.config({
     paths: {
         'summernote': '../addons/summernote/lang/summernote-zh-CN.min'
     },
@@ -111,27 +110,4 @@ require(['form', 'upload'], function (Form, Upload) {
         }
 
     };
-});
-
-//修改上传的接口调用
-require(['upload'], function (Upload) {
-    var _onUploadResponse = Upload.events.onUploadResponse;
-    Upload.events.onUploadResponse = function (response) {
-        try {
-            var ret = typeof response === 'object' ? response : JSON.parse(response);
-            if (ret.hasOwnProperty("code") && ret.hasOwnProperty("data")) {
-                return _onUploadResponse.call(this, response);
-            } else if (ret.hasOwnProperty("code") && ret.hasOwnProperty("url")) {
-                ret.code = ret.code === 200 ? 1 : ret.code;
-                ret.data = {
-                    url: ret.url
-                };
-                return _onUploadResponse.call(this, JSON.stringify(ret));
-            }
-        } catch (e) {
-        }
-        return _onUploadResponse.call(this, response);
-
-    };
-});
 });
