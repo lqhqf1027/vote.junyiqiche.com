@@ -22,9 +22,9 @@ class Application extends Model
     ];
 
 
-    public function user()
+    public function wechatUser()
     {
-        return $this->belongsTo('Models', 'models_id', 'id', [], 'LEFT')->setEagerlyType(0);
+        return $this->belongsTo('Wechatuser', 'wechat_user_id', 'id', [], 'LEFT')->setEagerlyType(0);
     }
 
     
