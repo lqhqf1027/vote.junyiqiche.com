@@ -7,7 +7,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 extend: {
                     index_url: 'activity/votingrecord/index',
                     add_url: 'activity/votingrecord/add',
-                    edit_url: 'activity/votingrecord/edit',
+                    // edit_url: 'activity/votingrecord/edit',
                     del_url: 'activity/votingrecord/del',
                     multi_url: 'activity/votingrecord/multi',
                     table: 'voting_record',
@@ -25,8 +25,17 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     [
                         {checkbox: true},
                         {field: 'id', title: __('Id')},
-                        {field: 'wechat_user_id', title: __('Wechat_user_id')},
-                        {field: 'application_id', title: __('Application_id')},
+                        {field: 'application.name', title: __('参选人姓名')},
+                        {field: 'application.model', title: __('参选人车型')},
+                        {field: 'application.daily_running_water', title: __('参选人日均流水'), operate:'BETWEEN'},
+                        {field: 'application.service_points', title: __('参选人服务分')},
+                        {field: 'application.applicationimages', title: __('参选人图片'), formatter: Table.api.formatter.images},
+                        {field: 'application.votes', title: __('参选人得票数')},
+                        {field: 'user.nickname', title: __('投票人昵称')},
+                        {field: 'user.sex', title: __('投票人性别')},
+                        {field: 'user.city', title: __('投票人城市')},
+                        {field: 'user.province', title: __('投票人省份')},
+                        {field: 'user.headimgurl', title: __('投票人头像'), formatter: Table.api.formatter.image, operate: false},
                         {field: 'votetime', title: __('Votetime'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
