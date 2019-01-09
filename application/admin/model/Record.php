@@ -1,6 +1,6 @@
 <?php
 
-namespace app\admin\model\voting;
+namespace app\admin\model;
 
 use think\Model;
 

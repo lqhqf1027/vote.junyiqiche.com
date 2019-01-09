@@ -21,7 +21,7 @@ class Banner extends Backend
     public function _initialize()
     {
         parent::_initialize();
-        $this->model = new \app\common\model\Banner;
+        $this->model = new \app\admin\model\Banner;
         $this->view->assign("stautsList", $this->model->getStautsList());
     }
     
