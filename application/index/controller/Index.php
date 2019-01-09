@@ -93,6 +93,19 @@ class Index extends Frontend
         ]);
     }
 
+
+    public function ranking()
+    {
+        
+        return $this->view->fetch();
+    }
+
+    public function rules()
+    {
+        
+        return $this->view->fetch();
+    }
+
     /**
      * 统计和轮播
      * @return array
@@ -143,6 +156,7 @@ class Index extends Frontend
             }])->where($where)->select())->toArray();
 
         return $contestant;
+
     }
 
 }
