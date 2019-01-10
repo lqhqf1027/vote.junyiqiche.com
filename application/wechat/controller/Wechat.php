@@ -23,6 +23,7 @@ class Wechat extends Controller
 
     public function adduser()
     {
+
 //        $this->model = ;
         $appid = Config::get('APPID');
         $secret = Config::get('APPSECRET');
@@ -39,6 +40,7 @@ class Wechat extends Controller
             $insert_user = $model->allowField(true)->save($user);
             if ($insert_user) {
                 session('MEMBER', collection($user)->toArray());
+
                 $this->redirect('Index/index/index');
             } else {
                 $this->error('添加失败');
