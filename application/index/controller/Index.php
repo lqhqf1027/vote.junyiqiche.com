@@ -143,14 +143,35 @@ class Index extends Frontend
      */
     public function ranking()
     {
-        $ranking = collection(Application::where('status', 'normal')
-            ->field('id,name,votes')
-            ->order('votes desc')
-            ->select())->toArray();
+        $ranking = $this->getRanking('1,30');
 
         $data = array_merge($this->publicData(), ['rankList' => $ranking]);
         $this->view->assign('data', $data);
         return $this->view->fetch();
+    }
+
+    public function rankingMore()
+    {
+        if($this->request->isAjax()){
+            $page = $this->request->post('page');
+
+            $page = $page.',30';
+
+            $ranking = $this->getRanking($page);
+
+            return json_encode($ranking);
+
+
+        }
+    }
+
+    public function getRanking($page)
+    {
+        return collection(Application::where('status', 'normal')
+            ->field('id,name,votes')
+            ->order('votes desc')
+            ->page($page)
+            ->select())->toArray();
     }
 
 
