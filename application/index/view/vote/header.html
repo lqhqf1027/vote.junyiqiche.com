@@ -148,7 +148,7 @@
             title:"报名",
             area: ['400px', '600px'],
             shadeClose: false, //点击遮罩关闭
-            content: '<form class="layui-form" id="add-form" action="" enctype="multipart/form-data" method="post">\n' +
+            content: '<form class="layui-form" id="add-form" action="/index/index/sign" enctype="multipart/form-data" method="post">\n' +
             '            <br>\n' +
             '            <div class="layui-form-item center" >\n' +
             '            <label class="layui-form-label" style="width: 100px" >姓名</label>\n' +
@@ -157,40 +157,40 @@
             '            </div>\n' +
             '            </div>\n' +
             '            <br>\n' +
-            '            <div class="layui-form-item center" >\n' +
+            '            <div class="layui-form-item" >\n' +
             '            <label class="layui-form-label" style="width: 100px" >车型</label>\n' +
             '            <div class="layui-input-block">\n' +
             '            <input type="text" name="model" required value="" style="width: 240px" lay-verify="required" placeholder="请输入车型" autocomplete="off" class="layui-input">\n' +
             '            </div>\n' +
             '            </div>\n' +
             '            <br>\n' +
-            '            <div class="layui-form-item center" >\n' +
+            '            <div class="layui-form-item" >\n' +
             '            <label class="layui-form-label" style="width: 100px" >日均流水</label>\n' +
             '            <div class="layui-input-block">\n' +
             '            <input type="text" name="daily_running_water" required value="" style="width: 240px" lay-verify="required" placeholder="请输入日均流水" autocomplete="off" class="layui-input">\n' +
             '            </div>\n' +
             '            </div>\n' +
             '            <br>\n' +
-            '            <div class="layui-form-item center" >\n' +
+            '            <div class="layui-form-item" >\n' +
             '            <label class="layui-form-label" style="width: 100px" >服务分</label>\n' +
             '            <div class="layui-input-block">\n' +
             '            <input type="text" name="service_points" required value="" style="width: 240px" lay-verify="required" placeholder="请输入服务分" autocomplete="off" class="layui-input">\n' +
             '            </div>\n' +
             '            </div>\n' +
             '            <br>\n' +
-            '            <div class="layui-form-item center" >\n' +
+            '            <div class="layui-form-item" >\n' +
             '            <label class="layui-form-label" style="width: 100px" >自我描述</label>\n' +
             '            <div class="layui-input-block">\n' +
             '            <input type="text" name="describe_yourself" required value="" style="width: 240px" lay-verify="required" placeholder="请输入自我描述" autocomplete="off" class="layui-input">\n' +
             '            </div>\n' +
             '            </div>\n' +
             '            <br>\n' +
-            '            <div class="layui-form-item center" >\n' +
+            '            <div class="layui-form-item" >\n' +
             '            <label class="layui-form-label" style="width: 100px" >封面图片</label>\n' +
-            '            <div class="layui-upload">\n' +
-            '            <button type="button" name="applicationimages" class="layui-btn" id="test1"><i class="layui-icon">&#xe67c;</i>上传图片</button>\n' +
-            '            <img class="layui-upload-img" id="photo" width="50" height="50">\n' +
-            '            <p id="demoText"></p>\n' +
+            '            <div class="layui-upload layui-input-block">\n' +
+            '            <input type="text" name="applicationimages" required value="" style="width: 240px" lay-verify="required" placeholder="请上传封面图片" autocomplete="off" class="layui-input">\n' +
+            '            <button type="button" class="layui-btn" id="test2"><i class="layui-icon">&#xe67c;</i>上传图片</button>\n' +
+            '            <input class="layui-upload-file" type="file" accept="image/*" name="file">\n' + 
             '            </div>\n' +
             '            </div>\n' +
             '            <div class="layui-form-item">\n' +
@@ -199,47 +199,28 @@
             '                <button type="reset" class="layui-btn layui-btn-primary" id="closeBtn" >重置</button>\n' +
             '            </div>\n' +
             '            </div>\n' +
-            '        </form>'
-
+            '        </form>\n'
 
         });
-        
+
     })
 
-
-    $('#test1').click(function(){
-
         layui.use('upload', function(){
-            var $ = layui.jquery
+            var $ = layui.$
             ,upload = layui.upload;
-                
-            //普通图片上传
-            var uploadInst = upload.render({
-                elem: '#test1'
-                ,url: '/upload/'
-                ,before: function(obj){
-                //预读本地文件示例，不支持ie8
-                obj.preview(function(index, file, result){
-                    $('#demo1').attr('src', result); //图片链接（base64）
-                });
-                }
+            
+            //上传图片
+            upload.render({
+                elem: '#test2'
+                ,url: '/upload'
+                ,accept: 'images'
+                ,method: 'get'
+                ,acceptMime: 'image/*'
                 ,done: function(res){
-                //如果上传失败
-                if(res.code > 0){
-                    return layer.msg('上传失败');
-                }
-                //上传成功
-                }
-                ,error: function(){
-                //演示失败状态，并实现重传
-                var demoText = $('#demoText');
-                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
-                demoText.find('.demo-reload').on('click', function(){
-                    uploadInst.upload();
-                });
+                $(this.item).prev("div").children("input").val(res.data.src)
                 }
             });
         })
-    })
+
 
 </script>
