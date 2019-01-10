@@ -66,17 +66,17 @@
         </form>
 
         <div class="layui-row  flex">
-
+            {foreach $data['contestantList'] as $k => $v}
             <div class=" flex_content">
                 <div class="thumbnail item_box" style="">
                     <img src="http://pic1.win4000.com/wallpaper/2/5121c63307b3e.jpg" alt="...">
                     <div class="row text-center  " style="margin: 0">
                         <div class="layui-col-xs6 pd_tb10-lr0 pull-left" >
                             <h4 style="font-weight: bold" class=""><i class="fa fa-male" aria-hidden="true"
-                                                                    style="color: #1296db"></i> 包大人</h4>
+                                                                    style="color: #1296db"></i> {$v['name']}</h4>
 
                             <h4 style="font-weight: bold;padding-top: 5px" class=""><i class="fa fa-line-chart"
-                                                                                    aria-hidden="true"></i>139 票</h4>
+                                                                                    aria-hidden="true"></i>{$v['votes']} 票</h4>
                         </div>
 
                         <div class="layui-col-xs12" >
@@ -85,6 +85,7 @@
                     </div>
                 </div>
             </div>
+            {/foreach}
         </div>
 
 

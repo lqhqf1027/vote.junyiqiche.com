@@ -49,39 +49,19 @@
     }
 
 </style>
+        {foreach $data['rankList'] as $k => $v}
+        <div class="layui-col-xs12"  >
+
+            <div class="layui-col-xs10">
+                <label class="name">{$k + 1}  {$v['name']}</label>
+            </div>
+            <div class="layui-col-xs2">
+                <label class="name">{$v['votes']}票</label>
+            </div>
+
+        </div>
+        {/foreach}
         
-        <div class="layui-col-xs12"  >
-
-            <div class="layui-col-xs10">
-                <label class="name">1  阿斯蒂芬</label>
-            </div>
-            <div class="layui-col-xs2">
-                <label class="name">12305票</label>
-            </div>
-
-        </div>
-        
-        <div class="layui-col-xs12"  >
-            
-            <div class="layui-col-xs10">
-                <label class="name">1  阿斯蒂芬</label>
-            </div>
-            <div class="layui-col-xs2">
-                <label class="name">12305票</label>
-            </div>
-
-        </div>
-
-        <div class="layui-col-xs12"  >
-            
-            <div class="layui-col-xs10">
-                <label class="name">1  阿斯蒂芬</label>
-            </div>
-            <div class="layui-col-xs2">
-                <label class="name">12305票</label>
-            </div>
-
-        </div>
 
         <div class="layui-col-xs12">
             <div class="more">加载更多</div>
