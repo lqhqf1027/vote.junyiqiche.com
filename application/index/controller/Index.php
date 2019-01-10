@@ -32,7 +32,6 @@ class Index extends Frontend
         $contestant = $this->playerInfo(['status' => 'normal'], 'id,name,applicationimages,votes');
 
         $data = array_merge($this->publicData(), ['contestantList' => $contestant]);
-//        pr($data);
         $this->view->assign($data);
         return $this->view->fetch();
     }
@@ -64,7 +63,7 @@ class Index extends Frontend
                 Application::where('id', $application_id)->setInc('votes');
             }
 
-            return $result ? 'success' : 'error';
+            return $result ? json_encode('success') : json_encode('error');
         }
 
     }
@@ -265,6 +264,23 @@ class Index extends Frontend
         $this->view->assign($data);
 
         return $this->view->fetch();
+    }
+
+
+    /**
+     * 提交报名
+     * @return string
+     */
+    public function submitApplication()
+    {
+        if($this->request->isAjax()){
+            $data = $this->request->post('data');
+
+            $data = json_decode($data,true);
+
+            return Application::create($data)?json_encode('success'):json_encode('error');
+        }
+
     }
 
 
