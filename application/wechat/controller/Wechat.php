@@ -83,14 +83,12 @@ class Wechat extends Controller {
     /*获取用户信息插入数据库*/
     public function adduser()
     {
-
         $appid = $this->appid=Config::get('APPID');
         $secret = $this->secret=Config::get('APPSECRET');
         $code = $_GET['code'] ;
 
         ##获取网页授权的access_token 和openid
         $rslt  = gets("https://api.weixin.qq.com/sns/oauth2/access_token?appid={$this->appid}&secret={$this->secret}&code={$code}&grant_type=authorization_code");
-
         ##通过access_token 和openid获取获取信息
         $user  = gets("https://api.weixin.qq.com/sns/userinfo?access_token=".$rslt['access_token']."&openid=".$rslt['openid']."&lang=zh_CN ");
         $data = array();
@@ -102,9 +100,9 @@ class Wechat extends Controller {
         $data['headimgurl'] = $user['headimgurl'];
         $res = Db::name('wechat_user')->where(['openid'=>$user['openid']])->find();
         if(empty($res)){
-            $insert_user = Db::name('wechat_user')->insert($data);
+            $insert_user = model('Wechatuser')->create($data);
             if($insert_user){
-                session('MEMBER',$res);
+                session('MEMBER',$insert_user);
                 $this->redirect('Index/index/index');
             }else{
                 $this->error('添加失败');
