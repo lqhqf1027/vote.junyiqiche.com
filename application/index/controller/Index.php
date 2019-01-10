@@ -4,13 +4,13 @@ namespace app\index\controller;
 
 use app\common\controller\Frontend;
 use app\common\library\Token;
-
 use app\admin\model\Record;
 use app\admin\model\Banner;
 use app\admin\model\Application;
 use app\admin\model\Wechatuser;
 use app\common\model\Config as ConfigModel;
 use think\Db;
+use think\Config;
 use think\Session;
 
 class Index extends Frontend
@@ -28,8 +28,52 @@ class Index extends Frontend
 
     public function index()
     {
-        $contestant = $this->playerInfo(['status' => 'normal'], 'id,name,applicationimages,votes');
 
+        //活动结束时间
+        $voteEndTime = ConfigModel::where('name', 'vote_end')->value('value');
+
+        $voteEndTime = date('m月d日H时i分s秒', strtotime($voteEndTime));
+
+        if($voteEndTime[0]==0){
+            $len = intval(strlen($voteEndTime))-1;
+            $voteEndTime = substr($voteEndTime,-$len);
+        };
+        //参选信息
+//        $contestant = collection(Application::field('id,name,applicationimages,votes')
+//        ->with(['wechatUser'=>function ($q){
+//            $q->withField('id,sex');
+//        }])->where('status','normal')->select())->toArray();
+        $contestant = $this->test(['status'=>'normal']);
+
+        foreach ($contestant as $k=>$v){
+            $contestant[$k]['applicationimages'] = $v['applicationimages']?explode(';',$v['applicationimages'])[0]:'';
+            $contestant[$k]['is_vote'] = 0;
+        }
+
+        if(Session::get('MEMBER')){
+            $user_id = Session::get('MEMBER')['id'];
+        }
+
+        if(!empty($user_id)){
+
+            //已经投票的ID
+           $voted_id = Record::where('wechat_user_id',$user_id)->whereTime('create_time', 'today')->column('application_id');
+
+           if($voted_id){
+               foreach ($contestant as $k=>$v){
+                   $contestant[$k]['is_vote'] = in_array($v['id'],$voted_id)?1:0;
+               }
+           }
+
+        }
+
+        $data = [
+            'voteEndTime'=>$voteEndTime,
+            'contestantList'=>$contestant
+        ];
+    
+        $this->view->assign(array_merge($this->statisticsBanner(),$data));
+        $contestant = $this->playerInfo(['status' => 'normal'], 'id,name,applicationimages,votes');
         $data = array_merge($this->publicData(), ['contestantList' => $contestant]);
 //        pr($data);
         $this->view->assign($data);
@@ -37,6 +81,14 @@ class Index extends Frontend
         return $this->view->fetch();
     }
 
+    /**
+     * 微信卡片分享接口
+     */
+    public  function shreData(){
+        $jssdk = new \Jssdk(Config::get('APPID'), Config::get('APPSECRET'));
+        $signPackage = $jssdk->GetSignPackage();
+        $this->assign("data",$signPackage);
+    }
     public function news()
     {
         $newslist = [];
