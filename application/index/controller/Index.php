@@ -4,13 +4,13 @@ namespace app\index\controller;
 
 use app\common\controller\Frontend;
 use app\common\library\Token;
-
 use app\admin\model\Record;
 use app\admin\model\Banner;
 use app\admin\model\Application;
 use app\admin\model\Wechatuser;
 use app\common\model\Config as ConfigModel;
 use think\Db;
+use think\Config;
 use think\Session;
 
 class Index extends Frontend
@@ -54,6 +54,7 @@ class Index extends Frontend
         }
 
         if(!empty($user_id)){
+
             //已经投票的ID
            $voted_id = Record::where('wechat_user_id',$user_id)->whereTime('create_time', 'today')->column('application_id');
 
@@ -75,6 +76,14 @@ class Index extends Frontend
         return $this->view->fetch();
     }
 
+    /**
+     * 微信卡片分享接口
+     */
+    public  function shreData(){
+        $jssdk = new \Jssdk(Config::get('APPID'), Config::get('APPSECRET'));
+        $signPackage = $jssdk->GetSignPackage();
+        $this->assign("data",$signPackage);
+    }
     public function news()
     {
         $newslist = [];
