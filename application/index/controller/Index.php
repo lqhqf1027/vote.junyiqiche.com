@@ -69,8 +69,10 @@ class Index extends Frontend
             'voteEndTime'=>$voteEndTime,
             'contestantList'=>$contestant
         ];
+        
         pr(array_merge($this->statisticsBanner(),$data));
         $this->view->assign(array_merge($this->statisticsBanner(),$data));
+        $this->view->assign('url', $_SERVER['REQUEST_URI']);
 
         return $this->view->fetch();
     }
@@ -93,16 +95,16 @@ class Index extends Frontend
         ]);
     }
 
-
+    //当前排名
     public function ranking()
     {
-        
+        $this->view->assign('url', $_SERVER['REQUEST_URI']);
         return $this->view->fetch();
     }
-
+    //活动规则
     public function rules()
     {
-        
+        $this->view->assign('url', $_SERVER['REQUEST_URI']);
         return $this->view->fetch();
     }
 
