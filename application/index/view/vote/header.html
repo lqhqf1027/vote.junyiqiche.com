@@ -81,9 +81,11 @@
 
 <div class="layui-carousel" id="test1">
     <div carousel-item>
-        <div><img src="http://assets.youzhan.org/img/d/20/8305a1ae99bc794dafca1df04f9e6.jpg" style=""></img>
+        {foreach $data['bannerList'] as $k => $v}
+        <div><img src="{$config['upload']['cdnurl']}/{$v['rotationimage']}" style=""></img>
         </div>
-        <div><img src="http://assets.youzhan.org/img/8/f4/d8ece1342920b4388c8174d349925.jpg"></img></div>
+        <!-- <div><img src="http://assets.youzhan.org/img/8/f4/d8ece1342920b4388c8174d349925.jpg"></img></div> -->
+        {/foreach}
     </div>
 </div>
 <div class="layui-container">
@@ -91,9 +93,9 @@
         <div class="layui-row text-center ">
             <div class="layui-col-xs12 headBox" style="">
                 <div class="layui-row pd_12" style="font-weight: bold;font-size: 16px;">
-                    <div class="layui-col-xs4">80</div>
-                    <div class="layui-col-xs4">52310</div>
-                    <div class="layui-col-xs4  ">241511</div>
+                    <div class="layui-col-xs4">{$data['statistics']['applicationCount']}</div>
+                    <div class="layui-col-xs4">{$data['statistics']['voteCount']}</div>
+                    <div class="layui-col-xs4  ">{$data['statistics']['visitCount']}</div>
                 </div>
                 <div class="layui-row " style="padding-bottom: 8px;">
                     <div class="layui-col-xs4 headBoxColor"><i class="layui-icon layui-icon-user"></i> 参赛者</div>
