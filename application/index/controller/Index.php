@@ -29,7 +29,20 @@ class Index extends Frontend
     public function index()
     {
 
+
+        
+
+        $data = [
+            'voteEndTime'=>$voteEndTime,
+            'contestantList'=>$contestant
+        ];
+        
+        pr(array_merge($this->statisticsBanner(),$data));
+        $this->view->assign(array_merge($this->statisticsBanner(),$data));
+        $this->view->assign('url', $_SERVER['REQUEST_URI']);
+
         $contestant = $this->playerInfo(['status' => 'normal'], 'id,name,applicationimages,votes');
+
 
         $data = array_merge($this->publicData(), ['contestantList' => $contestant]);
 //        pr($data);
@@ -59,6 +72,18 @@ class Index extends Frontend
                 'wechat_user_id' => $user_id,
                 'application_id' => $application_id
             ]);
+
+
+    //当前排名
+    public function ranking()
+    {
+        $this->view->assign('url', $_SERVER['REQUEST_URI']);
+        return $this->view->fetch();
+    }
+    //活动规则
+    public function rules()
+    {
+        $this->view->assign('url', $_SERVER['REQUEST_URI']);
 
             if ($result) {
                 Application::where('id', $application_id)->setInc('votes');
@@ -104,6 +129,7 @@ class Index extends Frontend
         $data = array_merge($this->publicData(), ['vote_rules' => $vote_rules]);
 
         $this->view->assign($data);
+
         return $this->view->fetch();
     }
 
