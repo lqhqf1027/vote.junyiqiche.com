@@ -18,7 +18,7 @@
         <label class="control-label col-xs-12 col-sm-2">{:__('Stauts')}:</label>
         <div class="col-xs-12 col-sm-8">
                         
-            <select  id="c-stauts" data-rule="required" class="form-control selectpicker" name="row[stauts]">
+            <select  id="c-stauts" data-rule="required" class="form-control selectpicker" name="row[status]">
                 {foreach name="stautsList" item="vo"}
                     <option value="{$key}" {in name="key" value="normal"}selected{/in}>{$vo}</option>
                 {/foreach}
