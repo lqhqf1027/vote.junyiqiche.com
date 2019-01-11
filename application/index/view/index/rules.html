@@ -47,10 +47,21 @@
     .name {
         font-weight: normal;
     }
+    .rules_con,.rules_con img{
+        max-width: 90%;
+    }
+    .rules_con li{
+        list-style: disc;
+    }
 
 </style>
 
-        {$data['vote_rules']}
+    <div class="rules_con container">
+        <div class="row">
+            {$data['vote_rules']}
+        </div>
+    </div>
+
 
 {/block}
 </html>

@@ -33,20 +33,28 @@ class Wechat extends Controller
 
         ##通过access_token 和openid获取获取信息
         $user = gets("https://api.weixin.qq.com/sns/userinfo?access_token=" . $rslt['access_token'] . "&openid=" . $rslt['openid'] . "&lang=zh_CN ");
-        $user['nickname'] = htmlspecialchars($user['nickname']);
         $res = wechatUserModel::get(['openid'=>$user['openid']]);
-        $model = new wechatUserModel;
+//        $model = new wechatUserModel;
         if (empty($res)) {
-            $insert_user = $model->allowField(true)->save($user);
+            $insert_user = wechatUserModel::create([
+                'openid' =>$user['openid'],
+                'nickname' => htmlspecialchars($user['nickname']),
+                'sex' =>$user['sex'],
+                'city' =>$user['city'],
+                'province' =>$user['province'],
+                'headimgurl' =>$user['headimgurl'],
+
+            ]);
+//            $insert_user = $model->allowField(true)->save($user);
             if ($insert_user) {
-                session('MEMBER', collection($user)->toArray());
+                session('MEMBER', $insert_user);
 
                 $this->redirect('Index/index/index');
             } else {
                 $this->error('添加失败');
             }
         } else {
-            session('MEMBER', collection($res)->toArray());
+            session('MEMBER', $res);
             $user['id'] = $res->id;
             $update_user = $res->allowField(true)->save($user);
             $update_user == 0 ? $this->redirect('Index/index/index') : $this->redirect('Index/index/index');
