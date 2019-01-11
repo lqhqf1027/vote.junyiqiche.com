@@ -1,5 +1,5 @@
 <?php
-
+namespace app\index\controller;
 use think\Cache;
 use app\common\controller\Frontend;
 

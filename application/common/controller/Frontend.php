@@ -7,7 +7,7 @@ use think\Config;
 use think\Controller;
 use think\Hook;
 use think\Lang;
-
+use app\common\model\Config as ConfigModel;
 /**
  * 前台控制器基类
  */
@@ -138,6 +138,9 @@ class Frontend extends Controller
         $this->loadlang($controllername);
         $this->assign('site', $site);
         $this->assign('config', $config);
+        //卡片分享参数
+        $shareData = ConfigModel::where('name',['eq','share_title'],['eq','share_body'],['eq','share_img'],'or')->column('value');
+        $this->assign(['share_title'=>$shareData[2],'share_body'=>$shareData[0],'share_img'=>Config::get('upload')['cdnurl'].$shareData[1]]);
     }
 
     /**
