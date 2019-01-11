@@ -5,9 +5,9 @@
 </div>
 <div class="text-center footer_box">
     <div class="layui-row row_style" id="title">
-        <div class="layui-col-xs4 item {if $url == '/'} active_s {/if}" id="vote">全部参赛</div>
-        <div class="layui-col-xs4 item {if $url == '/index/index/ranking'} active_s {/if}" id="ranking">当前排名</div>
-        <div class="layui-col-xs4 item {if $url == '/index/index/rules'} active_s {/if}" id="rules">活动规则</div>
+        <div class="layui-col-xs4 item {if $Request.action == 'index'} active_s {/if}" id="vote">全部参赛</div>
+        <div class="layui-col-xs4 item {if $Request.action == 'ranking'} active_s {/if}" id="ranking">当前排名</div>
+        <div class="layui-col-xs4 item {if $Request.action == 'rules'} active_s {/if}" id="rules">活动规则</div>
         
     </div>
 </div>

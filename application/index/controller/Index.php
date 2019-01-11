@@ -204,7 +204,7 @@ class Index extends Frontend
 
         $data = array_merge($this->publicData(), ['contestantList' => $result]);
 
-        $this->view->assign($data);
+        $this->view->assign('data', $data);
 
         return $this->view->fetch();
     }
@@ -262,7 +262,7 @@ class Index extends Frontend
 
         $data = array_merge($this->publicData(), ['playerDetail' => $info[0]]);
 
-        $this->view->assign($data);
+        $this->view->assign('data', $data);
 
         return $this->view->fetch();
     }
