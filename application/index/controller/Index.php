@@ -25,8 +25,6 @@ class Index extends Frontend
     {
         parent::_initialize();
 
-        Session::set('user_id', (Session::get('MEMBER')['id']));
-
     }
 
     public function index()
@@ -70,7 +68,13 @@ class Index extends Frontend
     public  function sendVote(){
       if($this->request->isPost()){
           $res = new Application();
-          return $res->allowField(true)->save($this->request->post()['datas'])?$this->success('报名成功！'):$this->error('报名失败');
+
+          $data =  $res->allowField(true)->save($this->request->post()['datas']);
+          if($data){
+              $this->success('报名成功！');
+          }else{
+              $this->error('报名失败');
+          }
 
       }
       else{

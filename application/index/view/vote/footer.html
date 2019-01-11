@@ -24,6 +24,8 @@
 <script src="//layui.hcwl520.com.cn/layui/layui.js?v=201809030202"></script>
 <!--瀑布流插件-->
 <!--<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>-->
+<!--<script src="https://static.yc.junyiqiche.com/layer/layer.js"></script>-->
+
 <script src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js" type="text/javascript" charset="utf-8"></script>
 <script>
     window.onload = function () {
@@ -125,15 +127,22 @@
             if ($('input[type="hidden"]').val() == '') {
                 return layer.msg('请上传封面');
             }
-            data.field.wechat_user_id = "{:session('user_id')}";  
+            data.field.wechat_user_id = "{$user_id}";
+            // console.log(data.field);return;
+            var index = layer.load(1, {
+                shade: [0.1,'#fff'] //0.1透明度的白色背景
+            });
             $.post("{:url('Index/sendVote')}",{datas:data.field},function (res) {
+                console.log(res.code);
                 if(res.code==1){
+                    layer.close(index);
                     layer.msg(res.msg);
                     window.location.reload();
                 }else{
                     layer.msg(res.msg);
+                    layer.close(index);
+
                 }
-                console.log(res);
             })
             return false;
         });
@@ -256,7 +265,11 @@
         alert(3);
         $(this).bind("click", {index: i}, function(){
 
-            var isTodayVote = "{:session('isTodayVote')}";
+
+
+
+            var isTodayVote = "{$data.isTodayVote}";
+
             console.log(isTodayVote);
             if (isTodayVote == 1) {
                 layer.msg("今天已经投过票啦，请明天再来");
@@ -265,7 +278,7 @@
             // console.log(123);
             var ajaxurl ='{:url("index/vote")}';
             var application_id = $('.application_id').eq(i).text();
-            var user_id = "{:session('user_id')}";
+            var user_id = "{$user_id}";
             console.log(application_id);
             console.log(user_id);
             $.ajax({
