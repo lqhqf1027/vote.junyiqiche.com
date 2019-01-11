@@ -150,10 +150,9 @@
         var count = 1;
 
         flow.load({
-            elem: '.flex' //流加载容器
+            elem: '#index-flex' //流加载容器
             // , scrollElem: '#LAY_demo1' //滚动条所在元素，一般不用填，此处只是演示需要。
             , done: function (page, next) { //加载下一页
-
                 $.get('{:url("index/lazyPlayerInfo")}', {page: page}, function (data) {
                     data = JSON.parse(data);
                     // console.log(data);
@@ -168,27 +167,21 @@
                         var lis = [];
 
                         for (var i in data){
-                            // console.log(data[i].wechat_user.sex);
+                            var sex = data[i].wechat_user.sex==1?'fa-male':'fa-female';
                             lis.push('<div class=" flex_content">\n' +
                                 '                <div class="thumbnail item_box" style="">\n' +
                                 '                    <a href="/index/index/playerDetails?application_id='+data[i].id+'" ><img src="{$config[\'upload\'][\'cdnurl\']}/'+data[i].applicationimages+'" alt="..."></a>\n' +
                                 '                    <div class="row text-center  " style="margin: 0">\n' +
                                 '                        <div class="layui-col-xs6 pd_tb10-lr0 pull-left" >\n' +
-                                '                            <h4 style="font-weight: bold" class=""><i class="fa {eq name="'+data[i].wechat_user.sex+'" value="1"} fa-male {else/} fa-female {/eq}" aria-hidden="true"\n' +
+                                '                            <h4 style="font-weight: bold" class=""><i class="fa '+sex+'" aria-hidden="true"\n' +
                                 '                                                                    ></i> '+data[i].name+'</h4>\n' +
                                 '\n' +
                                 '                            <h4 style="font-weight: bold;padding-top: 5px" class=""><i class="fa fa-line-chart"\n' +
                                 '                                                                                    aria-hidden="true"></i>'+data[i].votes+' 票</h4>\n' +
                                 '                        </div>\n' +
                                 '\n' +
-                                '                        <div class="layui-col-xs12" id="voting">\n' +
-                                '\n' +
-                                '                            {if '+data[i].isTodayVote+' == 1}\n' +
-                                '                            <a href="javascript:void(0)" class="btn btn-info send_vote" style="">今天已投过票</a>\n' +
-                                '                            {else/}\n' +
-                                '                            <a href="javascript:void(0)" class="btn btn-info send_vote" style="">投票给<strong style="font-size: 15px" class="text-danger" id="application_id">'+data[i].id+'</strong>号</a>\n' +
-                                '                            {/if}\n' +
-                                '                            \n' +
+                                '                        <div class="layui-col-xs12 voting">\n' +
+                                '                            <a href="javascript:void(0)" class="btn btn-info send_vote" style="">投票给<strong style="font-size: 15px" class="text-danger application_id">'+data[i].id+'</strong>号</a>\n' +
                                 '                        </div>\n' +
                                 '                    </div>\n' +
                                 '                </div>\n' +
@@ -201,7 +194,6 @@
                     }, 500);
 
                 })
-
             }
         });
 
@@ -261,8 +253,9 @@
 
     //投票
     $(".voting").each(function(i){
-     
+        alert(3);
         $(this).bind("click", {index: i}, function(){
+
             var isTodayVote = "{:session('isTodayVote')}";
             console.log(isTodayVote);
             if (isTodayVote == 1) {
@@ -279,7 +272,7 @@
                 url: ajaxurl,
                 type: "post",
                 //注意序列化的值一定要放在最前面,并且不需要头部变量,不然获取的值得格式会有问题
-                data:{application_id: application_id, user_id: user_id},    
+                data:{application_id: application_id, user_id: user_id},
                 dataType:"json",
                 success:function (data) {
                     // alert(data);
