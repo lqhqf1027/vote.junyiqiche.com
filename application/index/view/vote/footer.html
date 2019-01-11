@@ -73,12 +73,87 @@
             }
         });
     }
-    layui.use(['carousel', 'form','flow'], function () {
+    layui.use(['carousel', 'form','flow','upload'], function () {
         var flow = layui.flow;
         //当你执行这样一个方法时，即对页面中的全部带有lay-src的img元素开启了懒加载（当然你也可以指定相关img）
         flow.lazyimg();
         var carousel = layui.carousel;
         var form = layui.form;
+        var  upload = layui.upload;
+        $('#apply').click(function(){
+            layer.open({
+                type: 1,
+                title:"报名",
+                area: ['400px', '90%'],
+                shadeClose: false, //点击遮罩关闭
+                content: '<form class="layui-form" id="add-form" action="/index/index/sign" enctype="multipart/form-data" method="post">\n' +
+                    '            <br>\n' +
+                    '            <div class="layui-form-item center" >\n' +
+                    '            <label class="layui-form-label" style="width: 100px" >姓名</label>\n' +
+                    '            <div class="layui-input-block">\n' +
+                    '            <input type="text" name="name" required value="" style="width: 240px" lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">\n' +
+                    '            </div>\n' +
+                    '            </div>\n' +
+                    '            <div class="layui-form-item" >\n' +
+                    '            <label class="layui-form-label" style="width: 100px" >车型</label>\n' +
+                    '            <div class="layui-input-block">\n' +
+                    '            <input type="text" name="model" required value="" style="width: 240px" lay-verify="required" placeholder="请输入车型" autocomplete="off" class="layui-input">\n' +
+                    '            </div>\n' +
+                    '            </div>\n' +
+                    '            <div class="layui-form-item" >\n' +
+                    '            <label class="layui-form-label" style="width: 100px" >日均流水</label>\n' +
+                    '            <div class="layui-input-block">\n' +
+                    '            <input type="text" name="daily_running_water" required value="" style="width: 240px" lay-verify="required" placeholder="请输入日均流水" autocomplete="off" class="layui-input">\n' +
+                    '            </div>\n' +
+                    '            </div>\n' +
+                    '            <div class="layui-form-item" >\n' +
+                    '            <label class="layui-form-label" style="width: 100px" >服务分</label>\n' +
+                    '            <div class="layui-input-block">\n' +
+                    '            <input type="text" name="service_points" required value="" style="width: 240px" lay-verify="required" placeholder="请输入服务分" autocomplete="off" class="layui-input">\n' +
+                    '            </div>\n' +
+                    '            </div>\n' +
+                    '            <div class="layui-form-item" >\n' +
+                    '            <label class="layui-form-label" style="width: 100px" >自我描述</label>\n' +
+                    '            <div class="layui-input-block">\n' +
+                    '            <input type="text" name="describe_yourself" required value="" style="width: 240px" lay-verify="required" placeholder="请输入自我描述" autocomplete="off" class="layui-input">\n' +
+                    '            </div>\n' +
+                    '            </div>\n' +
+                    '            <div class="layui-form-item" >\n' +
+                    '            <label class="layui-form-label" style="width: 100px" >封面图片</label>\n' +
+                    '            <div class="layui-upload layui-input-block">\n' +
+                    '            <button type="button" class="layui-btn" id="fileUp"><i class="layui-icon">&#xe67c;</i>上传图片</button>\n' +
+                    '            <input class="layui-upload-file" type="file" accept="image/*" name="file">\n' +
+                    '           <div class="layui-upload-list">\n' +
+                    '           <img class="layui-upload-img" id="demo1">\n' +
+                    '           <p id="demoText"></p>\n' +
+                    '           </div>\n'+
+                    '            </div>\n' +
+                    '            </div>\n' +
+                    '            <div class="layui-form-item">\n' +
+                    '            <div class="layui-input-block">\n' +
+                    '                <button class="layui-btn" lay-submit lay-filter="save" >立即提交</button>\n' +
+                    '                <button type="reset" class="layui-btn layui-btn-primary" id="closeBtn" >重置</button>\n' +
+                    '            </div>\n' +
+                    '            </div>\n' +
+                    '        </form>\n'
+
+            });
+
+        })
+        form.render();
+        //上传图片
+        upload.render({
+            elem: '#fileUp'
+            ,url: '{:url("index/uploads")}'
+            ,accept: 'images'
+            ,method: 'post'
+            ,acceptMime: 'image/*'
+            ,auto: false //选择文件后不自动上传
+            ,bindAction: '#testListAction' //指向一个按钮触发上传
+            ,done: function(res){
+                $(this.item).prev("div").children("input").val(res.data.src)
+            }
+        });
         //建造实例
         carousel.render({
             elem: '#test1'
