@@ -8,6 +8,7 @@ use think\Controller;
 use think\Hook;
 use think\Lang;
 use app\common\model\Config as ConfigModel;
+use think\Session;
 /**
  * 前台控制器基类
  */
@@ -40,13 +41,14 @@ class Frontend extends Controller
 
     public function _initialize()
     {
+
         //微信登陆验证
         $appid = $this->appid=Config::get('APPID');
         $secret = $this->secret=Config::get('APPSECRET');
         $token  = cache('Token');
 
-
         if(!$token['access_token'] || $token['expires_in'] <= time()){
+
             $rslt  = gets("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={$appid}&secret={$secret}");
             if($rslt){
                 $accessArr = array(
@@ -140,6 +142,8 @@ class Frontend extends Controller
         $this->loadlang($controllername);
         $this->assign('site', $site);
         $this->assign('config', $config);
+        $this->assign('user_id',session('MEMBER')->getData()['id']);
+
         //卡片分享参数
         $shareData = ConfigModel::where('name',['eq','share_title'],['eq','share_body'],['eq','share_img'],'or')->column('value');
         $this->assign(['share_title'=>$shareData[2],'share_body'=>$shareData[0],'share_img'=>Config::get('upload')['cdnurl'].$shareData[1]]);
