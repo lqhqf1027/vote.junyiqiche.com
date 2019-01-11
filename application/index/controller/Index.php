@@ -13,6 +13,7 @@ use app\common\model\Config as ConfigModel;
 use think\Db;
 use think\Session;
 use think\Config;
+use think\Request;
 class Index extends Frontend
 {
 
@@ -23,7 +24,6 @@ class Index extends Frontend
     public function _initialize()
     {
         parent::_initialize();
-
     }
 
     public function index()
@@ -37,6 +37,28 @@ class Index extends Frontend
         return $this->view->fetch();
     }
 
+    /**
+     * 上传封面
+     * @return string
+     */
+    public function uploadsHeaderImg()
+    {
+        return action('api/common/upload');
+    }
+
+    /**
+     * 提交报名
+     */
+    public  function sendVote(){
+      if($this->request->isPost()){
+          $res = new Application();
+          return $res->allowField(true)->save($this->request->post()['datas'])?$this->success('报名成功！'):$this->error('报名失败');
+
+      }
+      else{
+          $this->error('非法请求');
+      }
+    }
 
     /**卡片分享
      * @return false|string
