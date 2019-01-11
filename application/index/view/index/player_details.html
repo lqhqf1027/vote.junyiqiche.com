@@ -46,9 +46,11 @@
             <div style="color: orange">票数是：{$data['playerDetail']['votes']}票</div>
         </div>
         
-        
-        <div class="layui-col-xs12 text-center">
-            <a href="javascript:void(0)" class="btn btn-info send_vote">投票给<strong style="font-size: 15px" class="text-danger">{$data['playerDetail']['id']}</strong>号</a>
+
+        <div class="layui-col-xs12 text-center voting">
+
+            <a href="javascript:void(0)" class="btn btn-info send_vote" style="">投票给<strong style="font-size: 15px" class="text-danger application_id">{$data['playerDetail']['id']}</strong>号</a>
+              
         </div>
 
     </div>
