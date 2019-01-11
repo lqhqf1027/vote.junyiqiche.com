@@ -149,7 +149,7 @@
         layer.open({
             type: 1,
             title:"报名",
-            area: ['400px', '600px'],
+            area: ['400px', '90%'],
             shadeClose: false, //点击遮罩关闭
             content: '<form class="layui-form" id="add-form" action="/index/index/sign" enctype="multipart/form-data" method="post">\n' +
             '            <br>\n' +
@@ -159,40 +159,34 @@
             '            <input type="text" name="name" required value="" style="width: 240px" lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">\n' +
             '            </div>\n' +
             '            </div>\n' +
-            '            <br>\n' +
             '            <div class="layui-form-item" >\n' +
             '            <label class="layui-form-label" style="width: 100px" >车型</label>\n' +
             '            <div class="layui-input-block">\n' +
             '            <input type="text" name="model" required value="" style="width: 240px" lay-verify="required" placeholder="请输入车型" autocomplete="off" class="layui-input">\n' +
             '            </div>\n' +
             '            </div>\n' +
-            '            <br>\n' +
             '            <div class="layui-form-item" >\n' +
             '            <label class="layui-form-label" style="width: 100px" >日均流水</label>\n' +
             '            <div class="layui-input-block">\n' +
             '            <input type="text" name="daily_running_water" required value="" style="width: 240px" lay-verify="required" placeholder="请输入日均流水" autocomplete="off" class="layui-input">\n' +
             '            </div>\n' +
             '            </div>\n' +
-            '            <br>\n' +
             '            <div class="layui-form-item" >\n' +
             '            <label class="layui-form-label" style="width: 100px" >服务分</label>\n' +
             '            <div class="layui-input-block">\n' +
             '            <input type="text" name="service_points" required value="" style="width: 240px" lay-verify="required" placeholder="请输入服务分" autocomplete="off" class="layui-input">\n' +
             '            </div>\n' +
             '            </div>\n' +
-            '            <br>\n' +
             '            <div class="layui-form-item" >\n' +
             '            <label class="layui-form-label" style="width: 100px" >自我描述</label>\n' +
             '            <div class="layui-input-block">\n' +
             '            <input type="text" name="describe_yourself" required value="" style="width: 240px" lay-verify="required" placeholder="请输入自我描述" autocomplete="off" class="layui-input">\n' +
             '            </div>\n' +
             '            </div>\n' +
-            '            <br>\n' +
             '            <div class="layui-form-item" >\n' +
             '            <label class="layui-form-label" style="width: 100px" >封面图片</label>\n' +
             '            <div class="layui-upload layui-input-block">\n' +
-            '            <input type="text" name="applicationimages" required value="" style="width: 240px" lay-verify="required" placeholder="请上传封面图片" autocomplete="off" class="layui-input">\n' +
-            '            <button type="button" class="layui-btn" id="test2"><i class="layui-icon">&#xe67c;</i>上传图片</button>\n' +
+            '            <button type="button" class="layui-btn" id="fileUp"><i class="layui-icon">&#xe67c;</i>上传图片</button>\n' +
             '            <input class="layui-upload-file" type="file" accept="image/*" name="file">\n' + 
             '            </div>\n' +
             '            </div>\n' +
@@ -207,23 +201,5 @@
         });
 
     })
-
-        layui.use('upload', function(){
-            var $ = layui.$
-            ,upload = layui.upload;
-            
-            //上传图片
-            upload.render({
-                elem: '#test2'
-                ,url: '/upload'
-                ,accept: 'images'
-                ,method: 'get'
-                ,acceptMime: 'image/*'
-                ,done: function(res){
-                $(this.item).prev("div").children("input").val(res.data.src)
-                }
-            });
-        })
-
 
 </script>
