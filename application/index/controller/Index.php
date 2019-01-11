@@ -13,6 +13,7 @@ use app\common\model\Config as ConfigModel;
 use think\Db;
 use think\Session;
 use think\Config;
+use think\Request;
 class Index extends Frontend
 {
 
@@ -24,6 +25,8 @@ class Index extends Frontend
     {
         parent::_initialize();
 
+        Session::set('user_id', (Session::get('MEMBER')['id']));
+
     }
 
     public function index()
@@ -34,6 +37,7 @@ class Index extends Frontend
         $data = array_merge($this->publicData(), ['contestantList' => $contestant]);
 //        pr($data);
         $this->view->assign('data', $data);
+
 //        pr(Session::get('MEMBER'));
         return $this->view->fetch();
     }
@@ -46,6 +50,32 @@ class Index extends Frontend
 
               return json_encode($this->playerInfo(['status' => 'normal'],'id,name,applicationimages,votes',null,$page));
           }
+    }
+
+
+    
+
+    /**
+     * 上传封面
+     * @return string
+     */
+    public function uploadsHeaderImg()
+    {
+        return action('api/common/upload');
+    }
+
+    /**
+     * 提交报名
+     */
+    public  function sendVote(){
+      if($this->request->isPost()){
+          $res = new Application();
+          return $res->allowField(true)->save($this->request->post()['datas'])?$this->success('报名成功！'):$this->error('报名失败');
+
+      }
+      else{
+          $this->error('非法请求');
+      }
     }
 
 
@@ -128,11 +158,17 @@ class Index extends Frontend
      */
     public function vote()
     {
+        
         if ($this->request->isAjax()) {
-            $user_id = $this->request->post('user_id');
+            // pr($_POST);
+            // die;
+            $user_id = 5;
 
-            $application_id = $this->request->post('application_id');
+            $application_id = $_POST['application_id'];
 
+            // pr($application_id);
+            // pr($user_id);
+            // die;
             $result = Record::create([
                 'wechat_user_id' => $user_id,
                 'application_id' => $application_id
@@ -142,7 +178,7 @@ class Index extends Frontend
                 Application::where('id', $application_id)->setInc('votes');
             }
 
-            return $result ? 'success' : 'error';
+            return $result ? '投票成功' : '投票失败';
         }
 
     }
@@ -254,6 +290,7 @@ class Index extends Frontend
 
             if ($voted_id) {
                 $isTodayVote = 1;
+                Session::set('isTodayVote', $isTodayVote);
             }
 
             //判断该用户是否报名
@@ -266,8 +303,7 @@ class Index extends Frontend
                 $is_application = 1;
             }
         }
-
-
+        
         return [
             'bannerList' => $bannerList,
             'voteEndTime' => $voteEndTime,

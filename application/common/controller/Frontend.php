@@ -45,7 +45,8 @@ class Frontend extends Controller
         $secret = $this->secret=Config::get('APPSECRET');
         $token  = cache('Token');
 
-        /*if(!$token['access_token'] || $token['expires_in'] <= time()){
+
+        if(!$token['access_token'] || $token['expires_in'] <= time()){
             $rslt  = gets("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={$appid}&secret={$secret}");
             if($rslt){
                 $accessArr = array(
@@ -64,12 +65,13 @@ class Frontend extends Controller
             $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid={$this->appid}&redirect_uri={$myurl}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
             header('Location:'.$url);
             die();
-        }*/
+        }
         //移除HTML标签
         $this->request->filter('strip_tags');
         $modulename = $this->request->module();
         $controllername = strtolower($this->request->controller());
         $actionname = strtolower($this->request->action());
+
 
         // 如果有使用模板布局
         if ($this->layout) {

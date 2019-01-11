@@ -74,28 +74,12 @@
         <div class="layui-row  flex">
 
 
+
         </div>
 
 
 {/block}
 </html>
-<script>
 
-    $('#voting').click(function(){
-        var ajaxurl ='{:url("index/vote")}';
-        var application_id = $('#application_id').val();
-        $.ajax({
-            url: ajaxurl,
-            type: "post",
-            //注意序列化的值一定要放在最前面,并且不需要头部变量,不然获取的值得格式会有问题
-            data:{application_id: application_id},    
-            dataType:"json",
-            success:function (data) {
-                alert(data.result);
-            }
-        })
-    })
-    
-</script>
 
 

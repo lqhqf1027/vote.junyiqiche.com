@@ -124,82 +124,97 @@
         </div>
 
         <div class="layui-row text-center " style="padding-top: 20px">
-            <button class="btn btn-info btn-lg " id="apply" style="width: 80%">我要报名</button>
+            <button class="btn btn-info btn-lg " data-toggle="modal" data-target="#exampleModal" style="width: 80%">
+                我要报名
+            </button>
         </div>
         <div class="layui-row text-center " style="padding-top: 20px">
         </div>
 
 
     </div>
-<!-- jQuery -->
-<script src=https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js></script>
+    <div class="modal " id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel" style="">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">提交报名信息</h4>
+                </div>
+                <div class="modal-body" style="padding:15px 0 ;">
+                    <form class="layui-form container" action="">
+                        <div class="row">
+                            <div class="form-group col-xs-6">
+                                <label for="name" class="control-label">姓名:</label>
+                                <input type="text" class="form-control" class="layui-input" name="name" id="name"
+                                       placeholder="请输入你的姓名" required lay-verify="required">
+                            </div>
+                            <div class="form-group col-xs-6">
+                                <label for="model" class="control-label">车型:</label>
+                                <input type="text" class="form-control" class="layui-input" name="model" id="model"
+                                       placeholder="请输入你的车型"  required lay-verify="required">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-xs-6">
+                                <label for="daily_running_water" class="control-label">日均流水:</label>
+                                <input type="text" class="form-control" class="layui-input" name="daily_running_water"
+                                       id="daily_running_water" placeholder="请输入你的日均流水"  required lay-verify="required">
+                            </div>
+                            <div class="form-group col-xs-6">
+                                <label for="service_points" class="control-label">服务分:</label>
+                                <input type="text" class="form-control" class="layui-input" name="service_points"
+                                       id="service_points" placeholder="请输入你的服务分"  required lay-verify="required">
+                            </div>
+                        </div>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+                        <div class="form-group">
+                            <label for="describe_yourself" class="control-label">自我描述:</label>
+                            <input type="text" class="form-control" class="layui-input" name="describe_yourself"
+                                   id="describe_yourself" placeholder="请输入你的自我描述"  required lay-verify="required">
+                        </div>
+                        <div class="row">
+                            <div class="layui-upload col-xs-8">
+                                <label for="" class="control-label">封面图片:</label>
+                                <button type="button" class="layui-btn" id="fileUp" style="background-color: #393D49">
+                                    上传图片
+                                </button>
+                                <input type="hidden" name="applicationimages">
+                            </div>
+                            <div class=" col-xs-4" style="margin:0">
+                                <img class="img-responsive" id="demo1" width="">
+                                <p id="demoText"></p>
+                            </div>
+                        </div>
 
-<!-- Plugin JavaScript -->
-<script src="https://cdn.staticfile.org/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-<!--Layui CDN-->
-<script src="//layui.hcwl520.com.cn/layui/layui.js?v=201809030202"></script>
-<script>
+                        <div class="form-group">
+                            <label for="mobile" class="control-label">手机验证:</label>
+                            <input type="text" class="form-control" class="layui-input" name="mobile" id="mobile"
+                                   placeholder="请输入11位手机号"  required lay-verify="required|phone|number">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default"  data-dismiss="modal">关闭
+                            </button>
+                            <button type="button" class="btn btn-primary " lay-submit lay-filter="go" id="send-vote">提交报名</button>
+                        </div>
+                    </form>
+                </div>
 
-    
 
-    $('#apply').click(function(){
-        layer.open({
-            type: 1,
-            title:"报名",
-            area: ['400px', '90%'],
-            shadeClose: false, //点击遮罩关闭
-            content: '<form class="layui-form" id="add-form" action="/index/index/sign" enctype="multipart/form-data" method="post">\n' +
-            '            <br>\n' +
-            '            <div class="layui-form-item center" >\n' +
-            '            <label class="layui-form-label" style="width: 100px" >姓名</label>\n' +
-            '            <div class="layui-input-block">\n' +
-            '            <input type="text" name="name" required value="" style="width: 240px" lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">\n' +
-            '            </div>\n' +
-            '            </div>\n' +
-            '            <div class="layui-form-item" >\n' +
-            '            <label class="layui-form-label" style="width: 100px" >车型</label>\n' +
-            '            <div class="layui-input-block">\n' +
-            '            <input type="text" name="model" required value="" style="width: 240px" lay-verify="required" placeholder="请输入车型" autocomplete="off" class="layui-input">\n' +
-            '            </div>\n' +
-            '            </div>\n' +
-            '            <div class="layui-form-item" >\n' +
-            '            <label class="layui-form-label" style="width: 100px" >日均流水</label>\n' +
-            '            <div class="layui-input-block">\n' +
-            '            <input type="text" name="daily_running_water" required value="" style="width: 240px" lay-verify="required" placeholder="请输入日均流水" autocomplete="off" class="layui-input">\n' +
-            '            </div>\n' +
-            '            </div>\n' +
-            '            <div class="layui-form-item" >\n' +
-            '            <label class="layui-form-label" style="width: 100px" >服务分</label>\n' +
-            '            <div class="layui-input-block">\n' +
-            '            <input type="text" name="service_points" required value="" style="width: 240px" lay-verify="required" placeholder="请输入服务分" autocomplete="off" class="layui-input">\n' +
-            '            </div>\n' +
-            '            </div>\n' +
-            '            <div class="layui-form-item" >\n' +
-            '            <label class="layui-form-label" style="width: 100px" >自我描述</label>\n' +
-            '            <div class="layui-input-block">\n' +
-            '            <input type="text" name="describe_yourself" required value="" style="width: 240px" lay-verify="required" placeholder="请输入自我描述" autocomplete="off" class="layui-input">\n' +
-            '            </div>\n' +
-            '            </div>\n' +
-            '            <div class="layui-form-item" >\n' +
-            '            <label class="layui-form-label" style="width: 100px" >封面图片</label>\n' +
-            '            <div class="layui-upload layui-input-block">\n' +
-            '            <button type="button" class="layui-btn" id="fileUp"><i class="layui-icon">&#xe67c;</i>上传图片</button>\n' +
-            '            <input class="layui-upload-file" type="file" accept="image/*" name="file">\n' + 
-            '            </div>\n' +
-            '            </div>\n' +
-            '            <div class="layui-form-item">\n' +
-            '            <div class="layui-input-block">\n' +
-            '                <button class="layui-btn" lay-submit lay-filter="save" >立即提交</button>\n' +
-            '                <button type="reset" class="layui-btn layui-btn-primary" id="closeBtn" >重置</button>\n' +
-            '            </div>\n' +
-            '            </div>\n' +
-            '        </form>\n'
+            </div>
+        </div>
+    </div>
 
-        });
+    <!-- jQuery -->
+    <script src=https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js></script>
 
-    })
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-</script>
+    <!-- Plugin JavaScript -->
+    <script src="https://cdn.staticfile.org/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <!--Layui CDN-->
+    <script src="//layui.hcwl520.com.cn/layui/layui.js?v=201809030202"></script>
+    <script>
+
+    </script>

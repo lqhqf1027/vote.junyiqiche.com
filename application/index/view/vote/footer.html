@@ -73,86 +73,69 @@
         });
     }
 
-    layui.use(['carousel', 'form', 'flow', 'upload'], function () {
+
+
+
+    layui.use(['carousel', 'form', 'flow', 'upload', 'element'], function () {
+        var $ = layui.jquery;
+
         var flow = layui.flow;
         //当你执行这样一个方法时，即对页面中的全部带有lay-src的img元素开启了懒加载（当然你也可以指定相关img）
-        flow.lazyimg();
+
         var carousel = layui.carousel;
         var form = layui.form;
         var upload = layui.upload;
-        $('#apply').click(function () {
-            layer.open({
-                type: 1,
-                title: "报名",
-                area: ['400px', '90%'],
-                shadeClose: false, //点击遮罩关闭
-                content: '<form class="layui-form" id="add-form" action="/index/index/sign" enctype="multipart/form-data" method="post">\n' +
-                    '            <br>\n' +
-                    '            <div class="layui-form-item center" >\n' +
-                    '            <label class="layui-form-label" style="width: 100px" >姓名</label>\n' +
-                    '            <div class="layui-input-block">\n' +
-                    '            <input type="text" name="name" required value="" style="width: 240px" lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">\n' +
-                    '            </div>\n' +
-                    '            </div>\n' +
-                    '            <div class="layui-form-item" >\n' +
-                    '            <label class="layui-form-label" style="width: 100px" >车型</label>\n' +
-                    '            <div class="layui-input-block">\n' +
-                    '            <input type="text" name="model" required value="" style="width: 240px" lay-verify="required" placeholder="请输入车型" autocomplete="off" class="layui-input">\n' +
-                    '            </div>\n' +
-                    '            </div>\n' +
-                    '            <div class="layui-form-item" >\n' +
-                    '            <label class="layui-form-label" style="width: 100px" >日均流水</label>\n' +
-                    '            <div class="layui-input-block">\n' +
-                    '            <input type="text" name="daily_running_water" required value="" style="width: 240px" lay-verify="required" placeholder="请输入日均流水" autocomplete="off" class="layui-input">\n' +
-                    '            </div>\n' +
-                    '            </div>\n' +
-                    '            <div class="layui-form-item" >\n' +
-                    '            <label class="layui-form-label" style="width: 100px" >服务分</label>\n' +
-                    '            <div class="layui-input-block">\n' +
-                    '            <input type="text" name="service_points" required value="" style="width: 240px" lay-verify="required" placeholder="请输入服务分" autocomplete="off" class="layui-input">\n' +
-                    '            </div>\n' +
-                    '            </div>\n' +
-                    '            <div class="layui-form-item" >\n' +
-                    '            <label class="layui-form-label" style="width: 100px" >自我描述</label>\n' +
-                    '            <div class="layui-input-block">\n' +
-                    '            <input type="text" name="describe_yourself" required value="" style="width: 240px" lay-verify="required" placeholder="请输入自我描述" autocomplete="off" class="layui-input">\n' +
-                    '            </div>\n' +
-                    '            </div>\n' +
-                    '            <div class="layui-form-item" >\n' +
-                    '            <label class="layui-form-label" style="width: 100px" >封面图片</label>\n' +
-                    '            <div class="layui-upload layui-input-block">\n' +
-                    '            <button type="button" class="layui-btn" id="fileUp"><i class="layui-icon">&#xe67c;</i>上传图片</button>\n' +
-                    '            <input class="layui-upload-file" type="file" accept="image/*" name="file">\n' +
-                    '           <div class="layui-upload-list">\n' +
-                    '           <img class="layui-upload-img" id="demo1">\n' +
-                    '           <p id="demoText"></p>\n' +
-                    '           </div>\n' +
-                    '            </div>\n' +
-                    '            </div>\n' +
-                    '            <div class="layui-form-item">\n' +
-                    '            <div class="layui-input-block">\n' +
-                    '                <button class="layui-btn" lay-submit lay-filter="save" >立即提交</button>\n' +
-                    '                <button type="reset" class="layui-btn layui-btn-primary" id="closeBtn" >重置</button>\n' +
-                    '            </div>\n' +
-                    '            </div>\n' +
-                    '        </form>\n'
 
-            });
-
-        })
-        form.render();
-        //上传图片
-        upload.render({
+        flow.lazyimg();
+        //普通图片上传
+        var uploadInst = upload.render({
             elem: '#fileUp'
-            , url: '{:url("index/uploads")}'
-            , accept: 'images'
-            , method: 'post'
-            , acceptMime: 'image/*'
-            , auto: false //选择文件后不自动上传
-            , bindAction: '#testListAction' //指向一个按钮触发上传
-            , done: function (res) {
-                $(this.item).prev("div").children("input").val(res.data.src)
+            , url: "{:url('index/uploadsHeaderImg')}"
+          /*  , auto: false //选择文件后不自动上传
+            , bindAction: '#send-vote' //指向一个按钮触发上传*/
+            , choose: function (obj) {
+                //预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $('#demo1').attr('src', result); //图片链接（base64）
+                });
             }
+            , done: function (res) {
+                console.log(res);
+                //如果上传失败
+                if (res.code==1) {
+                    $('input[type="hidden"]').val(res.data.url);
+                }
+                else{
+                    return layer.msg('上传失败');
+                }
+
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst.upload();
+                });
+            }
+        });
+        //提交报名
+        form.on('submit(go)', function (data) {
+
+            if ($('input[type="hidden"]').val() == '') {
+                return layer.msg('请上传封面');
+            }
+            data.field.wechat_user_id = "{:session('user_id')}";  
+            $.post("{:url('Index/sendVote')}",{datas:data.field},function (res) {
+                if(res.code==1){
+                    layer.msg(res.msg);
+                    window.location.reload();
+                }else{
+                    layer.msg(res.msg);
+                }
+                console.log(res);
+            })
+            return false;
         });
         //建造实例
         carousel.render({
@@ -275,6 +258,41 @@
     document.getElementById('rules').onclick = function () {
         window.location = '/index/index/rules';
     };
+
+    //投票
+    $(".voting").each(function(i){
+     
+        $(this).bind("click", {index: i}, function(){
+            var isTodayVote = "{:session('isTodayVote')}";
+            console.log(isTodayVote);
+            if (isTodayVote == 1) {
+                layer.msg("今天已经投过票啦，请明天再来");
+                return;
+            }
+            // console.log(123);
+            var ajaxurl ='{:url("index/vote")}';
+            var application_id = $('.application_id').eq(i).text();
+            var user_id = "{:session('user_id')}";
+            console.log(application_id);
+            console.log(user_id);
+            $.ajax({
+                url: ajaxurl,
+                type: "post",
+                //注意序列化的值一定要放在最前面,并且不需要头部变量,不然获取的值得格式会有问题
+                data:{application_id: application_id, user_id: user_id},    
+                dataType:"json",
+                success:function (data) {
+                    // alert(data);
+                    layer.msg(data);
+                    window.location.reload(); //刷新当前页面
+                },
+                error:function (data) {
+                    // alert(data);
+                    layer.msg(data);
+                }
+            })
+        })
+    });
 
 </script>
 </body>
