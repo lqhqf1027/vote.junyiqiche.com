@@ -87,7 +87,13 @@
                         </div>
 
                         <div class="layui-col-xs12" id="voting">
+
+                            {if $data['isTodayVote'] == '1'}
+                            <a href="javascript:void(0)" class="btn btn-info send_vote" style="">今天已投过票</a>
+                            {else/}
                             <a href="javascript:void(0)" class="btn btn-info send_vote" style="">投票给<strong style="font-size: 15px" class="text-danger" id="application_id">{$v['id']}</strong>号</a>
+                            {/if}
+                            
                         </div>
                     </div>
                 </div>
