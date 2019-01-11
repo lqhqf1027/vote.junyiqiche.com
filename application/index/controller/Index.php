@@ -34,7 +34,18 @@ class Index extends Frontend
         $data = array_merge($this->publicData(), ['contestantList' => $contestant]);
 //        pr($data);
         $this->view->assign('data', $data);
+//        pr(Session::get('MEMBER'));
         return $this->view->fetch();
+    }
+
+    public function lazyPlayerInfo()
+    {
+          if($this->request->isGet()){
+              $page = input('page');
+              $page = $page.',10';
+
+              return json_encode($this->playerInfo(['status' => 'normal'],'id,name,applicationimages,votes',null,$page));
+          }
     }
 
 
@@ -146,9 +157,8 @@ class Index extends Frontend
      */
     public function ranking()
     {
-        $ranking = $this->getRanking('1,30');
 
-        $data = array_merge($this->publicData(), ['rankList' => $ranking]);
+        $data =$this->publicData();
 
         $this->view->assign('data', $data);
         return $this->view->fetch();
@@ -159,13 +169,11 @@ class Index extends Frontend
         if($this->request->isAjax()){
             $page = $this->request->post('page');
 
-            $page = $page.',30';
+            $page = $page.',25';
 
             $ranking = $this->getRanking($page);
 
             return json_encode($ranking);
-
-
         }
     }
 
@@ -306,12 +314,12 @@ class Index extends Frontend
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
      */
-    public function playerInfo($where, $field, $select = null)
+    public function playerInfo($where, $field, $select = null,$page = null)
     {
         $contestant = collection(Application::field($field)
             ->with(['wechatUser' => function ($q) {
                 $q->withField('id,sex');
-            }])->where($where)->select($select))->toArray();
+            }])->where($where)->page($page)->select($select))->toArray();
 
         foreach ($contestant as $k => $v) {
             $contestant[$k]['applicationimages'] = $v['applicationimages'] ? explode(';', $v['applicationimages'])[0] : '';
