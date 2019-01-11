@@ -47,7 +47,11 @@ class Frontend extends Controller
         $secret = $this->secret=Config::get('APPSECRET');
         $token  = cache('Token');
 
+
+
+
         if(!$token['access_token'] || $token['expires_in'] <= time()){
+
 
             $rslt  = gets("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={$appid}&secret={$secret}");
             if($rslt){
