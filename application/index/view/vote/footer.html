@@ -72,14 +72,20 @@
             }
         });
     }
+
+
+
+
     layui.use(['carousel', 'form', 'flow', 'upload', 'element'], function () {
         var $ = layui.jquery;
+
         var flow = layui.flow;
         //当你执行这样一个方法时，即对页面中的全部带有lay-src的img元素开启了懒加载（当然你也可以指定相关img）
 
         var carousel = layui.carousel;
         var form = layui.form;
         var upload = layui.upload;
+
         flow.lazyimg();
         //普通图片上传
         var uploadInst = upload.render({
@@ -102,6 +108,7 @@
                 else{
                     return layer.msg('上传失败');
                 }
+
             }
             , error: function () {
                 //演示失败状态，并实现重传
@@ -139,6 +146,107 @@
             , anim: 'fade' //切换动画方式
             , indicator: 'none'
         });
+        //排名ID
+        var count = 1;
+
+        flow.load({
+            elem: '.flex' //流加载容器
+            // , scrollElem: '#LAY_demo1' //滚动条所在元素，一般不用填，此处只是演示需要。
+            , done: function (page, next) { //加载下一页
+
+                $.get('{:url("index/lazyPlayerInfo")}', {page: page}, function (data) {
+                    data = JSON.parse(data);
+                    // console.log(data);
+
+                    if(data.length==0){
+                        layer.msg('没有更多了');
+                    }
+
+
+                    //模拟插入
+                    setTimeout(function () {
+                        var lis = [];
+
+                        for (var i in data){
+                            // console.log(data[i].wechat_user.sex);
+                            lis.push('<div class=" flex_content">\n' +
+                                '                <div class="thumbnail item_box" style="">\n' +
+                                '                    <a href="/index/index/playerDetails?application_id='+data[i].id+'" ><img src="{$config[\'upload\'][\'cdnurl\']}/'+data[i].applicationimages+'" alt="..."></a>\n' +
+                                '                    <div class="row text-center  " style="margin: 0">\n' +
+                                '                        <div class="layui-col-xs6 pd_tb10-lr0 pull-left" >\n' +
+                                '                            <h4 style="font-weight: bold" class=""><i class="fa {eq name="'+data[i].wechat_user.sex+'" value="1"} fa-male {else/} fa-female {/eq}" aria-hidden="true"\n' +
+                                '                                                                    ></i> '+data[i].name+'</h4>\n' +
+                                '\n' +
+                                '                            <h4 style="font-weight: bold;padding-top: 5px" class=""><i class="fa fa-line-chart"\n' +
+                                '                                                                                    aria-hidden="true"></i>'+data[i].votes+' 票</h4>\n' +
+                                '                        </div>\n' +
+                                '\n' +
+                                '                        <div class="layui-col-xs12" id="voting">\n' +
+                                '\n' +
+                                '                            {if '+data[i].isTodayVote+' == 1}\n' +
+                                '                            <a href="javascript:void(0)" class="btn btn-info send_vote" style="">今天已投过票</a>\n' +
+                                '                            {else/}\n' +
+                                '                            <a href="javascript:void(0)" class="btn btn-info send_vote" style="">投票给<strong style="font-size: 15px" class="text-danger" id="application_id">'+data[i].id+'</strong>号</a>\n' +
+                                '                            {/if}\n' +
+                                '                            \n' +
+                                '                        </div>\n' +
+                                '                    </div>\n' +
+                                '                </div>\n' +
+                                '            </div>');
+                            // console.log($('.fa-fa').length);
+                        }
+
+
+                        next(lis.join(''), page < 6); //假设总页数为 6
+                    }, 500);
+
+                })
+
+            }
+        });
+
+        flow.load({
+            elem: '#rank-list' //流加载容器
+            // , scrollElem: '#LAY_demo1' //滚动条所在元素，一般不用填，此处只是演示需要。
+            , done: function (page, next) { //加载下一页
+
+
+                $.ajax({
+                    dataType: 'json',
+                    type: 'POST',
+                    url: '{:url("index/rankingMore")}',
+                    data: {
+                        page: page
+                    },
+                    success: function (msg) {
+                        msg = JSON.parse(msg);
+                        // console.log(msg);
+
+                        if (msg.length == 0) {
+                            layer.msg('没有更多了');
+                        }
+
+                        //模拟插入
+                        setTimeout(function () {
+                            var lis = [];
+
+                            for (var i = 0; i < msg.length; i++) {
+                                lis.push('<li class="layui-col-xs12"><div class="layui-col-xs10">\n' +
+                                    '            <label class="name">' + count + ' ' + msg[i].name + '</label>\n' +
+                                    '        </div>\n' +
+                                    '        <div class="layui-col-xs2">\n' +
+                                    '            <label class="name">' + msg[i].votes + '票</label>\n' +
+                                    '        </div></li>');
+                                count++;
+                            }
+                            next(lis.join(''), page < 6); //假设总页数为 6
+                        }, 500);
+                    }
+                });
+
+            }
+        });
+
     });
 
     document.getElementById('vote').onclick = function () {
