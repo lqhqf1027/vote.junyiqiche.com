@@ -24,6 +24,9 @@ class Index extends Frontend
     public function _initialize()
     {
         parent::_initialize();
+
+        Session::set('user_id', (Session::get('MEMBER')['id']));
+
     }
 
     public function index()
@@ -34,6 +37,7 @@ class Index extends Frontend
         $data = array_merge($this->publicData(), ['contestantList' => $contestant]);
 //        pr($data);
         $this->view->assign('data', $data);
+        // Session::set('user_id', (Session::get('MEMBER')['id']));
         return $this->view->fetch();
     }
 
@@ -139,11 +143,17 @@ class Index extends Frontend
      */
     public function vote()
     {
+        
         if ($this->request->isAjax()) {
-            $user_id = $this->request->post('user_id');
+            // pr($_POST);
+            // die;
+            $user_id = 5;
 
-            $application_id = $this->request->post('application_id');
+            $application_id = $_POST['application_id'];
 
+            // pr($application_id);
+            // pr($user_id);
+            // die;
             $result = Record::create([
                 'wechat_user_id' => $user_id,
                 'application_id' => $application_id
@@ -153,7 +163,7 @@ class Index extends Frontend
                 Application::where('id', $application_id)->setInc('votes');
             }
 
-            return $result ? 'success' : 'error';
+            return $result ? '投票成功' : '投票失败';
         }
 
     }
@@ -268,6 +278,7 @@ class Index extends Frontend
 
             if ($voted_id) {
                 $isTodayVote = 1;
+                Session::set('isTodayVote', $isTodayVote);
             }
 
             //判断该用户是否报名
@@ -280,8 +291,7 @@ class Index extends Frontend
                 $is_application = 1;
             }
         }
-
-
+        
         return [
             'bannerList' => $bannerList,
             'voteEndTime' => $voteEndTime,

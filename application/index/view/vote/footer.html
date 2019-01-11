@@ -151,6 +151,41 @@
         window.location = '/index/index/rules';
     };
 
+    //投票
+    $(".voting").each(function(i){
+     
+        $(this).bind("click", {index: i}, function(){
+            var isTodayVote = "{:session('isTodayVote')}";
+            console.log(isTodayVote);
+            if (isTodayVote == 1) {
+                layer.msg("今天已经投过票啦，请明天再来");
+                return;
+            }
+            // console.log(123);
+            var ajaxurl ='{:url("index/vote")}';
+            var application_id = $('.application_id').eq(i).text();
+            var user_id = "{:session('user_id')}";
+            console.log(application_id);
+            console.log(user_id);
+            $.ajax({
+                url: ajaxurl,
+                type: "post",
+                //注意序列化的值一定要放在最前面,并且不需要头部变量,不然获取的值得格式会有问题
+                data:{application_id: application_id, user_id: user_id},    
+                dataType:"json",
+                success:function (data) {
+                    // alert(data);
+                    layer.msg(data);
+                    window.location.reload(); //刷新当前页面
+                },
+                error:function (data) {
+                    // alert(data);
+                    layer.msg(data);
+                }
+            })
+        })
+    });
+
 </script>
 </body>
 
