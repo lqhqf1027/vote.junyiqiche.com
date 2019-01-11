@@ -263,7 +263,7 @@
     $(".voting").each(function(i){
      
         $(this).bind("click", {index: i}, function(){
-            var isTodayVote = "{:session('isTodayVote')}";
+            var isTodayVote = "{$data.isTodayVote}";
             console.log(isTodayVote);
             if (isTodayVote == 1) {
                 layer.msg("今天已经投过票啦，请明天再来");
@@ -272,7 +272,7 @@
             // console.log(123);
             var ajaxurl ='{:url("index/vote")}';
             var application_id = $('.application_id').eq(i).text();
-            var user_id = "{:session('user_id')}";
+            var user_id = "{$user_id}";
             console.log(application_id);
             console.log(user_id);
             $.ajax({
