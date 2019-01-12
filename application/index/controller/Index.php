@@ -166,7 +166,7 @@ class Index extends Frontend
         if ($this->request->isAjax()) {
             // pr($_POST);
             // die;
-            $user_id = 5;
+            $user_id = $_POST['user_id'];
 
             $application_id = $_POST['application_id'];
 
@@ -288,9 +288,9 @@ class Index extends Frontend
         //判断该用户是否报过名
         $is_application = 0;
 
-        if (!empty(Session::get('MEMBER')['id'])) {
+        if (!empty(session('MEMBER')->getData()['id'])) {
             //已经投票的ID
-            $voted_id = Record::where('wechat_user_id', Session::get('MEMBER')['id'])->whereTime('votetime', 'today')->column('application_id');
+            $voted_id = Record::where('wechat_user_id', session('MEMBER')->getData()['id'])->whereTime('votetime', 'today')->column('application_id');
 
             if ($voted_id) {
                 $isTodayVote = 1;
@@ -300,7 +300,7 @@ class Index extends Frontend
             //判断该用户是否报名
             $checkApplication = Application::where([
                 'status' => 'normal',
-                'wechat_user_id' => Session::get('MEMBER')['id']
+                'wechat_user_id' => session('MEMBER')->getData()['id']
             ])->find();
 
             if ($checkApplication) {
