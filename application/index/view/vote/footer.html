@@ -158,53 +158,53 @@
         //排名ID
         var count = 1;
 
-        flow.load({
-            elem: '#index-flex' //流加载容器
-            // , scrollElem: '#LAY_demo1' //滚动条所在元素，一般不用填，此处只是演示需要。
-            , done: function (page, next) { //加载下一页
-                $.get('{:url("index/lazyPlayerInfo")}', {page: page}, function (data) {
-                    data = JSON.parse(data);
-                    // console.log(data);
-
-                    if(data.length==0){
-                        layer.msg('没有更多了');
-                    }
-
-
-                    //模拟插入
-                    setTimeout(function () {
-                        var lis = [];
-
-                        for (var i in data){
-                            var sex = data[i].wechat_user.sex==1?'fa-male':'fa-female';
-                            lis.push('<div class=" flex_content">\n' +
-                                '                <div class="thumbnail item_box" style="">\n' +
-                                '                    <a href="/index/index/playerDetails?application_id='+data[i].id+'" ><img src="{$config[\'upload\'][\'cdnurl\']}/'+data[i].applicationimages+'" alt="..."></a>\n' +
-                                '                    <div class="row text-center  " style="margin: 0">\n' +
-                                '                        <div class="layui-col-xs6 pd_tb10-lr0 pull-left" >\n' +
-                                '                            <h4 style="font-weight: bold" class=""><i class="fa '+sex+'" aria-hidden="true"\n' +
-                                '                                                                    ></i> '+data[i].name+'</h4>\n' +
-                                '\n' +
-                                '                            <h4 style="font-weight: bold;padding-top: 5px" class=""><i class="fa fa-line-chart"\n' +
-                                '                                                                                    aria-hidden="true"></i>'+data[i].votes+' 票</h4>\n' +
-                                '                        </div>\n' +
-                                '\n' +
-                                '                        <div class="layui-col-xs12 voting">\n' +
-                                '                            <a href="javascript:void(0)" class="btn btn-info send_vote" style="">投票给<strong style="font-size: 15px" class="text-danger application_id">'+data[i].id+'</strong>号</a>\n' +
-                                '                        </div>\n' +
-                                '                    </div>\n' +
-                                '                </div>\n' +
-                                '            </div>');
-                            // console.log($('.fa-fa').length);
-                        }
-
-
-                        next(lis.join(''), page < 6); //假设总页数为 6
-                    }, 500);
-
-                })
-            }
-        });
+        // flow.load({
+        //     elem: '#index-flex' //流加载容器
+        //     // , scrollElem: '#LAY_demo1' //滚动条所在元素，一般不用填，此处只是演示需要。
+        //     , done: function (page, next) { //加载下一页
+        //         $.get('{:url("index/lazyPlayerInfo")}', {page: page}, function (data) {
+        //             data = JSON.parse(data);
+        //             // console.log(data);
+        //
+        //             if(data.length==0){
+        //                 layer.msg('没有更多了');
+        //             }
+        //
+        //
+        //             //模拟插入
+        //             setTimeout(function () {
+        //                 var lis = [];
+        //
+        //                 for (var i in data){
+        //                     var sex = data[i].wechat_user.sex==1?'fa-male':'fa-female';
+        //                     lis.push('<div class=" flex_content">\n' +
+        //                         '                <div class="thumbnail item_box" style="">\n' +
+        //                         '                    <a href="/index/index/playerDetails?application_id='+data[i].id+'" ><img src="{$config[\'upload\'][\'cdnurl\']}/'+data[i].applicationimages+'" alt="..."></a>\n' +
+        //                         '                    <div class="row text-center  " style="margin: 0">\n' +
+        //                         '                        <div class="layui-col-xs6 pd_tb10-lr0 pull-left" >\n' +
+        //                         '                            <h4 style="font-weight: bold" class=""><i class="fa '+sex+'" aria-hidden="true"\n' +
+        //                         '                                                                    ></i> '+data[i].name+'</h4>\n' +
+        //                         '\n' +
+        //                         '                            <h4 style="font-weight: bold;padding-top: 5px" class=""><i class="fa fa-line-chart"\n' +
+        //                         '                                                                                    aria-hidden="true"></i>'+data[i].votes+' 票</h4>\n' +
+        //                         '                        </div>\n' +
+        //                         '\n' +
+        //                         '                        <div class="layui-col-xs12 voting">\n' +
+        //                         '                            <a href="javascript:void(0)" class="btn btn-info send_vote" style="">投票给<strong style="font-size: 15px" class="text-danger application_id">'+data[i].id+'</strong>号</a>\n' +
+        //                         '                        </div>\n' +
+        //                         '                    </div>\n' +
+        //                         '                </div>\n' +
+        //                         '            </div>');
+        //                     // console.log($('.fa-fa').length);
+        //                 }
+        //
+        //
+        //                 next(lis.join(''), page < 6); //假设总页数为 6
+        //             }, 500);
+        //
+        //         })
+        //     }
+        // });
 
         flow.load({
             elem: '.user-list' //流加载容器
