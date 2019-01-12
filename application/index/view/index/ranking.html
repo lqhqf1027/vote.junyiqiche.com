@@ -47,13 +47,73 @@
     .name {
         font-weight: normal;
     }
+    .contain {
+        padding-bottom: 4rem;
+    }
+    .user-list {
+        background: #fff;
+        padding: 2.5%;
+        width: 100%;
+        margin: 0 auto;
+        border-radius: .5rem;
+    }
+    .user-list .user {
+        padding: .7rem 0;
+        border-bottom: .01rem solid #E8EAEF;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .user-list .first .rank, .user-list .second .rank, .user-list .third .rank {
+        line-height: 2rem;
+        background-size: 100%;
+        color: #fff;
+    }
+    .user-list .first .rank {
+        background-image: url(http://cdn.51wyfl.com/web/images/icon/first.png);
+    }
+    .user-list .second .rank {
+        background-image: url(http://cdn.51wyfl.com/web/images/icon/second.png);
+    }
+    .user-list .third .rank {
+        background-image: url(http://cdn.51wyfl.com/web/images/icon/second.png);
+    }
+    .user-list .user .rank {
+        width: 2rem;
+        height: 2.5rem;
+        /* line-height: 2.5rem; */
+        text-align: center;
+        margin-right: .5rem;
+    }
+    .user-list .user .username {
+        flex: 1;
+        color: #6a7780;
+    }
+    /* p {
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+    } */
+    .user-list .first .coupons, .user-list .second .coupons, .user-list .third .coupons {
+        color: #FE8282;
+    }
+
 
 </style>
 
-<ul class="flow-default" id="rank-list"></ul>
-
+<!-- <ul class="flow-default" id="rank-list"></ul> -->
+<div class="contain">
+    <div class="user-list">
+           
+    </div>
+</div>
 {php}
 //dump($data);
 {/php}
+
+
 {/block}
 </html>

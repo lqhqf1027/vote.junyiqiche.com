@@ -207,7 +207,7 @@
         });
 
         flow.load({
-            elem: '#rank-list' //流加载容器
+            elem: '.user-list' //流加载容器
             // , scrollElem: '#LAY_demo1' //滚动条所在元素，一般不用填，此处只是演示需要。
             , done: function (page, next) { //加载下一页
 
@@ -226,18 +226,26 @@
                         if (msg.length == 0) {
                             layer.msg('没有更多了');
                         }
-
+                        
                         //模拟插入
                         setTimeout(function () {
                             var lis = [];
-
+                            
                             for (var i = 0; i < msg.length; i++) {
-                                lis.push('<li class="layui-col-xs12"><div class="layui-col-xs10">\n' +
-                                    '            <label class="name">' + count + ' ' + msg[i].name + '</label>\n' +
-                                    '        </div>\n' +
-                                    '        <div class="layui-col-xs2">\n' +
-                                    '            <label class="name">' + msg[i].votes + '票</label>\n' +
-                                    '        </div></li>');
+                                var sex = "four";
+                                if (count == 1) {
+                                    sex = "first";
+                                }
+                                if (count == 2) {
+                                    sex = "second";
+                                }
+                                if (count == 3) {
+                                    sex = "third";
+                                }
+                                lis.push('<div class="user '+sex+'">\n' +
+                                    '            <span class="rank ">' + count + '</span><p class="username">' + msg[i].name + '</p> \n' +
+                                    '            <span class="coupons">' + msg[i].votes + '票</span>\n' +
+                                    '        </div>');
                                 count++;
                             }
                             next(lis.join(''), page < 6); //假设总页数为 6
