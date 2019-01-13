@@ -33,7 +33,7 @@ class Index extends Frontend
         $contestant = $this->playerInfo(['status' => 'normal'], 'id,name,applicationimages,votes');
 
         $data = array_merge($this->publicData(), ['contestantList' => $contestant]);
-//        pr($data);
+        pr($data);
         $this->view->assign('data', $data);
 
 //        pr(Session::get('MEMBER'));
