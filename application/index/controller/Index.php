@@ -30,13 +30,40 @@ class Index extends Frontend
     public function index()
     {
 
-        $contestant = $this->playerInfo(['status' => 'normal'], 'id,name,applicationimages,votes');
+//        $contestant = $this->playerInfo(['status' => 'normal'], 'id,name,applicationimages,votes');
 
+        $contestant = Application::field('id,name,applicationimages,votes')
+            ->with(['wechatUser' => function ($q) {
+                $q->withField('id,sex');
+            }])->where(['status' => 'normal'])->paginate(10);
+
+
+
+        $pages = $contestant->render();
+
+        $contestant = $contestant->toArray();
+        foreach ($contestant['data'] as $k => $v) {
+            $contestant['data'][$k]['applicationimages'] = $v['applicationimages'] ? explode(';', $v['applicationimages'])[0] : '';
+            $contestant['data'][$k]['is_vote'] = 0;
+        }
+
+
+        if (!empty(Session::get('MEMBER')['id'])) {
+            //已经投票的ID
+            $voted_id = Record::where('wechat_user_id', Session::get('MEMBER')['id'])->whereTime('votetime', 'today')->column('application_id');
+
+            if ($voted_id) {
+                foreach ($contestant['data'] as $k => $v) {
+                    $contestant['data'][$k]['is_vote'] = in_array($v['id'], $voted_id) ? 1 : 0;
+                }
+            }
+
+        }
         $data = array_merge($this->publicData(), ['contestantList' => $contestant]);
-//        pr($data);
-        $this->view->assign('data', $data);
+        $this->view->assign(['data'=> $data,
+            'page'=>$pages
+            ]);
 
-//        pr(Session::get('MEMBER'));
         return $this->view->fetch();
     }
 
