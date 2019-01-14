@@ -1,0 +1,279 @@
+---------------------------------------------------------------
+[ 2019-01-10T10:07:06+08:00 ] 127.0.0.1 GET yc.jyqc.com/
+[运行时间：0.281508s] [吞吐率：3.55req/s] [内存消耗：2,400.28kb] [文件加载：69]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000027s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.015870s ]
+[ info ] [ LANG ] D:\phpStudy\WWW\yinchuan.junyiqiche.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=d4154kv2ja1vikitp36o6odo64; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1546929373; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1546929386',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'purpose' => 'prefetch',
+  'connection' => 'close',
+  'host' => 'yc.jyqc.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] D:\phpStudy\WWW\yinchuan.junyiqiche.com\public/../application/index\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.018409s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run \addons\upyun\Upyun @upload_config_init [ RunTime:0.004338s ]
+[ info ] [ LANG ] D:\phpStudy\WWW\yinchuan.junyiqiche.com\public/../application/index/lang/zh-cn/index.php
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\WWW\yinchuan.junyiqiche.com\application\index\controller\Index.php ]
+[ info ] [ VIEW ] D:\phpStudy\WWW\yinchuan.junyiqiche.com\public/../application/index\view\index\index.html [ array (
+  0 => 'user',
+  1 => 'site',
+  2 => 'config',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-01-10T10:07:07+08:00 ] 127.0.0.1 GET yc.jyqc.com/
+[运行时间：0.182989s] [吞吐率：5.46req/s] [内存消耗：2,272.55kb] [文件加载：67]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000042s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.018808s ]
+[ info ] [ LANG ] D:\phpStudy\WWW\yinchuan.junyiqiche.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=d4154kv2ja1vikitp36o6odo64; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1546929373; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1546929386',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'yc.jyqc.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] D:\phpStudy\WWW\yinchuan.junyiqiche.com\public/../application/index\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.005850s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run \addons\upyun\Upyun @upload_config_init [ RunTime:0.004434s ]
+[ info ] [ LANG ] D:\phpStudy\WWW\yinchuan.junyiqiche.com\public/../application/index/lang/zh-cn/index.php
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\WWW\yinchuan.junyiqiche.com\application\index\controller\Index.php ]
+[ info ] [ VIEW ] D:\phpStudy\WWW\yinchuan.junyiqiche.com\public/../application/index\view\index\index.html [ array (
+  0 => 'user',
+  1 => 'site',
+  2 => 'config',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-01-10T10:07:07+08:00 ] 127.0.0.1 GET yc.jyqc.com/favicon.ico
+[运行时间：0.134288s] [吞吐率：7.45req/s] [内存消耗：1,499.34kb] [文件加载：51]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000029s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.018085s ]
+[ info ] [ LANG ] D:\phpStudy\WWW\yinchuan.junyiqiche.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'favicon.ico',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=d4154kv2ja1vikitp36o6odo64; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1546929373; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1546929386',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://yc.jyqc.com/',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'connection' => 'close',
+  'host' => 'yc.jyqc.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-01-10T10:32:30+08:00 ] 127.0.0.1 GET yc.jyqc.com/index/index
+[运行时间：0.922707s] [吞吐率：1.08req/s] [内存消耗：1,943.16kb] [文件加载：61]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000211s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.007997s ]
+[ info ] [ LANG ] D:\phpStudy\WWW\yinchuan.junyiqiche.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_2 like Mac OS X) AppleWebKit/602.3.12 (KHTML, like Gecko) Mobile/14C92 Safari/601.1 wechatdevtools/1.02.1811290 MicroMessenger/6.7.3 Language/zh_CN webview/15470874678202797 webdebugger port/17530',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'yc.jyqc.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] D:\phpStudy\WWW\yinchuan.junyiqiche.com\public/../application/index\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.003190s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ error ] [8]未定义数组索引: headers[D:\phpStudy\WWW\yinchuan.junyiqiche.com\application\common.php:266]
+[ error ] [8]未定义数组索引: Content-Type[D:\phpStudy\WWW\yinchuan.junyiqiche.com\application\common.php:266]
+[ error ] [8]未定义数组索引: Date[D:\phpStudy\WWW\yinchuan.junyiqiche.com\application\common.php:266]
+[ error ] [8]未定义数组索引: Content-Length[D:\phpStudy\WWW\yinchuan.junyiqiche.com\application\common.php:266]
+[ error ] [8]未定义数组索引: errcode[D:\phpStudy\WWW\yinchuan.junyiqiche.com\application\common.php:342]
+---------------------------------------------------------------
+[ 2019-01-10T10:33:28+08:00 ] 127.0.0.1 GET yc.jyqc.com/index/index
+[运行时间：0.054972s] [吞吐率：18.19req/s] [内存消耗：1,910.16kb] [文件加载：58]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000026s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.005253s ]
+[ info ] [ LANG ] D:\phpStudy\WWW\yinchuan.junyiqiche.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=013aah8ujojhoh49uhsrheq2b6',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_2 like Mac OS X) AppleWebKit/602.3.12 (KHTML, like Gecko) Mobile/14C92 Safari/601.1 wechatdevtools/1.02.1811290 MicroMessenger/6.7.3 Language/zh_CN webview/15470874678202797 webdebugger port/17530',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'yc.jyqc.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] D:\phpStudy\WWW\yinchuan.junyiqiche.com\public/../application/index\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.002028s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-01-10T11:47:08+08:00 ] 127.0.0.1 GET yc.jyqc.com/
+[运行时间：0.071053s] [吞吐率：14.07req/s] [内存消耗：1,911.87kb] [文件加载：58]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000228s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.007920s ]
+[ info ] [ LANG ] D:\phpStudy\WWW\yinchuan.junyiqiche.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=d4154kv2ja1vikitp36o6odo64; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1546929373; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1546929386',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'purpose' => 'prefetch',
+  'connection' => 'close',
+  'host' => 'yc.jyqc.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] D:\phpStudy\WWW\yinchuan.junyiqiche.com\public/../application/index\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.003342s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-01-10T11:47:09+08:00 ] 127.0.0.1 GET yc.jyqc.com/
+[运行时间：0.066062s] [吞吐率：15.14req/s] [内存消耗：1,911.47kb] [文件加载：58]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000035s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.004510s ]
+[ info ] [ LANG ] D:\phpStudy\WWW\yinchuan.junyiqiche.com\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=d4154kv2ja1vikitp36o6odo64; Hm_lvt_f8d0a8c400404989e195270b0bbf060a=1546929373; Hm_lpvt_f8d0a8c400404989e195270b0bbf060a=1546929386',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'yc.jyqc.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] D:\phpStudy\WWW\yinchuan.junyiqiche.com\public/../application/index\lang\zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.003301s ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
