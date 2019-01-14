@@ -38,7 +38,7 @@ class Index extends Frontend
             }])->where(['status' => 'normal'])->paginate(10);
 
 
-
+//        pr($_SERVER);die;
         $pages = $contestant->render();
 
         $contestant = $contestant->toArray();
@@ -48,9 +48,9 @@ class Index extends Frontend
         }
 
 
-        if (!empty(Session::get('MEMBER')['id'])) {
+        if (!$this->user_id) {
             //已经投票的ID
-            $voted_id = Record::where('wechat_user_id', Session::get('MEMBER')['id'])->whereTime('votetime', 'today')->column('application_id');
+            $voted_id = Record::where('wechat_user_id', $this->user_id)->whereTime('votetime', 'today')->column('application_id');
 
             if ($voted_id) {
                 foreach ($contestant['data'] as $k => $v) {
@@ -317,9 +317,9 @@ class Index extends Frontend
         //判断该用户是否报过名
         $is_application = 0;
 
-        if (!empty(session('MEMBER')->getData()['id'])) {
+        if ($this->user_id==false) {
             //已经投票的ID
-            $voted_id = Record::where('wechat_user_id', session('MEMBER')->getData()['id'])->whereTime('votetime', 'today')->column('application_id');
+            $voted_id = Record::where('wechat_user_id', $this->user_id)->whereTime('votetime', 'today')->column('application_id');
 
             if ($voted_id) {
                 $isTodayVote = 1;
@@ -329,7 +329,7 @@ class Index extends Frontend
             //判断该用户是否报名
             $checkApplication = Application::where([
                 'status' => 'normal',
-                'wechat_user_id' => session('MEMBER')->getData()['id']
+                'wechat_user_id' => $this->user_id
             ])->find();
 
             if ($checkApplication) {
@@ -396,9 +396,9 @@ class Index extends Frontend
         }
 
 
-        if (!empty(Session::get('MEMBER')['id'])) {
+        if ($this->user_id==false) {
             //已经投票的ID
-            $voted_id = Record::where('wechat_user_id', Session::get('MEMBER')['id'])->whereTime('votetime', 'today')->column('application_id');
+            $voted_id = Record::where('wechat_user_id', $this->user_id)->whereTime('votetime', 'today')->column('application_id');
 
             if ($voted_id) {
                 foreach ($contestant as $k => $v) {
