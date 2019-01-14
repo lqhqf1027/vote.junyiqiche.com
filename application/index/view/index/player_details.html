@@ -26,13 +26,17 @@
         border-top-left-radius: 10px;
         border-top-right-radius:10px;
     }
+    .applicationimages img {
+        width: auto;
+        height: 250px;
+    }
 
 </style>
 
     <div class="row dd" style="margin: 0" >
 
         <div class="layui-col-xs12" style="margin-bottom: 10px">
-            <img src="{$config['upload']['cdnurl']}/{$data['playerDetail']['applicationimages']}" alt="...">
+            <img src="{$_SERVER.REQUEST_SCHEME}://{$_SERVER.SERVER_NAME}/{$data['playerDetail']['applicationimages']}" alt="...">
         </div>
 
         <div class="layui-col-xs12"  id="details" style="margin-bottom: 10px">
