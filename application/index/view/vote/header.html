@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+
+    <title>银川君忆2018年度网络人气司机投票大赛</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__CDN__/assets/css/index.css" rel="stylesheet">
+
+    <!-- Plugin CSS -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.staticfile.org/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+    <!--Layui CDN-->
+    <link rel="stylesheet" href="//layui.hcwl520.com.cn/layui/css/layui.css?v=201809030202">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<style>
+    #test1 img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .pd_12 {
+        padding: 8px 0px 0px 0px;
+    }
+
+    .headBox {
+        border: 1px solid #F2F2F2;
+        border-radius: 5px;
+        background-color: #fff
+    }
+
+    .headBoxColor {
+        color: #d2d2d2;
+    }
+
+    .head_body {
+        position: relative;
+        margin: -15px auto;
+    }
+
+    .border-raduis-5 {
+        border-radius: 5px;
+        padding: 0 5px;
+    }
+
+    .ctivity-time {
+        margin-top: 35px;
+    }
+
+    .footer_box .row_style {
+        background-color: #d2d2d2;
+        position: fixed;
+        bottom: 0;
+        width: 100%
+    }
+
+    .footer_box .item {
+        padding: 15px 0;
+    }
+
+
+
+</style>
+
+<body id="page-top" style="background-color: #F2F2F2">
+
+
+<div class="layui-carousel" id="test1">
+    <div carousel-item>
+        {foreach $data['bannerList'] as $k => $v}
+        <div><img src="{$config['upload']['cdnurl']}/{$v['rotationimage']}" style=""></img>
+        </div>
+        <!-- <div><img src="http://assets.youzhan.org/img/8/f4/d8ece1342920b4388c8174d349925.jpg"></img></div> -->
+        {/foreach}
+    </div>
+</div>
+<div class="layui-container">
+    <div class="head_body" style="">
+        <div class="layui-row text-center ">
+            <div class="layui-col-xs12 headBox" style="">
+                <div class="layui-row pd_12" style="font-weight: bold;font-size: 16px;">
+                    <div class="layui-col-xs4">{$data['statistics']['applicationCount']}</div>
+                    <div class="layui-col-xs4 voteCount">{$data['statistics']['voteCount']}</div>
+                    <div class="layui-col-xs4">{$data['statistics']['visitCount']}</div>
+                </div>
+                <div class="layui-row " style="padding-bottom: 8px;">
+                    <div class="layui-col-xs4 headBoxColor"><i class="layui-icon layui-icon-user"></i> 参赛者</div>
+                    <div class="layui-col-xs4 headBoxColor"><i class="fa fa-line-chart" aria-hidden="true"></i> 投票数
+                    </div>
+                    <div class="layui-col-xs4  headBoxColor"><i class="fa fa-eye"></i> 访问量</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=" ctivity-time" style="">
+        <div class="layui-row text-center ">
+            <div class="layui-col-xs12 headBox " style="padding: 8px 0;">
+                <i class="layui-icon layui-icon-log" aria-hidden="true" style=""></i>
+                <span>投票于</span>
+                <!-- {$data['voteEndTime']} -->
+                <span class="bg-danger text-danger border-raduis-5">1</span>月
+                <span class="bg-danger text-danger border-raduis-5">25</span>日
+                <span class="bg-danger text-danger border-raduis-5">23</span>时
+                <span class="bg-danger text-danger border-raduis-5">59</span>分
+                <span class="bg-danger text-danger border-raduis-5">59</span>秒
+                <span class="text-danger">结束</span>
+
+            </div>
+
+        </div>
+
+        <div class="layui-row text-center " style="padding-top: 20px">
+            {if $data['is_application'] == 1}
+            <button class="btn btn-lg " id="details"  style="width: 80%; background-color: #D2D2D2">
+                已报名，查看我的报名信息
+            </button>
+            {else /}
+            <button class="btn btn-info btn-lg " data-toggle="modal" data-target="#exampleModal" style="width: 80%">
+                我要报名
+            </button>
+            {/if}
+        </div>
+        <div class="layui-row text-center " style="padding-top: 20px">
+        </div>
+
+
+    </div>
+    <div class="modal " id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel" style="">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">提交报名信息</h4>
+                </div>
+                <div class="modal-body" style="padding:15px 0 ;">
+                    <form class="layui-form container" action="">
+                        <div class="row">
+                            <div class="form-group col-xs-6">
+                                <label for="name" class="control-label">姓名:</label>
+                                <input type="text" class="form-control" class="layui-input" name="name" id="name"
+                                       placeholder="请输入你的姓名" required lay-verify="required">
+                            </div>
+                            <div class="form-group col-xs-6">
+                                <label for="model" class="control-label">车型:</label>
+                                <input type="text" class="form-control" class="layui-input" name="model" id="model"
+                                       placeholder="请输入你的车型"  required lay-verify="required">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-xs-6">
+                                <label for="daily_running_water" class="control-label">日均流水:</label>
+                                <input type="text" class="form-control" class="layui-input" name="daily_running_water"
+                                       id="daily_running_water" placeholder="请输入你的日均流水"  required lay-verify="required">
+                            </div>
+                            <div class="form-group col-xs-6">
+                                <label for="service_points" class="control-label">服务分:</label>
+                                <input type="text" class="form-control" class="layui-input" name="service_points"
+                                       id="service_points" placeholder="请输入你的服务分"  required lay-verify="required">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="describe_yourself" class="control-label">自我描述:</label>
+                            <input type="text" class="form-control" class="layui-input" name="describe_yourself"
+                                   id="describe_yourself" placeholder="请输入你的自我描述"  required lay-verify="required">
+                        </div>
+                        <div class="row">
+                            <div class="layui-upload col-xs-8">
+                                <label for="" class="control-label">个人头像:</label>
+                                <button type="button" class="layui-btn" id="fileUp" style="background-color: #393D49">
+                                    上传个人展示图
+                                </button>
+                                <input type="hidden" name="applicationimages">
+                            </div>
+                            <div class=" col-xs-4" style="margin:0">
+                                <img class="img-responsive" id="demo1" width="">
+                                <p id="demoText"></p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mobile" class="control-label">手机验证:</label>
+                            <input type="text" class="form-control" class="layui-input" name="mobile" id="mobile"
+                                   placeholder="请输入11位手机号"  required lay-verify="required|phone|number">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default"  data-dismiss="modal">关闭
+                            </button>
+                            <button type="button" class="btn btn-primary " lay-submit lay-filter="go" id="send-vote">提交报名</button>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src=https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdn.staticfile.org/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <!--Layui CDN-->
+    <script src="//layui.hcwl520.com.cn/layui/layui.js?v=201809030202"></script>
+    <script>
+
+    </script>
