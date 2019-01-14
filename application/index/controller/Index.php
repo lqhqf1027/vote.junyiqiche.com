@@ -24,7 +24,6 @@ class Index extends Frontend
     public function _initialize()
     {
         parent::_initialize();
-//        pr($this->user_id);die;
     }
 
     public function index()

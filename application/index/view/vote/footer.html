@@ -33,6 +33,8 @@
     window.onload = function () {
         var ajaxurl = '{:url("index/sharedata")}';
         var urll = location.href.split('#')[0];
+        alert(urll)
+
         $.ajax({
             url: ajaxurl,
             type: "post",
