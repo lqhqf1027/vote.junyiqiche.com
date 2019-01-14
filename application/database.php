@@ -20,7 +20,7 @@ return [
     // 数据库名
     'database'        => Env::get('database.database', 'yinchuan'),
     // 用户名
-    'username'        => Env::get('database.username', 'root'),
+    'username'        => Env::get('database.username', 'vote_junyi'),
     // 密码
     'password'        => Env::get('database.password', 'aicheyide'),
     // 端口

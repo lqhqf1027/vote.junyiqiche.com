@@ -278,6 +278,6 @@ return [
     ],
     //微信appid & APPSECRET
 
-    'APPID'=>'wx9f22188da248f194',
-    'APPSECRET'=>'e13f3d57480a4258838330bd6691b399'
+    'APPID'=>'wx3b2ff8ef5b4b0cde',
+    'APPSECRET'=>'1dfdcffcdd1f4a802b2be1ead9fe144e'
 ];
