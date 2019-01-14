@@ -9,6 +9,7 @@ use think\Hook;
 use think\Lang;
 use app\common\model\Config as ConfigModel;
 use think\Session;
+
 /**
  * 前台控制器基类
  */
@@ -38,19 +39,22 @@ class Frontend extends Controller
      * @var Auth
      */
     protected $auth = null;
+    /**
+     * 投票用户id
+     * @var null
+     */
+    protected $user_id = null;
 
     public function _initialize()
     {
 
         //微信登陆验证
-        $appid = $this->appid=Config::get('APPID');
-        $secret = $this->secret=Config::get('APPSECRET');
-        $token  = cache('Token');
+        $appid = $this->appid = Config::get('APPID');
+        $secret = $this->secret = Config::get('APPSECRET');
+        $token = cache('Token');
 
 
-
-
-        if(!$token['access_token'] || $token['expires_in'] <= time()){
+        /*if(!$token['access_token'] || $token['expires_in'] <= time()){
 
 
             $rslt  = gets("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={$appid}&secret={$secret}");
@@ -71,7 +75,7 @@ class Frontend extends Controller
             $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid={$this->appid}&redirect_uri={$myurl}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
             header('Location:'.$url);
             die();
-        }
+        }*/
         //移除HTML标签
         $this->request->filter('strip_tags');
         $modulename = $this->request->module();
@@ -127,14 +131,14 @@ class Frontend extends Controller
 
         // 配置信息
         $config = [
-            'site'           => array_intersect_key($site, array_flip(['name', 'cdnurl', 'version', 'timezone', 'languages'])),
-            'upload'         => $upload,
-            'modulename'     => $modulename,
+            'site' => array_intersect_key($site, array_flip(['name', 'cdnurl', 'version', 'timezone', 'languages'])),
+            'upload' => $upload,
+            'modulename' => $modulename,
             'controllername' => $controllername,
-            'actionname'     => $actionname,
-            'jsname'         => 'frontend/' . str_replace('.', '/', $controllername),
-            'moduleurl'      => rtrim(url("/{$modulename}", '', false), '/'),
-            'language'       => $lang
+            'actionname' => $actionname,
+            'jsname' => 'frontend/' . str_replace('.', '/', $controllername),
+            'moduleurl' => rtrim(url("/{$modulename}", '', false), '/'),
+            'language' => $lang
         ];
         $config = array_merge($config, Config::get("view_replace_str"));
 
@@ -146,11 +150,13 @@ class Frontend extends Controller
         $this->loadlang($controllername);
         $this->assign('site', $site);
         $this->assign('config', $config);
-        $this->assign('user_id',session('MEMBER')->getData()['id']);
+        $user_id = session('MEMBER');
+        $this->user_id = $user_id ? $user_id->getData()['id'] : 0;
+        $this->assign('user_id', $this->user_id);
 
         //卡片分享参数
-        $shareData = ConfigModel::where('name',['eq','share_title'],['eq','share_body'],['eq','share_img'],'or')->column('value');
-        $this->assign(['share_title'=>$shareData[2],'share_body'=>$shareData[0],'share_img'=>Config::get('upload')['cdnurl'].$shareData[1]]);
+        $shareData = ConfigModel::where('name', ['eq', 'share_title'], ['eq', 'share_body'], ['eq', 'share_img'], 'or')->column('value');
+        $this->assign(['share_title' => $shareData[2], 'share_body' => $shareData[0], 'share_img' => Config::get('upload')['cdnurl'] . $shareData[1]]);
     }
 
     /**
