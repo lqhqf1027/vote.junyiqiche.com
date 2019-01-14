@@ -204,6 +204,8 @@
         //     }
         // });
 
+        var allCount = '{$data.statistics.applicationCount}';
+        allCount = Math.ceil(parseInt(allCount)/25);
         flow.load({
             elem: '.user-list' //流加载容器
             // , scrollElem: '#LAY_demo1' //滚动条所在元素，一般不用填，此处只是演示需要。
@@ -246,7 +248,7 @@
                                     '        </div>');
                                 count++;
                             }
-                            next(lis.join(''), page < 6); //假设总页数为 6
+                            next(lis.join(''), page < allCount); //假设总页数为 6
                         }, 500);
                     }
                 });
