@@ -71,7 +71,7 @@ class Frontend extends Controller
 
             ##没有登录
             ##如果没有登录，我们要让url地址跳转到 微信url 去获取code
-            $myurl =  urlencode('https://yinchuan.junyiqiche.com/wechat/Wechat/adduser');//mvc : http://wx4.cdphm.net/User/wxlogin  ##微信回调地址（这个地址是我们自己的一个url地址，必须使用urlencode处理）
+            $myurl =  urlencode('https://vote.junyiqiche.com/wechat/Wechat/adduser');//mvc : http://wx4.cdphm.net/User/wxlogin  ##微信回调地址（这个地址是我们自己的一个url地址，必须使用urlencode处理）
             $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid={$this->appid}&redirect_uri={$myurl}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
             header('Location:'.$url);
             die();
