@@ -17,7 +17,6 @@
     "require": {
         "php": ">=5.4.0",
         "topthink/framework": "~5.0.23",
-        "overtrue/wechat": "dev-master",
         "endroid/qr-code": "^1.9",
         "topthink/think-captcha": "^1.0",
         "mtdowling/cron-expression": "^1.2",
