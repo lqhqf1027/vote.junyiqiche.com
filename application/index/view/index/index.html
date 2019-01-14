@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="{$config.language}">
+{extend name="vote/layoutextend" /}
+{block name="body"}
+<style>
+.pd_tb10-lr0{
+    padding: 10px 0;
+}
+    .flex{
+        column-count: 2; column-gap: 0;
+    }
+    .flex_content{
+        break-inside: avoid; box-sizing: border-box; padding: 5px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;
+    }
+    .btn.send_vote{
+        width: 100%;
+
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius:10px;
+        border-top-left-radius: 0px;
+        border-top-right-radius:0px;
+    }
+    .thumbnail.item_box{
+        margin-bottom: 0;padding:0;
+
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius:10px;
+        border: none;
+
+    }
+    #img img {
+        max-width: 100%;
+        height: auto;
+    }
+    .more {
+        width: 200px;
+        height: 35px;
+        font-size: 16px;
+        font-weight: normal;
+        background-color: rgb(255, 127, 36);
+        color: white;
+        margin: 0 auto;
+        text-align: center;
+        line-height: 35px;
+        border-radius: 5px;
+    }
+    .name {
+        font-weight: normal;
+    }
+    .fa-male {
+        color:  #1296db;
+    }
+    .fa-female {
+        color:  pink;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+</style>
+
+        <form class="layui-form layui-form-pane " action="/index/index/searchPlayer" method="post">
+            <div class="layui-form-item "  >
+
+                <div class=" layui-col-xs8" style="margin-left: 0;">
+                    <input type="text" name="search" required lay-verify="required" placeholder="输入编号或姓名" autocomplete="off"
+                        class="layui-input" style="    border-right-style: none;">
+
+                </div>
+                <div class="layui-col-xs4">
+                    <button class="layui-form-label ">搜索</button>
+                </div>
+            </div>
+
+        </form>
+        <div class="layui-row  flex" id="index-flex">
+            {foreach $data['contestantList']['data'] as $k => $v}
+            <div class=" flex_content">
+                <div class="thumbnail item_box" style="">
+                    <a href="/index/index/playerDetails?application_id={$v['id']}" ><img src="{$_SERVER.REQUEST_SCHEME}://{$_SERVER.SERVER_NAME}{$v['applicationimages']}" alt="..."></a>
+                    <div class="row text-center  " style="margin: 0">
+                        <div class="layui-col-xs6 pd_tb10-lr0 pull-left" >
+                            <h4 style="font-weight: bold" class=""><i class="fa {if $v['wechat_user']['sex'] == '1'} fa-male {else/} fa-female {/if}" aria-hidden="true"
+                            ></i> {$v['name']}</h4>
+                            <h4 style="padding: 5px 0 0 10px;color: #D2D2D2;" class="pull-left">
+                                <i class="fa fa-line-chart" style="font-size: 14px">
+                            </i>{$v['votes']}票</h4>
+                        </div>
+
+                        <div class="layui-col-xs12 voting">
+
+                            <a href="javascript:void(0)" class="btn btn-info send_vote" style="">投票给<strong style="font-size: 15px" class="text-danger application_id">{$v['id']}</strong>号</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/foreach}
+
+        </div>
+{$page}
+
+{/block}
+</html>
+{php}
+//dump($list);
+{/php}
+
+
+

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="{$config.language}">
+{extend name="vote/layoutextend" /}
+{block name="body"}
+<style>
+.pd_tb10-lr0{
+    padding: 10px 0;
+}
+    .flex{
+        column-count: 2; column-gap: 0;
+    }
+    .flex_content{
+        break-inside: avoid; box-sizing: border-box; padding: 5px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;
+    }
+    .btn.send_vote{
+        width: 100%;
+
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius:10px;
+        border-top-left-radius: 0px;
+        border-top-right-radius:0px;
+    }
+    .thumbnail.item_box{
+        margin-bottom: 0;padding:0;
+
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius:10px;
+        border: none;
+
+    }
+    #img img {
+        max-width: 100%;
+        height: auto;
+    }
+    .more {
+        width: 200px;
+        height: 35px;
+        font-size: 16px;
+        font-weight: normal;
+        background-color: rgb(255, 127, 36);
+        color: white;
+        margin: 0 auto;
+        text-align: center;
+        line-height: 35px;
+        border-radius: 5px;
+    }
+    .name {
+        font-weight: normal;
+    }
+
+</style>
+
+        <form class="layui-form" id="add-form" action="/index/index/sign" enctype="multipart/form-data" method="post">
+               <br>
+                <div class="layui-form-item center" >
+                <label class="layui-form-label" style="width: 100px" >姓名</label>
+                <div class="layui-input-block">
+                <input type="text" name="name" required value="" style="width: 240px" lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+                </div>
+                </div>
+                <br>
+                <div class="layui-form-item" >
+                <label class="layui-form-label" style="width: 100px" >车型</label>
+                <div class="layui-input-block">
+                <input type="text" name="model" required value="" style="width: 240px" lay-verify="required" placeholder="请输入车型" autocomplete="off" class="layui-input">
+                </div>
+                </div>
+                <br>
+                <div class="layui-form-item" >
+                <label class="layui-form-label" style="width: 100px" >日均流水</label>
+                <div class="layui-input-block">
+               <input type="text" name="daily_running_water" required value="" style="width: 240px" lay-verify="required" placeholder="请输入日均流水" autocomplete="off" class="layui-input">
+                </div>
+               </div>
+                <br>
+                <div class="layui-form-item" >
+                <label class="layui-form-label" style="width: 100px" >服务分</label>
+                <div class="layui-input-block">
+                <input type="text" name="service_points" required value="" style="width: 240px" lay-verify="required" placeholder="请输入服务分" autocomplete="off" class="layui-input">
+                </div>
+               </div>
+                <br>
+                <div class="layui-form-item" >
+                <label class="layui-form-label" style="width: 100px" >自我描述</label>
+                <div class="layui-input-block">
+                <input type="text" name="describe_yourself" required value="" style="width: 240px" lay-verify="required" placeholder="请输入自我描述" autocomplete="off" class="layui-input">
+                </div>
+                </div>
+                <br>
+                <div class="layui-form-item" >
+                <label class="layui-form-label" style="width: 100px" >封面图片</label>
+                <div class="layui-upload layui-input-block">
+               <input type="text" name="applicationimages" required value="" style="width: 240px" lay-verify="required" placeholder="请上传封面图片" autocomplete="off" class="layui-input">
+                <button type="button" class="layui-btn" id="test2"><i class="layui-icon">&#xe67c;</i>上传图片</button>
+                <input class="layui-upload-file" type="file" accept="image/*" name="file">
+                </div>
+                </div>
+                <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="save" >立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary" id="closeBtn" >重置</button>
+               </div>
+                </div>
+        </form>
+
+{/block}
+</html>
+
+<script>
+    
+        layui.use('upload', function(){
+            var $ = layui.$
+            ,upload = layui.upload;
+            
+            //上传图片
+            upload.render({
+                elem: '#test2'
+                ,url: '/upload'
+                ,accept: 'images'
+                ,method: 'get'
+                ,acceptMime: 'image/*'
+                ,done: function(res){
+                $(this.item).prev("div").children("input").val(res.data.src)
+                }
+            });
+        })
+   
+    
+</script>

@@ -1,0 +1,392 @@
+<div class="text-center" style="padding: 10px 0 80px 0;">
+    © 成都君忆汽车服务有限公司银川分公司. All Rights Reserved
+</div>
+</div>
+<style>
+   .footer_box .item.active_s {
+        background-color: #5bc0de;
+    }
+</style>
+<div class="text-center footer_box">
+    <div class="layui-row row_style" id="title">
+        <div class="layui-col-xs4 item {if $Request.action == 'index'} active_s {/if}" id="vote">全部参赛</div>
+        <div class="layui-col-xs4 item {if $Request.action == 'ranking'} active_s {/if}" id="ranking">当前排名</div>
+        <div class="layui-col-xs4 item {if $Request.action == 'rules'} active_s {/if}" id="rules">活动规则</div>
+
+    </div>
+</div>
+
+
+<!-- jQuery -->
+<script src=https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="https://cdn.staticfile.org/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<!--Layui CDN-->
+<script src="//layui.hcwl520.com.cn/layui/layui.js?v=201809030202"></script>
+<!--瀑布流插件-->
+<!--<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>-->
+<!--<script src="https://static.yc.junyiqiche.com/layer/layer.js"></script>-->
+
+<script src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    window.onload = function () {
+        var ajaxurl = '{:url("index/sharedata")}';
+        var urll = location.href.split('#')[0];
+        $.ajax({
+            url: ajaxurl,
+            type: "post",
+            data: {urll: urll},
+            dataType: "json",
+            success: function (s) {
+                f = $.parseJSON(s);
+                wx.config({
+                    debug: false, //分享成功后可以关闭 false
+                    appId: f.appid,
+                    timestamp: f.timestamp,
+                    nonceStr: f.nonceStr,
+                    signature: f.signature,
+                    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
+                });
+                wx.ready(function () {
+                    wx.onMenuShareTimeline({
+                        title: '{$share_title}', // 分享标题
+                        link: s.url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                        imgUrl: "{$share_img}", // 分享图标 使用绝对路径
+                        success: function () {
+
+                        }
+                    });
+                    wx.onMenuShareAppMessage({
+                        title: '{$share_title}',
+                        desc: "{$share_body}", // 分享描述
+                        link: s.url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                        imgUrl: "{$share_img}", // 分享图标 使用绝对路径
+                        type: '', // 分享类型,music、video或link，不填默认为link
+                        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                        success: function () {
+
+                        }
+                    });
+                });
+
+            },
+            error: function () {
+                console.log("通信失败");
+            }
+        });
+    }
+
+
+    layui.use(['carousel', 'form', 'flow', 'upload', 'element'], function () {
+        var $ = layui.jquery;
+
+        var flow = layui.flow;
+        //当你执行这样一个方法时，即对页面中的全部带有lay-src的img元素开启了懒加载（当然你也可以指定相关img）
+
+        var carousel = layui.carousel;
+        var form = layui.form;
+        var upload = layui.upload;
+
+        flow.lazyimg();
+        //普通图片上传
+        var uploadInst = upload.render({
+            elem: '#fileUp'
+            , url: "{:url('index/uploadsHeaderImg')}"
+            /*  , auto: false //选择文件后不自动上传
+              , bindAction: '#send-vote' //指向一个按钮触发上传*/
+            , choose: function (obj) {
+                //预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $('#demo1').attr('src', result); //图片链接（base64）
+                });
+            }
+            , done: function (res) {
+                console.log(res);
+                //如果上传失败
+                if (res.code == 1) {
+                    $('input[type="hidden"]').val(res.data.url);
+                }
+                else {
+                    return layer.msg('上传失败');
+                }
+
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst.upload();
+                });
+            }
+        });
+        //提交报名
+        form.on('submit(go)', function (data) {
+
+            if ($('input[type="hidden"]').val() == '') {
+                return layer.msg('请上传封面');
+            }
+            data.field.wechat_user_id = "{$user_id}";
+            // console.log(data.field);return;
+            var index = layer.load(1, {
+                shade: [0.1, '#fff'] //0.1透明度的白色背景
+            });
+            $.post("{:url('Index/sendVote')}", {datas: data.field}, function (res) {
+                console.log(res.code);
+                if (res.code == 1) {
+                    layer.close(index);
+                    layer.msg(res.msg);
+                    window.location.reload();
+                } else {
+                    layer.msg(res.msg);
+                    layer.close(index);
+
+                }
+            })
+            return false;
+        });
+        //建造实例
+        carousel.render({
+            elem: '#test1'
+            , width: '100%' //设置容器宽度
+            , height: '200px'
+            , arrow: 'none' //始终显示箭头
+            , anim: 'fade' //切换动画方式
+            , indicator: 'none'
+        });
+        //排名ID
+        var count = 1;
+
+        
+        // flow.load({
+        //     elem: '#index-flex' //流加载容器
+        //     // , scrollElem: '#LAY_demo1' //滚动条所在元素，一般不用填，此处只是演示需要。
+        //     , done: function (page, next) { //加载下一页
+        //         $.get('{:url("index/lazyPlayerInfo")}', {page: page}, function (data) {
+        //             data = JSON.parse(data);
+        //             // console.log(data);
+        //
+        //             if(data.length==0){
+        //                 layer.msg('没有更多了');
+        //             }
+        //
+        //
+        //             //模拟插入
+        //             setTimeout(function () {
+        //                 var lis = [];
+        //
+        //                 for (var i in data){
+        //                     var sex = data[i].wechat_user.sex==1?'fa-male':'fa-female';
+        //                     lis.push('<div class=" flex_content">\n' +
+        //                         '                <div class="thumbnail item_box" style="">\n' +
+        //                         '                    <a href="/index/index/playerDetails?application_id='+data[i].id+'" ><img src="{$config[\'upload\'][\'cdnurl\']}/'+data[i].applicationimages+'" alt="..."></a>\n' +
+        //                         '                    <div class="row text-center  " style="margin: 0">\n' +
+        //                         '                        <div class="layui-col-xs6 pd_tb10-lr0 pull-left" >\n' +
+        //                         '                            <h4 style="font-weight: bold" class=""><i class="fa '+sex+'" aria-hidden="true"\n' +
+        //                         '                                                                    ></i> '+data[i].name+'</h4>\n' +
+        //                         '\n' +
+        //                         '                            <h4 style="font-weight: bold;padding-top: 5px" class=""><i class="fa fa-line-chart"\n' +
+        //                         '                                                                                    aria-hidden="true"></i>'+data[i].votes+' 票</h4>\n' +
+        //                         '                        </div>\n' +
+        //                         '\n' +
+        //                         '                        <div class="layui-col-xs12 voting">\n' +
+        //                         '                            <a href="javascript:void(0)" class="btn btn-info send_vote" style="">投票给<strong style="font-size: 15px" class="text-danger application_id">'+data[i].id+'</strong>号</a>\n' +
+        //                         '                        </div>\n' +
+        //                         '                    </div>\n' +
+        //                         '                </div>\n' +
+        //                         '            </div>');
+        //                     // console.log($('.fa-fa').length);
+        //                 }
+        //
+        //
+        //                 next(lis.join(''), page < 6); //假设总页数为 6
+        //             }, 500);
+        //
+        //         })
+        //     }
+        // });
+
+        var allCount = '{$data.statistics.applicationCount}';
+        allCount = Math.ceil(parseInt(allCount)/25);
+        flow.load({
+            elem: '.user-list' //流加载容器
+            // , scrollElem: '#LAY_demo1' //滚动条所在元素，一般不用填，此处只是演示需要。
+            , done: function (page, next) { //加载下一页
+
+
+                $.ajax({
+                    dataType: 'json',
+                    type: 'POST',
+                    url: '{:url("index/rankingMore")}',
+                    data: {
+                        page: page
+                    },
+                    success: function (msg) {
+                        msg = JSON.parse(msg);
+                        // console.log(msg);
+
+                        if (msg.length == 0) {
+                            layer.msg('没有更多了');
+                        }
+
+                        //模拟插入
+                        setTimeout(function () {
+                            var lis = [];
+
+                            for (var i = 0; i < msg.length; i++) {
+                                var sex = "four";
+                                if (count == 1) {
+                                    sex = "first";
+                                }
+                                if (count == 2) {
+                                    sex = "second";
+                                }
+                                if (count == 3) {
+                                    sex = "third";
+                                }
+                                lis.push('<div class="user ' + sex + '">\n' +
+                                    '            <span class="rank ">' + count + '</span><p class="username">' + msg[i].name + '</p> \n' +
+                                    '            <span class="coupons">' + msg[i].votes + '票</span>\n' +
+                                    '        </div>');
+                                count++;
+                            }
+                            next(lis.join(''), page < allCount); //假设总页数为 6
+                        }, 500);
+                    }
+                });
+
+            }
+        });
+
+    });
+
+    document.getElementById('vote').onclick = function () {
+        window.location = '/';
+    };
+    document.getElementById('ranking').onclick = function () {
+        window.location = '/index/index/ranking';
+    };
+    document.getElementById('rules').onclick = function () {
+        window.location = '/index/index/rules';
+    };
+
+
+    var isTodayVote = "{$data.isTodayVote}";
+    if (isTodayVote == 0) {
+        $(".voting").each(function (i) {
+            if ($(this).hasClass('asd')) {
+                $(this).removeClass('asd');
+            }
+        })
+    }
+
+    //投票
+    $(".voting").each(function (i) {
+        // alert(3);
+        $(this).bind("click", {index: i}, function () {
+            var that = this;
+            var ticket = $(this).parent().find('.votes-index').text();
+            ticket = ticket.replace(/[^0-9]/ig, "");
+            var check = $(this).parent();
+            check = check.hasClass('dd') ? true : false;
+            if ($(this).hasClass('asd')) {
+                layer.msg("今天已经投过票啦，请明天再来");
+                return;
+            }
+
+            // console.log(isTodayVote);
+            if (isTodayVote == 1) {
+                layer.msg("今天已经投过票啦，请明天再来");
+                return;
+            }
+            // console.log(123);
+            var ajaxurl = '{:url("index/vote")}';
+            var application_id = $('.application_id').eq(i).text();
+            var user_id = "{$user_id}";
+            // console.log(application_id);
+            // console.log(user_id);
+            $.ajax({
+                url: ajaxurl,
+                type: "post",
+                //注意序列化的值一定要放在最前面,并且不需要头部变量,不然获取的值得格式会有问题
+                data: {application_id: application_id, user_id: user_id},
+                dataType: "json",
+                success: function (data) {
+
+                    layer.msg(data);
+
+                    var html = !check ? '<i class="fa fa-line-chart"\n' +
+                        '                                                                                       aria-hidden="true"></i>' + (parseInt(ticket) + 1) + ' 票' : '票数是：' + (parseInt(ticket) + 1) + '票';
+
+                    // window.location.reload(); //刷新当前页面
+                    // $('.votes').html("票数是：" + "{$data['playerDetail']['votes'] + 1}" + "票");
+                    $(that).parent().find('.votes-index').html(html);
+                    var voteCount = $('.voteCount').text();
+                    $('.voteCount').text(parseInt(voteCount)+1);
+                    $(".voting").each(function (i) {
+                        $(this).addClass('asd');
+                    });
+
+                },
+                error: function (data) {
+                    // alert(data);
+                    layer.msg(data);
+                }
+            })
+        })
+    });
+
+    $('#details').click(function(){
+
+        var ajaxurl ='{:url("index/details")}';
+        var user_id = "{$user_id}";
+
+        $.ajax({
+
+            url: ajaxurl,
+            type: "post",
+            //注意序列化的值一定要放在最前面,并且不需要头部变量,不然获取的值得格式会有问题
+            data:{user_id: user_id},
+            dataType:"json",
+            success:function (data) {
+                data = JSON.parse(data);
+
+                // layer.msg(data);
+                layer.open({
+                    type: 1,
+                    // skin: 'layui-layer-rim', //加上边框
+                    area: ['300px', '500px'], //宽高
+                    content: '<div class="row text-center" style="margin: 0">' +
+
+                        '<div class="layui-col-xs12" style="margin-bottom: 10px">'+
+                            '<img src="{$_SERVER.REQUEST_SCHEME}://{$_SERVER.SERVER_NAME}/' + data.applicationimages + '" alt="...">'+
+                        '</div>'+
+
+                        '<div class="layui-col-xs12 text-center"  id="details" style="margin-bottom: 10px">' +
+                            '<div>姓名：' + data.name + '</div>' +
+                            '<div >加入车型：' + data.model + '</div>' +
+                            '<div >日均流水：' + data.daily_running_water + '</div>' +
+                            '<div ">服务分： ' + data.service_points + '</div>' +
+                            '<div ">自我描述：' + data.describe_yourself + '</div>' +
+                        '</div>' +
+                        '<div class="layui-col-xs12 text-center" style="margin-bottom: 10px">' +
+                            '<div style="color: orange" class="votes">当前票数：' + data.votes + '票</div>' +
+                        '</div>' +
+
+                        '</div>',
+                });
+
+            },
+    
+        });
+        
+    });
+
+</script>
+</body>
+
+</html>

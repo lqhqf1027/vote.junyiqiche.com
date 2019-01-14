@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="{$config.language}">
+{extend name="vote/layoutextend" /}
+{block name="body"}
+<style>
+    .btn.send_vote{
+        width: 50%;
+
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius:10px;
+        border-top-left-radius: 10px;
+        border-top-right-radius:10px;
+    }
+    
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    #details{
+        max-width: 100%;
+        height: auto;
+        background-color: rgb(255,255,255);
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius:10px;
+        border-top-left-radius: 10px;
+        border-top-right-radius:10px;
+    }
+
+</style>
+
+    <div class="row dd" style="margin: 0" >
+
+        <div class="layui-col-xs12" style="margin-bottom: 10px">
+            <img src="{$config['upload']['cdnurl']}/{$data['playerDetail']['applicationimages']}" alt="...">
+        </div>
+
+        <div class="layui-col-xs12"  id="details" style="margin-bottom: 10px">
+            <div style="margin-left: 5%; color: gray">{$data['playerDetail']['name']}</div>
+            <div style="margin-left: 8%">加入车型：{$data['playerDetail']['model']}</div>
+            <div style="margin-left: 8%">日均流水：{$data['playerDetail']['daily_running_water']}</div>
+            <div style="margin-left: 8%">服务分：{$data['playerDetail']['service_points']}</div>
+            <div style="margin-left: 8%">自我描述：{$data['playerDetail']['describe_yourself']}</div>
+        </div>
+        <div class="layui-col-xs12 text-center" style="margin-bottom: 10px">
+            <div style="color: orange" class="votes-index">票数是：{$data['playerDetail']['votes']}票</div>
+        </div>
+        
+
+        <div class="layui-col-xs12 text-center voting">
+
+            <a href="javascript:void(0)" class="btn btn-info send_vote" style="">投票给<strong style="font-size: 15px" class="text-danger application_id">{$data['playerDetail']['id']}</strong>号</a>
+              
+        </div>
+
+    </div>
+
+{/block}
+</html>
