@@ -431,4 +431,24 @@ class Index extends Frontend
     }
 
 
+    /**
+     * 选手详情
+     * @param $application_id
+     * @return string
+     * @throws \think\Exception
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
+    public function details()
+    {
+        $user_id = $_POST['user_id'];
+
+        $data = Application::where('wechat_user_id', $user_id)->find();
+
+        return json_encode($data);
+
+    }
+
+
 }
