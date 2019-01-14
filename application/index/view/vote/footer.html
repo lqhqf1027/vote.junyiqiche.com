@@ -3,15 +3,13 @@
 </div>
 </div>
 <style>
-   .footer_box .item.active_s {
-        background-color: #5bc0de;
-    }
+
 </style>
 <div class="text-center footer_box">
     <div class="layui-row row_style" id="title">
-        <div class="layui-col-xs4 item {if $Request.action == 'index'} active_s {/if}" id="vote">全部参赛</div>
-        <div class="layui-col-xs4 item {if $Request.action == 'ranking'} active_s {/if}" id="ranking">当前排名</div>
-        <div class="layui-col-xs4 item {if $Request.action == 'rules'} active_s {/if}" id="rules">活动规则</div>
+        <div class="layui-col-xs4 item {if $Request.action == 'index'} bg_ourigin {/if}" id="vote">全部参赛</div>
+        <div class="layui-col-xs4 item {if $Request.action == 'ranking'} bg_ourigin {/if}" id="ranking">当前排名</div>
+        <div class="layui-col-xs4 item {if $Request.action == 'rules'} bg_ourigin {/if}" id="rules">活动规则</div>
 
     </div>
 </div>
@@ -341,7 +339,7 @@
     });
 
     $('#details').click(function(){
-
+        var lod= layer.load();
         var ajaxurl ='{:url("index/details")}';
         var user_id = "{$user_id}";
 
@@ -353,17 +351,19 @@
             data:{user_id: user_id},
             dataType:"json",
             success:function (data) {
+                layer.close(lod);
                 data = JSON.parse(data);
 
                 // layer.msg(data);
                 layer.open({
                     type: 1,
-                    skin: 'layui-layer-rim', //加上边框
-                    area: ['300px', '500px'], //宽高
+                    title:'我的报名信息',
+                    // skin: 'layui-layer-rim', //加上边框
+                    area: ['80%', '80%'], //宽高
                     content: '<div class="row text-center" style="margin: 0">' +
 
                         '<div class="layui-col-xs12 applicationimages" style="margin-bottom: 10px">'+
-                            '<img src="{$_SERVER.REQUEST_SCHEME}://{$_SERVER.SERVER_NAME}/' + data.applicationimages + '" alt="...">'+
+                            '<img src="{$_SERVER.REQUEST_SCHEME}://{$_SERVER.SERVER_NAME}/' + data.applicationimages + '" alt="..." style="max-width: 100%;height: auto">'+
                         '</div>'+
 
                         '<div class="layui-col-xs12 text-center"  id="details" style="margin-bottom: 10px">' +
@@ -374,7 +374,7 @@
                             '<div ">自我描述：' + data.describe_yourself + '</div>' +
                         '</div>' +
                         '<div class="layui-col-xs12 text-center" style="margin-bottom: 10px">' +
-                            '<div style="color: orange" class="votes">票数是：' + data.votes + '票</div>' +
+                            '<div style="color: orange" class="votes">当前票数：' + data.votes + '票</div>' +
                         '</div>' +
 
                         '</div>',

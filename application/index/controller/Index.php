@@ -396,7 +396,7 @@ class Index extends Frontend
         }
 
 
-        if ($this->user_id==false) {
+        if (!$this->user_id) {
             //已经投票的ID
             $voted_id = Record::where('wechat_user_id', $this->user_id)->whereTime('votetime', 'today')->column('application_id');
 

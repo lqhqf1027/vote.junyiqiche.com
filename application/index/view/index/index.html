@@ -12,14 +12,7 @@
     .flex_content{
         break-inside: avoid; box-sizing: border-box; padding: 5px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;
     }
-    .btn.send_vote{
-        width: 100%;
 
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius:10px;
-        border-top-left-radius: 0px;
-        border-top-right-radius:0px;
-    }
     .thumbnail.item_box{
         margin-bottom: 0;padding:0;
 
@@ -89,9 +82,9 @@
                             </i>{$v['votes']}票</h4>
                         </div>
 
-                        <div class="layui-col-xs12 voting">
+                        <div class="layui-col-xs12 voting bg_ourigin">
 
-                            <a href="javascript:void(0)" class="btn btn-info send_vote" style="">投票给<strong style="font-size: 15px" class="text-danger application_id">{$v['id']}</strong>号</a>
+                            <a href="javascript:void(0)" class="btn  send_vote" style="color: #fff;">投票给<strong style="font-size: 15px; " class=" application_id text-success">{$v['id']}</strong>号</a>
 
                         </div>
                     </div>
