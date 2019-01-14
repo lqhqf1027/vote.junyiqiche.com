@@ -92,8 +92,8 @@
             <div class="layui-col-xs12 headBox" style="">
                 <div class="layui-row pd_12" style="font-weight: bold;font-size: 16px;">
                     <div class="layui-col-xs4">{$data['statistics']['applicationCount']}</div>
-                    <div class="layui-col-xs4">{$data['statistics']['voteCount']}</div>
-                    <div class="layui-col-xs4  ">{$data['statistics']['visitCount']}</div>
+                    <div class="layui-col-xs4 voteCount">{$data['statistics']['voteCount']}</div>
+                    <div class="layui-col-xs4">{$data['statistics']['visitCount']}</div>
                 </div>
                 <div class="layui-row " style="padding-bottom: 8px;">
                     <div class="layui-col-xs4 headBoxColor"><i class="layui-icon layui-icon-user"></i> 参赛者</div>
@@ -123,7 +123,7 @@
 
         <div class="layui-row text-center " style="padding-top: 20px">
             {if $data['is_application'] == 1}
-            <button class="btn btn-info btn-lg "  style="width: 80%; background-color: gray">
+            <button class="btn btn-lg " id="details"  style="width: 80%; background-color: gray">
                 已报名
             </button>
             {else /}

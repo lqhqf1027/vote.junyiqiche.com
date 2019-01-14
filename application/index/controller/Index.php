@@ -58,7 +58,9 @@ class Index extends Frontend
                 }
             }
 
+
         }
+        //pr($contestant);
         $data = array_merge($this->publicData(), ['contestantList' => $contestant]);
         $this->view->assign(['data'=> $data,
             'page'=>$pages
@@ -365,7 +367,7 @@ class Index extends Frontend
             $result = $this->playerInfo(['status' => 'normal', 'name' => $search], 'id,name,applicationimages,votes');
         }
 
-        $data = array_merge($this->publicData(), ['contestantList' => $result]);
+        $data = array_merge($this->publicData(), ['contestantList' => ['data'=>$result]]);
 
         $this->view->assign('data', $data);
 
@@ -428,6 +430,26 @@ class Index extends Frontend
         $this->view->assign('data', $data);
 
         return $this->view->fetch();
+    }
+
+
+    /**
+     * 选手详情
+     * @param $application_id
+     * @return string
+     * @throws \think\Exception
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
+    public function details()
+    {
+        $user_id = $_POST['user_id'];
+
+        $data = Application::where('wechat_user_id', $user_id)->find();
+
+        return json_encode($data);
+
     }
 
 

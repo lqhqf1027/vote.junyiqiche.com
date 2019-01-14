@@ -54,6 +54,11 @@
         color:  pink;
     }
 
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
 </style>
 
         <form class="layui-form layui-form-pane " action="/index/index/searchPlayer" method="post">
@@ -79,7 +84,6 @@
                         <div class="layui-col-xs6 pd_tb10-lr0 pull-left" >
                             <h4 style="font-weight: bold" class=""><i class="fa {if $v['wechat_user']['sex'] == '1'} fa-male {else/} fa-female {/if}" aria-hidden="true"
                             ></i> {$v['name']}</h4>
-
                             <h4 style="padding: 5px 0 0 10px;color: #D2D2D2;" class="pull-left">
                                 <i class="fa fa-line-chart" style="font-size: 14px">
                             </i>{$v['votes']}票</h4>
