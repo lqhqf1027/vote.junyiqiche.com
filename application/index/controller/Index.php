@@ -58,7 +58,9 @@ class Index extends Frontend
                 }
             }
 
+
         }
+        //pr($contestant);
         $data = array_merge($this->publicData(), ['contestantList' => $contestant]);
         $this->view->assign(['data'=> $data,
             'page'=>$pages
@@ -365,7 +367,7 @@ class Index extends Frontend
             $result = $this->playerInfo(['status' => 'normal', 'name' => $search], 'id,name,applicationimages,votes');
         }
 
-        $data = array_merge($this->publicData(), ['contestantList' => $result]);
+        $data = array_merge($this->publicData(), ['contestantList' => ['data'=>$result]]);
 
         $this->view->assign('data', $data);
 

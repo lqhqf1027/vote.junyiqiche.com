@@ -76,8 +76,6 @@
     }
 
 
-
-
     layui.use(['carousel', 'form', 'flow', 'upload', 'element'], function () {
         var $ = layui.jquery;
 
@@ -93,8 +91,8 @@
         var uploadInst = upload.render({
             elem: '#fileUp'
             , url: "{:url('index/uploadsHeaderImg')}"
-          /*  , auto: false //选择文件后不自动上传
-            , bindAction: '#send-vote' //指向一个按钮触发上传*/
+            /*  , auto: false //选择文件后不自动上传
+              , bindAction: '#send-vote' //指向一个按钮触发上传*/
             , choose: function (obj) {
                 //预读本地文件示例，不支持ie8
                 obj.preview(function (index, file, result) {
@@ -104,10 +102,10 @@
             , done: function (res) {
                 console.log(res);
                 //如果上传失败
-                if (res.code==1) {
+                if (res.code == 1) {
                     $('input[type="hidden"]').val(res.data.url);
                 }
-                else{
+                else {
                     return layer.msg('上传失败');
                 }
 
@@ -130,15 +128,15 @@
             data.field.wechat_user_id = "{$user_id}";
             // console.log(data.field);return;
             var index = layer.load(1, {
-                shade: [0.1,'#fff'] //0.1透明度的白色背景
+                shade: [0.1, '#fff'] //0.1透明度的白色背景
             });
-            $.post("{:url('Index/sendVote')}",{datas:data.field},function (res) {
+            $.post("{:url('Index/sendVote')}", {datas: data.field}, function (res) {
                 console.log(res.code);
-                if(res.code==1){
+                if (res.code == 1) {
                     layer.close(index);
                     layer.msg(res.msg);
                     window.location.reload();
-                }else{
+                } else {
                     layer.msg(res.msg);
                     layer.close(index);
 
@@ -226,11 +224,11 @@
                         if (msg.length == 0) {
                             layer.msg('没有更多了');
                         }
-                        
+
                         //模拟插入
                         setTimeout(function () {
                             var lis = [];
-                            
+
                             for (var i = 0; i < msg.length; i++) {
                                 var sex = "four";
                                 if (count == 1) {
@@ -242,7 +240,7 @@
                                 if (count == 3) {
                                     sex = "third";
                                 }
-                                lis.push('<div class="user '+sex+'">\n' +
+                                lis.push('<div class="user ' + sex + '">\n' +
                                     '            <span class="rank ">' + count + '</span><p class="username">' + msg[i].name + '</p> \n' +
                                     '            <span class="coupons">' + msg[i].votes + '票</span>\n' +
                                     '        </div>');
@@ -271,19 +269,23 @@
 
     var isTodayVote = "{$data.isTodayVote}";
     if (isTodayVote == 0) {
-        $(".voting").each(function(i){
-            if($(this).hasClass('asd')){
+        $(".voting").each(function (i) {
+            if ($(this).hasClass('asd')) {
                 $(this).removeClass('asd');
             }
         })
     }
 
     //投票
-    $(".voting").each(function(i){
+    $(".voting").each(function (i) {
         // alert(3);
-        $(this).bind("click", {index: i}, function(){
-
-            if($(this).hasClass('asd')){
+        $(this).bind("click", {index: i}, function () {
+            var that = this;
+            var ticket = $(this).parent().find('.votes-index').text();
+            ticket = ticket.replace(/[^0-9]/ig, "");
+            var check = $(this).parent();
+            check = check.hasClass('dd') ? true : false;
+            if ($(this).hasClass('asd')) {
                 layer.msg("今天已经投过票啦，请明天再来");
                 return;
             }
@@ -294,30 +296,35 @@
                 return;
             }
             // console.log(123);
-            var ajaxurl ='{:url("index/vote")}';
+            var ajaxurl = '{:url("index/vote")}';
             var application_id = $('.application_id').eq(i).text();
             var user_id = "{$user_id}";
-            console.log(application_id);
-            console.log(user_id);
+            // console.log(application_id);
+            // console.log(user_id);
             $.ajax({
                 url: ajaxurl,
                 type: "post",
                 //注意序列化的值一定要放在最前面,并且不需要头部变量,不然获取的值得格式会有问题
-                data:{application_id: application_id, user_id: user_id},
-                dataType:"json",
-                success:function (data) {
+                data: {application_id: application_id, user_id: user_id},
+                dataType: "json",
+                success: function (data) {
 
                     layer.msg(data);
-                    
-                    // window.location.reload(); //刷新当前页面
-                    $('.votes').html("票数是：" + "{$data['playerDetail']['votes'] + 1}" + "票");
 
-                    $(".voting").each(function(i){
+                    var html = !check ? '<i class="fa fa-line-chart"\n' +
+                        '                                                                                       aria-hidden="true"></i>' + (parseInt(ticket) + 1) + ' 票' : '票数是：' + (parseInt(ticket) + 1) + '票';
+
+                    // window.location.reload(); //刷新当前页面
+                    // $('.votes').html("票数是：" + "{$data['playerDetail']['votes'] + 1}" + "票");
+                    $(that).parent().find('.votes-index').html(html);
+                    var voteCount = $('.voteCount').text();
+                    $('.voteCount').text(parseInt(voteCount)+1);
+                    $(".voting").each(function (i) {
                         $(this).addClass('asd');
                     });
 
                 },
-                error:function (data) {
+                error: function (data) {
                     // alert(data);
                     layer.msg(data);
                 }

@@ -72,7 +72,7 @@
         </form>
 
         <div class="layui-row  flex">
-            {foreach $data['contestantList'] as $k => $v}
+            {foreach $data['contestantList']['data'] as $k => $v}
             <div class=" flex_content">
                 <div class="thumbnail item_box" style="">
                     <a href="/index/index/playerDetails?application_id={$v['id']}" ><img src="{$config['upload']['cdnurl']}/{$v['applicationimages']}" alt="..."></a>
@@ -81,7 +81,7 @@
                             <h4 style="font-weight: bold" class=""><i class="fa {if $v['wechat_user']['sex'] == '1'} fa-male {else/} fa-female {/if}" aria-hidden="true"
                                                                     ></i> {$v['name']}</h4>
 
-                            <h4 style="font-weight: bold;padding-top: 5px" class=""><i class="fa fa-line-chart"
+                            <h4 style="font-weight: bold;padding-top: 5px" class="votes-index"><i class="fa fa-line-chart"
                                                                                     aria-hidden="true"></i>{$v['votes']} 票</h4>
                         </div>
 
