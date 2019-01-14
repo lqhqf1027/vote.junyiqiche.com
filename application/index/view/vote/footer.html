@@ -156,6 +156,7 @@
         //排名ID
         var count = 1;
 
+        
         // flow.load({
         //     elem: '#index-flex' //流加载容器
         //     // , scrollElem: '#LAY_demo1' //滚动条所在元素，一般不用填，此处只是演示需要。
@@ -332,6 +333,52 @@
                 }
             })
         })
+    });
+
+    $('#details').click(function(){
+
+        var ajaxurl ='{:url("index/details")}';
+        var user_id = "{$user_id}";
+
+        $.ajax({
+
+            url: ajaxurl,
+            type: "post",
+            //注意序列化的值一定要放在最前面,并且不需要头部变量,不然获取的值得格式会有问题
+            data:{user_id: user_id},
+            dataType:"json",
+            success:function (data) {
+                data = JSON.parse(data);
+
+                // layer.msg(data);
+                layer.open({
+                    type: 1,
+                    skin: 'layui-layer-rim', //加上边框
+                    area: ['300px', '500px'], //宽高
+                    content: '<div class="row text-center" style="margin: 0">' +
+
+                        '<div class="layui-col-xs12" style="margin-bottom: 10px">'+
+                            '<img src="{$_SERVER.REQUEST_SCHEME}://{$_SERVER.SERVER_NAME}/' + data.applicationimages + '" alt="...">'+
+                        '</div>'+
+
+                        '<div class="layui-col-xs12 text-center"  id="details" style="margin-bottom: 10px">' +
+                            '<div>姓名：' + data.name + '</div>' +
+                            '<div >加入车型：' + data.model + '</div>' +
+                            '<div >日均流水：' + data.daily_running_water + '</div>' +
+                            '<div ">服务分： ' + data.service_points + '</div>' +
+                            '<div ">自我描述：' + data.describe_yourself + '</div>' +
+                        '</div>' +
+                        '<div class="layui-col-xs12 text-center" style="margin-bottom: 10px">' +
+                            '<div style="color: orange" class="votes">票数是：' + data.votes + '票</div>' +
+                        '</div>' +
+
+                        '</div>',
+                });
+
+            },
+    
+        });
+        
     });
 
 </script>
