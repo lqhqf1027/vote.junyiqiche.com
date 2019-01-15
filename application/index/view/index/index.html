@@ -81,14 +81,14 @@
                 <div class="thumbnail item_box" style="">
                     <a href="/index/index/playerDetails?application_id={$v['id']}" ><img src="{$_SERVER.REQUEST_SCHEME}://{$_SERVER.SERVER_NAME}{$v['applicationimages']}" alt="..."></a>
                     <div class="row text-center  " style="margin: 0">
-                        <div class="layui-col-xs6 pd_tb10-lr0 pull-left" >
+                        <div class="layui-col-xs12 pd_tb10-lr0 text-center" >
                             <h4 style="font-weight: bold" class=""><i class="fa {if $v['wechat_user']['sex'] == '1'} fa-male {else/} fa-female {/if}" aria-hidden="true"
                             ></i> {$v['name']}</h4>
-                            <h4 style="padding: 5px 0 0 10px;color: #D2D2D2;" class="pull-left">
+                            <h4 style="padding-top: 5px;color: #D2D2D2;" class="">
                                 <i class="fa fa-line-chart" style="font-size: 14px">
                             </i>{$v['votes']}票</h4>
                         </div>
-                        <div class="layui-col-xs12 voting bg_ourigin">
+                        <div class="layui-col-xs12 voting bg_ourigin text-center">
 
                             <a href="javascript:void(0)" class="btn  send_vote" style="color: #fff;">投票给<strong style="font-size: 15px; " class=" application_id text-success">{$v['id']}</strong>号</a>
 

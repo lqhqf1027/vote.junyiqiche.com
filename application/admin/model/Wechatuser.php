@@ -8,7 +8,7 @@ class Wechatuser extends Model
 {
     // 表名
     protected $name = 'wechat_user';
-    
+   /*
     // 自动写入时间戳字段
     protected $autoWriteTimestamp = false;
 
@@ -19,7 +19,7 @@ class Wechatuser extends Model
     // 追加属性
     protected $append = [
 
-    ];
+    ];*/
     
 
     

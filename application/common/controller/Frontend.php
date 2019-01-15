@@ -48,20 +48,14 @@ class Frontend extends Controller
     public function _initialize()
     {
 
-        //微信登陆验证
-        $appid = $this->appid = Config::get('APPID');
-        $secret = $this->secret = Config::get('APPSECRET');
+       //微信登陆验证
+        $appid = Config::get('oauth')['appid'];
+        $secret =Config::get('oauth')['appsecret'];
         $token = cache('Token');
-
-
-<<<<<<< HEAD
-        if(!$token['access_token'] || $token['expires_in'] <= time()){
-=======
         /*if(!$token['access_token'] || $token['expires_in'] <= time()){
->>>>>>> 2cc97efb370d36d319365a6ba64a05961b156786
-
 
             $rslt  = gets("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={$appid}&secret={$secret}");
+
             if($rslt){
                 $accessArr = array(
                     'access_token'=>$rslt['access_token'],
@@ -70,24 +64,16 @@ class Frontend extends Controller
                 cache('Token',$accessArr) ;
                 $token = $rslt;
             }
-        }
+        }*/
         if(!session('MEMBER')){
-
             ##没有登录
             ##如果没有登录，我们要让url地址跳转到 微信url 去获取code
-<<<<<<< HEAD
             $myurl =  urlencode('https://vote.junyiqiche.com/wechat/Wechat/adduser');//mvc : http://wx4.cdphm.net/User/wxlogin  ##微信回调地址（这个地址是我们自己的一个url地址，必须使用urlencode处理）
-            $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid={$this->appid}&redirect_uri={$myurl}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
+            $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid={$appid}&redirect_uri={$myurl}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
+
             header('Location:'.$url);
             die();
         }
-=======
-            $myurl =  urlencode('https://yinchuan.junyiqiche.com/wechat/Wechat/adduser');//mvc : http://wx4.cdphm.net/User/wxlogin  ##微信回调地址（这个地址是我们自己的一个url地址，必须使用urlencode处理）
-            $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid={$this->appid}&redirect_uri={$myurl}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
-            header('Location:'.$url);
-            die();
-        }*/
->>>>>>> 2cc97efb370d36d319365a6ba64a05961b156786
         //移除HTML标签
         $this->request->filter('strip_tags');
         $modulename = $this->request->module();
@@ -163,7 +149,7 @@ class Frontend extends Controller
         $this->assign('site', $site);
         $this->assign('config', $config);
         $user_id = session('MEMBER');
-        $this->user_id = $user_id ? $user_id->getData()['id'] : 0;
+        $this->user_id = $user_id ? $user_id['id'] : 0;
         $this->assign('user_id', $this->user_id);
 
         //卡片分享参数

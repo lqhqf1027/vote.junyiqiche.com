@@ -277,7 +277,9 @@ return [
         'api_url'             => 'https://api.fastadmin.net',
     ],
     //微信appid & APPSECRET
+    'oauth' => [
+        'appid'     => 'wx3b2ff8ef5b4b0cde',
+        'appsecret'     => '1dfdcffcdd1f4a802b2be1ead9fe144e'
+    ]
 
-    'APPID'=>'wx3b2ff8ef5b4b0cde',
-    'APPSECRET'=>'1dfdcffcdd1f4a802b2be1ead9fe144e'
 ];

@@ -49,6 +49,15 @@
                     jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
                 });
                 wx.ready(function () {
+                    wx.checkJsApi({
+                        jsApiList: [
+                            'getNetworkType',
+                            'previewImage'
+                        ],
+                        success: function (res) {
+                            // alert("checkJsApi=="+ JSON.stringify(res));
+                        }
+                    });
                     wx.onMenuShareTimeline({
                         title: '{$share_title}', // 分享标题
                         link: s.url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
@@ -364,7 +373,6 @@
                             '<img src="{$_SERVER.REQUEST_SCHEME}://{$_SERVER.SERVER_NAME}/' + data.applicationimages + '" alt="...">'+
 
                         '</div>'+
-
                         '<div class="layui-col-xs12 text-center"  id="details" style="margin-bottom: 10px">' +
                             '<div>姓名：' + data.name + '</div>' +
                             '<div >加入车型：' + data.model + '</div>' +
