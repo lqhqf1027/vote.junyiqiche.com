@@ -20,6 +20,7 @@ class Index extends Frontend
     protected $noNeedLogin = '*';
     protected $noNeedRight = '*';
     protected $layout = '';
+    protected $model = '';
 
     public function _initialize()
     {
@@ -29,7 +30,18 @@ class Index extends Frontend
     public function index()
     {
 
-//        $contestant = $this->playerInfo(['status' => 'normal'], 'id,name,applicationimages,votes');
+//        $this->model = model('app\admin\model\Wechatuser');
+//        $wchat = new \wechat\WechatOauth();
+//        if(!Session::get('MEMBER')){
+//            $code = request()->param('code',"");
+//            $user = $wchat->getUserAccessUserInfo($code);
+//            $res = $this->model->allowField(true)->save($user);
+//
+//        }
+
+//        pr($res);die;
+
+        $contestant = $this->playerInfo(['status' => 'normal'], 'id,name,applicationimages,votes');
 
         $contestant = Application::field('id,name,applicationimages,votes')
             ->with(['wechatUser' => function ($q) {
@@ -122,8 +134,8 @@ class Index extends Frontend
         $root['url'] = $url;
         //获取access_token，并缓存
         $file = RUNTIME_PATH . '/access_token';//缓存文件名access_token
-        $appid = Config::get('APPID'); // 填写自己的appid
-        $secret = Config::get('APPSECRET'); // 填写自己的appsecret
+        $appid =Config::get('oauth')['appid']; // 填写自己的appid
+        $secret = Config::get('oauth')['appsecret']; // 填写自己的appsecret
         $expires = 3600;//缓存时间1个小时
         if (file_exists($file)) {
             $time = filemtime($file);
