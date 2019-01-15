@@ -14,6 +14,7 @@ use think\Db;
 use think\Session;
 use think\Config;
 use think\Request;
+
 class Index extends Frontend
 {
 
@@ -43,8 +44,8 @@ class Index extends Frontend
 
         $contestant = $this->playerInfo(['status' => 'normal'], 'id,name,applicationimages,votes');
 
-        $contestant = Application::field('id,name,applicationimages,votes')
-            ->with(['wechatUser' => function ($q) {
+        $contestant = Application::field('id,name,applicationimages,votes,wechat_user_id')
+            ->with(['wechat' => function ($q) {
                 $q->withField('id,sex');
             }])->where(['status' => 'normal'])->paginate(10);
 
@@ -73,25 +74,24 @@ class Index extends Frontend
         }
         //pr($contestant);
         $data = array_merge($this->publicData(), ['contestantList' => $contestant]);
-        $this->view->assign(['data'=> $data,
-            'page'=>$pages
-            ]);
+
+        $this->view->assign(['data' => $data,
+            'page' => $pages
+        ]);
 
         return $this->view->fetch();
     }
 
     public function lazyPlayerInfo()
     {
-          if($this->request->isGet()){
-              $page = input('page');
-              $page = $page.',10';
+        if ($this->request->isGet()) {
+            $page = input('page');
+            $page = $page . ',10';
 
-              return json_encode($this->playerInfo(['status' => 'normal'],'id,name,applicationimages,votes',null,$page));
-          }
+            return json_encode($this->playerInfo(['status' => 'normal'], 'id,name,applicationimages,votes', null, $page));
+        }
     }
 
-
-    
 
     /**
      * 上传封面
@@ -105,22 +105,22 @@ class Index extends Frontend
     /**
      * 提交报名
      */
-    public  function sendVote(){
-      if($this->request->isPost()){
-          $res = new Application();
-          $res_new = $this->request->post()['datas'];
-          $res_new['name'] = htmlspecialchars($res_new['name']);
-          $data =  $res->allowField(true)->save($res_new);
-          if($data){
-              $this->success('报名成功！');
-          }else{
-              $this->error('报名失败');
-          }
+    public function sendVote()
+    {
+        if ($this->request->isPost()) {
+            $res = new Application();
+            $res_new = $this->request->post()['datas'];
+            $res_new['name'] = htmlspecialchars($res_new['name']);
+            $data = $res->allowField(true)->save($res_new);
+            if ($data) {
+                $this->success('报名成功！');
+            } else {
+                $this->error('报名失败');
+            }
 
-      }
-      else{
-          $this->error('非法请求');
-      }
+        } else {
+            $this->error('非法请求');
+        }
     }
 
 
@@ -134,7 +134,7 @@ class Index extends Frontend
         $root['url'] = $url;
         //获取access_token，并缓存
         $file = RUNTIME_PATH . '/access_token';//缓存文件名access_token
-        $appid =Config::get('oauth')['appid']; // 填写自己的appid
+        $appid = Config::get('oauth')['appid']; // 填写自己的appid
         $secret = Config::get('oauth')['appsecret']; // 填写自己的appsecret
         $expires = 3600;//缓存时间1个小时
         if (file_exists($file)) {
@@ -196,6 +196,7 @@ class Index extends Frontend
 
         return json_encode($root);
     }
+
     /**
      * 投票
      * @return string
@@ -203,7 +204,7 @@ class Index extends Frontend
      */
     public function vote()
     {
-        
+
         if ($this->request->isAjax()) {
             // pr($_POST);
             // die;
@@ -239,7 +240,7 @@ class Index extends Frontend
     public function ranking()
     {
 
-        $data =$this->publicData();
+        $data = $this->publicData();
 
         $this->view->assign('data', $data);
         return $this->view->fetch();
@@ -247,10 +248,10 @@ class Index extends Frontend
 
     public function rankingMore()
     {
-        if($this->request->isAjax()){
+        if ($this->request->isAjax()) {
             $page = $this->request->post('page');
 
-            $page = $page.',25';
+            $page = $page . ',25';
 
             $ranking = $this->getRanking($page);
 
@@ -347,7 +348,7 @@ class Index extends Frontend
                 $is_application = 1;
             }
         }
-        
+
         return [
             'bannerList' => $bannerList,
             'voteEndTime' => $voteEndTime,
@@ -378,7 +379,7 @@ class Index extends Frontend
             $result = $this->playerInfo(['status' => 'normal', 'name' => $search], 'id,name,applicationimages,votes');
         }
 
-        $data = array_merge($this->publicData(), ['contestantList' => ['data'=>$result]]);
+        $data = array_merge($this->publicData(), ['contestantList' => ['data' => $result]]);
 
         $this->view->assign('data', $data);
 
@@ -394,10 +395,10 @@ class Index extends Frontend
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
      */
-    public function playerInfo($where, $field, $select = null,$page = null)
+    public function playerInfo($where, $field, $select = null, $page = null)
     {
         $contestant = collection(Application::field($field)
-            ->with(['wechatUser' => function ($q) {
+            ->with(['wechat' => function ($q) {
                 $q->withField('id,sex');
             }])->where($where)->page($page)->select($select))->toArray();
 

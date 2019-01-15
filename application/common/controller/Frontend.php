@@ -3,12 +3,14 @@
 namespace app\common\controller;
 
 use app\common\library\Auth;
+use app\wechat\controller\Wechat;
 use think\Config;
 use think\Controller;
 use think\Hook;
 use think\Lang;
 use app\common\model\Config as ConfigModel;
 use think\Session;
+use wechat\Wx;
 
 /**
  * 前台控制器基类
@@ -47,32 +49,9 @@ class Frontend extends Controller
 
     public function _initialize()
     {
-
-       //微信登陆验证
-        $appid = Config::get('oauth')['appid'];
-        $secret =Config::get('oauth')['appsecret'];
-        $token = cache('Token');
-        /*if(!$token['access_token'] || $token['expires_in'] <= time()){
-
-            $rslt  = gets("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={$appid}&secret={$secret}");
-
-            if($rslt){
-                $accessArr = array(
-                    'access_token'=>$rslt['access_token'],
-                    'expires_in'=>time()+$rslt['expires_in']-200
-                );
-                cache('Token',$accessArr) ;
-                $token = $rslt;
-            }
-        }*/
         if(!session('MEMBER')){
-            ##没有登录
-            ##如果没有登录，我们要让url地址跳转到 微信url 去获取code
-            $myurl =  urlencode('https://vote.junyiqiche.com/wechat/Wechat/adduser');//mvc : http://wx4.cdphm.net/User/wxlogin  ##微信回调地址（这个地址是我们自己的一个url地址，必须使用urlencode处理）
-            $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid={$appid}&redirect_uri={$myurl}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
-
-            header('Location:'.$url);
-            die();
+                $wx = new Wechat();
+                $wx->getCodes();
         }
         //移除HTML标签
         $this->request->filter('strip_tags');
@@ -151,7 +130,6 @@ class Frontend extends Controller
         $user_id = session('MEMBER');
         $this->user_id = $user_id ? $user_id['id'] : 0;
         $this->assign('user_id', $this->user_id);
-
         //卡片分享参数
         $shareData = ConfigModel::where('name', ['eq', 'share_title'], ['eq', 'share_body'], ['eq', 'share_img'], 'or')->column('value');
         $this->assign(['share_title' => $shareData[2], 'share_body' => $shareData[0], 'share_img' => Config::get('upload')['cdnurl'] . $shareData[1]]);
