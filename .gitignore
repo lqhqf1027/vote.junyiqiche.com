@@ -19,3 +19,4 @@ composer.lock
 #/application/extra/addons.php
 #/public/assets/js/addons.js
 
+/.idea

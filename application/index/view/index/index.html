@@ -54,9 +54,9 @@
         color:  pink;
     }
 
-    img {
-        max-width: 100%;
-        height: auto;
+    .applicationimages img {
+        width: auto;
+        height: 250px;
     }
 
 </style>
@@ -88,10 +88,10 @@
                                 <i class="fa fa-line-chart" style="font-size: 14px">
                             </i>{$v['votes']}票</h4>
                         </div>
+                        <div class="layui-col-xs12 voting bg_ourigin">
 
-                        <div class="layui-col-xs12 voting" style="background-color: white;">
+                            <a href="javascript:void(0)" class="btn  send_vote" style="color: #fff;">投票给<strong style="font-size: 15px; " class=" application_id text-success">{$v['id']}</strong>号</a>
 
-                            <a href="javascript:void(0)" class="btn  col-origin send_vote" style="">投票给<strong style="font-size: 15px" class=" application_id">{$v['id']}</strong>号</a>
 
                         </div>
                     </div>

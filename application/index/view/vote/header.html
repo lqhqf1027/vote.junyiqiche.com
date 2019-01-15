@@ -7,7 +7,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
-
     <title>君忆汽车2018年度网络人气司机投票大赛</title>
 
     <!-- Bootstrap Core CSS -->
@@ -69,13 +68,17 @@
     .footer_box .item {
         padding: 15px 0;
     }
-    .col-origin{
-        background-color: rgb(240,142,25);
-        color: rgb(255,255,255);
+    .bg_ourigin{
+        background-color: rgb(241,141,27);
+        color: #fff;
+
     }
-
-
-
+    .bg_ourigin.voting{
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius:10px;
+        border-top-left-radius: 0px;
+        border-top-right-radius:0px;
+    }
 </style>
 
 <body id="page-top" style="background-color: #F2F2F2">
@@ -127,11 +130,11 @@
 
         <div class="layui-row text-center " style="padding-top: 20px">
             {if $data['is_application'] == 1}
-            <button class="btn btn-lg " id="details"  style="width: 80%; background-color: #D2D2D2">
+            <button class="btn btn-lg   " id="details"  style="width: 80%; background-color: #d2d2d2">
                 已报名，查看我的报名信息
             </button>
             {else /}
-            <button class="btn  btn-lg col-origin" data-toggle="modal" data-target="#exampleModal" style="width: 80%;">
+            <button class="btn bg_ourigin btn-lg " data-toggle="modal" data-target="#exampleModal" style="width: 80%">
                 我要报名
             </button>
             {/if}
@@ -183,9 +186,9 @@
                         </div>
                         <div class="row">
                             <div class="layui-upload col-xs-8">
-                                <label for="" class="control-label">个人头像:</label>
+                                <label for="" class="control-label">封面展示:</label>
                                 <button type="button" class="layui-btn" id="fileUp" style="background-color: #393D49">
-                                    上传个人展示图
+                                    上传个人头像
                                 </button>
                                 <input type="hidden" name="applicationimages">
                             </div>
