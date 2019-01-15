@@ -26,13 +26,16 @@
         border-top-left-radius: 10px;
         border-top-right-radius:10px;
     }
-
+    .applicationimages img {
+        width: auto;
+        height: 250px;
+    }
 </style>
 
     <div class="row dd" style="margin: 0" >
+        <div class="layui-col-xs12" style="margin-bottom: 10px;" >
+            <img src="{$_SERVER.REQUEST_SCHEME}://{$_SERVER.SERVER_NAME}/{$data['playerDetail']['applicationimages']}" alt="..." style="width: 100%;height: auto">
 
-        <div class="layui-col-xs12" style="margin-bottom: 10px">
-            <img src="{$config['upload']['cdnurl']}/{$data['playerDetail']['applicationimages']}" alt="...">
         </div>
 
         <div class="layui-col-xs12"  id="details" style="margin-bottom: 10px">
@@ -43,13 +46,14 @@
             <div style="margin-left: 8%">自我描述：{$data['playerDetail']['describe_yourself']}</div>
         </div>
         <div class="layui-col-xs12 text-center" style="margin-bottom: 10px">
-            <div style="color: orange" class="votes-index">票数是：{$data['playerDetail']['votes']}票</div>
+            <div style="color: orange" class="votes-index">当前票数：{$data['playerDetail']['votes']}票</div>
         </div>
         
 
-        <div class="layui-col-xs12 text-center voting">
+        <div class="layui-col-xs12 text-center voting col-xs-3" style="background-color: rgb(241,141,27);color: #fff;">
 
-            <a href="javascript:void(0)" class="btn btn-info send_vote" style="">投票给<strong style="font-size: 15px" class="text-danger application_id">{$data['playerDetail']['id']}</strong>号</a>
+            <a href="javascript:void(0)" class="btn  send_vote" style="">投票给<strong style="font-size: 15px" class=" application_id">{$data['playerDetail']['id']}</strong>号</a>
+
               
         </div>
 

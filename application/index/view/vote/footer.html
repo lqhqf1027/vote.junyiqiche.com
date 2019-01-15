@@ -6,9 +6,9 @@
 </style>
 <div class="text-center footer_box">
     <div class="layui-row row_style" id="title">
-        <div class="layui-col-xs4 item {if $Request.action == 'index'} col-origin {/if}" id="vote">全部参赛</div>
-        <div class="layui-col-xs4 item {if $Request.action == 'ranking'} col-origin {/if}" id="ranking">当前排名</div>
-        <div class="layui-col-xs4 item {if $Request.action == 'rules'} col-origin {/if}" id="rules">活动规则</div>
+        <div class="layui-col-xs4 item {if $Request.action == 'index'} bg_ourigin {/if}" id="vote">全部参赛</div>
+        <div class="layui-col-xs4 item {if $Request.action == 'ranking'} bg_ourigin {/if}" id="ranking">当前排名</div>
+        <div class="layui-col-xs4 item {if $Request.action == 'rules'} bg_ourigin {/if}" id="rules">活动规则</div>
 
     </div>
 </div>
@@ -33,8 +33,6 @@
     window.onload = function () {
         var ajaxurl = '{:url("index/sharedata")}';
         var urll = location.href.split('#')[0];
-        alert(urll)
-
         $.ajax({
             url: ajaxurl,
             type: "post",
@@ -340,7 +338,7 @@
     });
 
     $('#details').click(function(){
-
+        var lod= layer.load();
         var ajaxurl ='{:url("index/details")}';
         var user_id = "{$user_id}";
 
@@ -352,6 +350,7 @@
             data:{user_id: user_id},
             dataType:"json",
             success:function (data) {
+                layer.close(lod);
                 data = JSON.parse(data);
 
                 // layer.msg(data);
@@ -363,6 +362,7 @@
 
                         '<div class="layui-col-xs12" style="margin-bottom: 10px">'+
                             '<img src="{$_SERVER.REQUEST_SCHEME}://{$_SERVER.SERVER_NAME}/' + data.applicationimages + '" alt="...">'+
+
                         '</div>'+
 
                         '<div class="layui-col-xs12 text-center"  id="details" style="margin-bottom: 10px">' +

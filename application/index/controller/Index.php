@@ -316,8 +316,7 @@ class Index extends Frontend
         $isTodayVote = 0;
         //判断该用户是否报过名
         $is_application = 0;
-
-        if ($this->user_id==false) {
+        if ($this->user_id == true) {
             //已经投票的ID
             $voted_id = Record::where('wechat_user_id', $this->user_id)->whereTime('votetime', 'today')->column('application_id');
 
@@ -394,9 +393,7 @@ class Index extends Frontend
             $contestant[$k]['applicationimages'] = $v['applicationimages'] ? explode(';', $v['applicationimages'])[0] : '';
             $contestant[$k]['is_vote'] = 0;
         }
-
-
-        if ($this->user_id==false) {
+        if (!$this->user_id) {
             //已经投票的ID
             $voted_id = Record::where('wechat_user_id', $this->user_id)->whereTime('votetime', 'today')->column('application_id');
 
