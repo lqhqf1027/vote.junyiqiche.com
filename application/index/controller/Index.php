@@ -445,7 +445,7 @@ class Index extends Frontend
      */
     public function playerDetails($application_id)
     {
-        $info = $this->playerInfo(['status' => 'normal'], 'id,name,applicationimages,votes,model,daily_running_water,service_points', $application_id);
+        $info = $this->playerInfo(['status' => 'normal'], 'id,name,applicationimages,votes,model,daily_running_water,service_points,describe_yourself', $application_id);
 
         $data = array_merge($this->publicData(), ['playerDetail' => $info[0]]);
 
