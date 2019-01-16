@@ -2,6 +2,7 @@
     © 成都君忆汽车服务有限公司. All Rights Reserved
 </div>
 </div>
+
 <style>
 </style>
 <div class="text-center footer_box">
@@ -248,25 +249,30 @@
     $(".voting").each(function (i) {
         // alert(3);
         $(this).bind("click", {index: i}, function () {
-            var index = layer.load(1, {
-                shade: [0.1, '#fff'] //0.1透明度的白色背景
-            });
+
             var that = this;
             var ticket = $(this).parent().find('.votes-index').text();
             ticket = ticket.replace(/[^0-9]/ig, "");
             var check = $(this).parent();
             check = check.hasClass('dd') ? true : false;
             if ($(this).hasClass('asd')) {
-                layer.msg("今天已经投过票啦，请明天再来");
+                var application_name = localStorage.getItem("application_name");
+                var application_id = localStorage.getItem("application_id");
+                layer.msg('今天已经投票给<strong style="font-size: 15px;color: yellow" class="">' + application_id + '号</strong>的<strong style="font-size: 15px;color: yellow" class="">' + application_name + '</strong>，请明天再来');
                 return;
             }
 
             // console.log(isTodayVote);
             if (isTodayVote == 1) {
-                layer.msg("今天已经投过票啦，请明天再来");
+                var application_name = localStorage.getItem("application_name");
+                var application_id = localStorage.getItem("application_id");
+                layer.msg('今天已经投票给<strong style="font-size: 15px;color: yellow" class="text-warning">' + application_id + '号</strong>的<strong style="font-size: 15px;color: yellow" class="">' + application_name + '</strong>，请明天再来');
                 return;
             }
             // console.log(123);
+            var loadLayer = layer.load(1, {
+                shade: [0.1, '#fff'] //0.1透明度的白色背景
+            });
             var ajaxurl = '{:url("index/vote")}';
             var application_id = $('.application_id').eq(i).text();
             var user_id = "{$user_id}";
@@ -279,7 +285,7 @@
                 data: {application_id: application_id, user_id: user_id},
                 dataType: "json",
                 success: function (data) {
-                    layer.close(index);
+                    layer.close(loadLayer);
                     layer.msg(data);
 
                     var html = !check ? '<i class="fa fa-line-chart"\n' +
@@ -297,6 +303,8 @@
                 },
                 error: function (data) {
                     // alert(data);
+                    layer.close(loadLayer);
+
                     layer.msg(data);
                 }
             })

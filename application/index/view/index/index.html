@@ -82,8 +82,12 @@
                     <a href="/index/index/playerDetails?application_id={$v['id']}" ><img src="{$_SERVER.REQUEST_SCHEME}://{$_SERVER.SERVER_NAME}{$v['applicationimages']}" alt="..."></a>
                     <div class="row text-center  " style="margin: 0">
                         <div class="layui-col-xs12 pd_tb10-lr0 text-center" >
-                            <h4 style="font-weight: bold" class=""><i class="fa {if $v['wechat_user']['sex'] == '1'} fa-male {else/} fa-female {/if}" aria-hidden="true"
-                            ></i> {$v['name']}</h4>
+                            <h4 style="font-weight: bold" class="">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+
+                                <!--<i class="fa {if $v['wechat_user']['sex'] == '1'} fa-male {else/} fa-female {/if}" aria-hidden="true"></i> -->
+                                {$v['name']}
+                            </h4>
                             <h4 style="padding-top: 5px;color: #D2D2D2;" class="">
                                 <i class="fa fa-line-chart" style="font-size: 14px">
                             </i>{$v['votes']}票</h4>
