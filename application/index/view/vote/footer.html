@@ -84,6 +84,64 @@
                 console.log("通信失败");
             }
         });
+
+        var audio = document.getElementById('music').getElementsByTagName('audio')[0];
+        var user_off = "{:session('musics')}";
+        var img = $('#music').find('#images');
+        var switchs = '{$data.backGroundMusic.switch}';
+        var images = document.getElementById('images');
+        var current = 0;
+        var timeout = '';
+
+        function timer() {
+            timeout = setInterval(function () {
+                images.style.transform = 'rotate(' + current + 'deg)';
+                current++;
+                if (current == 360) {
+                    current = 0;
+                }
+            }, 30);
+        }
+
+
+        audio.pause();
+
+        $(document).on('click', '#music', function () {
+            let ons = 0;
+
+            if (img.attr('src') == 'https://static.yc.junyiqiche.com/yinchuan/mp3_log_img/on1.png') {
+                audio.pause();
+                img.attr('src', 'https://static.yc.junyiqiche.com/yinchuan/mp3_log_img/off1.png');
+                clearInterval(timeout);
+            } else {
+                clearInterval(timeout);
+                // $('#music').find('audio').trigger('play');
+                audio.play();
+                img.attr('src', 'https://static.yc.junyiqiche.com/yinchuan/mp3_log_img/on1.png');
+                ons = 1;
+                timer();
+            }
+
+            $.get('{:url("index/music")}', {ons: ons});
+
+        })
+
+        //--创建页面监听，等待微信端页面加载完毕 触发音频播放
+        document.addEventListener('WeixinJSBridgeReady', function () {
+
+            if (user_off == 1) {
+                audio.play();
+                timer();
+                return;
+            } else if (user_off == 0) {
+                audio.pause();
+                return;
+            }
+
+            switchs ? audio.play() : audio.pause();
+
+
+        })
     }
 
 
@@ -299,6 +357,7 @@
         // alert(3);
         $(this).bind("click", {index: i}, function () {
             var that = this;
+            var indexLoad = layer.load();
             var ticket = $(this).parent().find('.votes-index').text();
             ticket = ticket.replace(/[^0-9]/ig, "");
             var check = $(this).parent();
@@ -326,7 +385,7 @@
                 data: {application_id: application_id, user_id: user_id},
                 dataType: "json",
                 success: function (data) {
-
+                    layer.close(indexLoad);
                     layer.msg(data);
 
                     var html = !check ? '<i class="fa fa-line-chart"\n' +

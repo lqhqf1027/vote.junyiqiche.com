@@ -92,6 +92,21 @@
         <!-- <div><img src="http://assets.youzhan.org/img/8/f4/d8ece1342920b4388c8174d349925.jpg"></img></div> -->
         {/foreach}
     </div>
+    <div style="position:absolute;right: 5%;top: 15%" id="music">
+        <audio src="{$data.backGroundMusic.url}"  loop="loop">
+        </audio>
+        {if condition="$Think.session.musics==1"}
+        <img src="https://static.yc.junyiqiche.com/yinchuan/mp3_log_img/on1.png" alt="" width="30" id="images">
+        {elseif condition="$Think.session.musics==0"/}
+        <img src="https://static.yc.junyiqiche.com/yinchuan/mp3_log_img/off1.png" alt="" width="30" id="images">
+        {else /}
+        {eq name="$data.backGroundMusic.switch" value="1"}
+        <img src="https://static.yc.junyiqiche.com/yinchuan/mp3_log_img/on1.png" alt="" width="30" id="images">
+        {else /}
+        <img src="https://static.yc.junyiqiche.com/yinchuan/mp3_log_img/off1.png" alt="" width="30" id="images">
+        {/eq}
+        {/if}
+    </div>
 </div>
 <div class="layui-container">
     <div class="head_body" style="">
