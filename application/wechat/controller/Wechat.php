@@ -8,6 +8,9 @@ use think\Loader;
 use think\Config;
 use think\Db;
 use think\Session;
+use wechat\Wx;
+use app\admin\model\Wechatuser;
+
 class Wechat extends Controller
 {
 
@@ -21,14 +24,16 @@ class Wechat extends Controller
      */
     protected $model = '';
     //微信授权配置信息
-    private $wechat_config = [
-        'appid' => '',
-        'appsecret' => '',
-    ];
+    private $Wxapis;
 
     public function __construct()
     {
-        $this->wechat_config = $this->wechatConfig();
+        $this->Wxapis = new Wx(Config::get('oauth')['appid'], Config::get('oauth')['appsecret']);
+    }
+
+    public function getCodes()
+    {
+        $this->Wxapis->getWxUser('https://vote.junyiqiche.com/wechat/Wechat/adduser');
     }
 
     /**
@@ -41,70 +46,46 @@ class Wechat extends Controller
         return $wechat_config;
     }
 
-    /*获取用户信息插入数据库*/
+    /**
+     * Notes:获取用户信息插入数据库
+     * User: glen9
+     * Date: 2019/1/15
+     * Time: 23:33
+     * @throws \think\exception\DbException
+     */
     public function adduser()
     {
-        // 获取页面URL的CODE参数，判断是否有值
-        if (isset($_GET['code'])) {
-            // 获取openid和access_token
-            $code = $_GET['code'];
-            // 发送请求，获取用户openid和access_token
-            $data = $this->get_by_curl('https://api.weixin.qq.com/sns/oauth2/access_token?appid=' . $this->wechat_config['appid'] . '&secret=' . $this->wechat_config['appsecret'] . '&code=' . $code . '&grant_type=authorization_code');
-            $data = json_decode($data);
-
-            // 防止第二次访问动态链接报错
-            // 判断是否获取到当前用户的openid
-            if (isset($data->openid)) {
-
-                $open_id = $data->openid;
-                $access_token = $data->access_token;
-
-                // 获取当前用户信息
-                $user_info = $this->get_by_curl('https://api.weixin.qq.com/sns/userinfo?access_token=' . $access_token . '&openid=' . $open_id . '&lang=zh_CN');
-                $user_info = json_decode($user_info, true);
-                $user_info['nickname'] = htmlspecialchars($user_info['nickname']);
-                unset($user_info['privilege']);
-                // 判断用户是否存在
-                $data_user = Db::name('wechat_user')->where(['openid' => $user_info['openid']])->find();
-                if (empty($data_user)) {
-
-                    // 新增用户到数据库
-                    $insertsId = Db::name('wechat_user')->insertGetId($user_info);
-                    if ($insertsId) {
-                        $res = self::getUser($insertsId);
-                        Session::set('MEMBER', $res);
-                        $this->redirect('Index/index/index');
-                    } else {
-                        die('<h1 class="text-center">用户新增失败</h1>');
-                    }
-                } else {
-
-
-                    // 判断当前用户是否修改过信息,若有变动则更新
-                    if (strcmp($data_user['nickname'], $user_info['nickname']) != 0 || strcmp($data_user['headimgurl'], $user_info['headimgurl']) != 0) {
-
-                        $data_user['nickname'] = $user_info['nickname'];
-                        $data_user['headimgurl'] = $user_info['headimgurl'];
-                        // 更新当前用户信息
-                        Db::name('wechat_user')->update($data_user);
-                    }
-                    Session::set('MEMBER', $data_user);
-                    $this->redirect('Index/index/index');
-
-                }
-
-
+        $this->model = model('app\admin\model\Wechatuser');
+        if (\session('wx_state') != $_GET['state']) {
+            $this->getCodes();
+            die();
+        }
+        $userInfo = $this->Wxapis->WxUserInfo($_GET['code']);
+        $userInfo['nickname'] = htmlspecialchars($userInfo['nickname']);
+        $user_data = Wechatuser::get(['openid' => $userInfo['openid']]);
+        $user_data = $user_data ? $user_data->getData() : '';
+        unset($userInfo['privilege']);
+        if (empty($user_data)) {
+            $res = Wechatuser::create($userInfo)->getData();
+            if ($res) {
+                Session::set('MEMBER', $res);
+                $this->redirect('Index/index/index');
+            } else {
+                die('<h1 class="text-center">用户新增失败</h1>');
             }
-            die('<h1 class="text-center">获取用户信息失败</h1>');
+        } else {
+            if (strcmp($user_data['nickname'], $userInfo['nickname']) != 0 || strcmp($user_data['headimgurl'], $userInfo['headimgurl']) != 0) {
+                $user_data['nickname'] = $userInfo['nickname'];
+                $user_data['headimgurl'] = $userInfo['headimgurl'];
+                // 更新当前用户信息
+                Wechatuser::update($user_data);
+            }
+
+            Session::set('MEMBER', $user_data);
+            $this->redirect('Index/index/index');
 
         }
     }
-
-    public static function getUser($userId)
-    {
-        return Db::name('wechat_user')->where(['id' => $userId])->find();
-    }
-
     // 用于请求微信接口获取数据
     public function get_by_curl($url, $post = false)
     {
