@@ -20,7 +20,14 @@ class Application extends Model
     protected $append = [
 
     ];
-
+    /**
+     * 自动获取转义 投票名称
+     * @param $value
+     * @return null|string|string[]
+     */
+    public function getNameAttr($value){
+        return emoji_decode($value);
+    }
 
     public function wechat()
     {
