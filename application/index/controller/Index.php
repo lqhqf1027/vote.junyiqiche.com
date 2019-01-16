@@ -22,6 +22,7 @@ class Index extends Frontend
     protected $noNeedRight = '*';
     protected $layout = '';
     protected $model = '';
+    protected $a = 1;
 
     public function _initialize()
     {
