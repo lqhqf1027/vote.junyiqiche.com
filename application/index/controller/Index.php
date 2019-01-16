@@ -109,9 +109,9 @@ class Index extends Frontend
     {
         if ($this->request->isPost()) {
             $res = new Application();
-            $res_new = $this->request->post()['datas'];
-            $res_new['name'] = htmlspecialchars($res_new['name']);
-            $data = $res->allowField(true)->save($res_new);
+            $data_new = $this->request->post()['datas'];
+            $data_new['name'] = emoji_encode($data_new['name']);
+            $data =  $res->allowField(true)->save($data_new);
             if ($data) {
                 $this->success('报名成功！');
             } else {
