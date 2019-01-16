@@ -61,13 +61,14 @@ class Wechat extends Controller
             die();
         }
         $userInfo = $this->Wxapis->WxUserInfo($_GET['code']);
-        $userInfo['nickname'] = htmlspecialchars($userInfo['nickname']);
+        $userInfo['nickname'] = emoji_encode($userInfo['nickname']); //昵称转义
         $user_data = Wechatuser::get(['openid' => $userInfo['openid']]);
         $user_data = $user_data ? $user_data->getData() : '';
         unset($userInfo['privilege']);
         if (empty($user_data)) {
             $res = Wechatuser::create($userInfo)->getData();
             if ($res) {
+                $res['nickname'] = emoji_decode($res['nickname']);//表情解密,存入session
                 Session::set('MEMBER', $res);
                 $this->redirect('Index/index/index');
             } else {
@@ -80,12 +81,13 @@ class Wechat extends Controller
                 // 更新当前用户信息
                 Wechatuser::update($user_data);
             }
-
+            $user_data['nickname'] = emoji_decode($user_data['nickname']);//表情解密,存入session
             Session::set('MEMBER', $user_data);
             $this->redirect('Index/index/index');
 
         }
     }
+
     // 用于请求微信接口获取数据
     public function get_by_curl($url, $post = false)
     {

@@ -49,7 +49,7 @@
                     jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
                 });
                 wx.ready(function () {
-                    wx.checkJsApi({
+                 /*   wx.checkJsApi({
                         jsApiList: [
                             'getNetworkType',
                             'previewImage'
@@ -57,7 +57,7 @@
                         success: function (res) {
                             // alert("checkJsApi=="+ JSON.stringify(res));
                         }
-                    });
+                    });*/
                     wx.onMenuShareTimeline({
                         title: '{$share_title}', // 分享标题
                         link: s.url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
