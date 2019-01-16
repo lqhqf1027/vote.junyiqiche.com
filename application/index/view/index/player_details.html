@@ -38,12 +38,12 @@
 
         </div>
 
-        <div class="layui-col-xs12"  id="details" style="margin-bottom: 10px">
-            <div style="margin-left: 5%; color: gray">{$data['playerDetail']['name']}</div>
-            <div style="margin-left: 8%">加入车型：{$data['playerDetail']['model']}</div>
-            <div style="margin-left: 8%">日均流水：{$data['playerDetail']['daily_running_water']}</div>
-            <div style="margin-left: 8%">服务分：{$data['playerDetail']['service_points']}</div>
-            <div style="margin-left: 8%">自我描述：{$data['playerDetail']['describe_yourself']}</div>
+        <div class="layui-col-xs12"  id="details" style="padding: 10px 20px ">
+            <h3 style=" color: gray" class="application_name"><i class="fa fa-user"></i> {$data['playerDetail']['name']}</h3>
+            <p style="">加入车型：{$data['playerDetail']['model']}</p>
+            <p style="">日均流水：{$data['playerDetail']['daily_running_water']}</p>
+            <p style="">服务分：{$data['playerDetail']['service_points']}</p>
+            <p style="">自我描述：{$data['playerDetail']['describe_yourself']}</p>
         </div>
         <div class="layui-col-xs12 text-center" style="margin-bottom: 10px">
             <div style="color: orange" class="votes-index">当前票数：{$data['playerDetail']['votes']}票</div>

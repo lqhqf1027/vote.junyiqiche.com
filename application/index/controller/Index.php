@@ -23,6 +23,7 @@ class Index extends Frontend
     protected $layout = '';
     protected $model = '';
 
+
     public function _initialize()
     {
         parent::_initialize();
@@ -329,7 +330,11 @@ class Index extends Frontend
         $isTodayVote = 0;
         //判断该用户是否报过名
         $is_application = 0;
+
+
+
         if ($this->user_id == true) {
+
             //已经投票的ID
             $voted_id = Record::where('wechat_user_id', $this->user_id)->whereTime('votetime', 'today')->column('application_id');
 
@@ -349,6 +354,9 @@ class Index extends Frontend
             }
         }
 
+        $backMusicUrl = ConfigModel::get(['name'=>'link'])->value;
+        $backMusicSwitch = ConfigModel::get(['name'=>'switch'])->value;
+
         return [
             'bannerList' => $bannerList,
             'voteEndTime' => $voteEndTime,
@@ -356,6 +364,10 @@ class Index extends Frontend
                 'applicationCount' => $applicationCount,
                 'voteCount' => $voteCount,
                 'visitCount' => $visitCount
+            ],
+            'backGroundMusic'=>[
+                'url'=>$backMusicUrl,
+                'switch'=>$backMusicSwitch
             ],
             'is_application' => $is_application,
             'isTodayVote' => $isTodayVote,
@@ -433,7 +445,7 @@ class Index extends Frontend
      */
     public function playerDetails($application_id)
     {
-        $info = $this->playerInfo(['status' => 'normal'], 'id,name,applicationimages,votes,model,daily_running_water,service_points', $application_id);
+        $info = $this->playerInfo(['status' => 'normal'], 'id,name,applicationimages,votes,model,daily_running_water,service_points,describe_yourself', $application_id);
 
         $data = array_merge($this->publicData(), ['playerDetail' => $info[0]]);
 
@@ -460,6 +472,11 @@ class Index extends Frontend
 
         return json_encode($data);
 
+    }
+
+    public function music()
+    {
+        Session::set('musics',input('ons'));
     }
 
 
