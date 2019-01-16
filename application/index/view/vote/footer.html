@@ -298,6 +298,7 @@
 
 
     var isTodayVote = "{$data.isTodayVote}";
+    var isOverdue = "{$data.isOverdue}";
     if (isTodayVote == 0) {
         localStorage.removeItem("application_name");
         localStorage.removeItem("application_id");
@@ -312,6 +313,12 @@
     $(".voting").each(function (i) {
         // alert(3);
         $(this).bind("click", {index: i}, function () {
+
+            if (isOverdue == 2) { 
+                layer.msg('该活动已经结束了哦~');
+
+                return;
+            }
 
             var that = this;
 
