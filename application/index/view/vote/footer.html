@@ -92,7 +92,6 @@
         var images = document.getElementById('images');
         var current = 0;
         var timeout = '';
-
         function timer() {
             timeout = setInterval(function () {
                 images.style.transform = 'rotate(' + current + 'deg)';
@@ -107,7 +106,7 @@
         audio.pause();
 
         $(document).on('click', '#music', function () {
-            let ons = 0;
+            let ons = 2;
 
             if (img.attr('src') == 'https://static.yc.junyiqiche.com/yinchuan/mp3_log_img/on1.png') {
                 audio.pause();
@@ -138,8 +137,12 @@
                 return;
             }
 
-            switchs ? audio.play() : audio.pause();
-
+            if(switchs){
+                audio.play();
+                timer();
+            }else{
+                audio.pause();
+            }
 
         })
     }

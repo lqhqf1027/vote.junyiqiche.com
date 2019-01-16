@@ -49,10 +49,10 @@ class Frontend extends Controller
 
     public function _initialize()
     {
-        if(!session('MEMBER')){
-                $wx = new Wechat();
-                $wx->getCodes();
-        }
+//        if(!session('MEMBER')){
+//                $wx = new Wechat();
+//                $wx->getCodes();
+//        }
         //移除HTML标签
         $this->request->filter('strip_tags');
         $modulename = $this->request->module();
