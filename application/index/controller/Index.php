@@ -43,12 +43,12 @@ class Index extends Frontend
 
 //        pr($res);die;
 
-        $contestant = $this->playerInfo(['status' => 'normal'], 'id,name,applicationimages,votes');
+//        $contestant = $this->playerInfo(['status' => 'normal'], 'id,name,applicationimages,votes');
 
         $contestant = Application::field('id,name,applicationimages,votes,wechat_user_id')
             ->with(['wechat' => function ($q) {
                 $q->withField('id,sex');
-            }])->where(['status' => 'normal'])->paginate(10);
+            }])->where(['status' => 'normal'])->order('id desc')->paginate(10);
 
 
 //        pr($_SERVER);die;
