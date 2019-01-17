@@ -48,7 +48,7 @@ class Index extends Frontend
         $contestant = Application::field('id,name,applicationimages,votes,wechat_user_id')
             ->with(['wechat' => function ($q) {
                 $q->withField('id,sex');
-            }])->where(['status' => 'normal'])->order('id desc')->paginate(10);
+            }])->where(['status' => 'normal'])->order('id desc')->paginate(20);
 
 
 //        pr($_SERVER);die;
