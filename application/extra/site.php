@@ -41,7 +41,7 @@ return array (
   'share_body' => '网络人气司机奖！',
   'share_img' => '/yinchuan/uploads/20190114/88d132d2f7f45e0838cd797f88928734.png',
   'vote' => '2019-01-14 00:00:00',
-  'vote_end' => '2019-01-25 23:59:59',
+  'vote_end' => '2019-01-20 23:59:59',
   'vote_rules' => '<div><img src="https://static.yc.junyiqiche.com/yinchuan/uploads/20190116/c2d205d293f16c492c3c7253f80b97ff.png" style="width: 689px;" data-filename="filename"><br></div><p></p>',
   'link' => 'http://other.web.ra01.sycdn.kuwo.cn/resource/n3/128/95/48/582978519.mp3',
   'switch' => '1',
