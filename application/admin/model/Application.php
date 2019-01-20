@@ -20,6 +20,7 @@ class Application extends Model
     protected $append = [
 
     ];
+
     /**
      * 自动获取转义 投票名称
      * @param $value
@@ -29,7 +30,7 @@ class Application extends Model
         return emoji_decode($value);
     }
 
-    public function wechat()
+    public function wechatUser()
     {
         return $this->belongsTo('Wechatuser', 'wechat_user_id', 'id', [], 'LEFT')->setEagerlyType(0);
     }

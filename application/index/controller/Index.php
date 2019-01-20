@@ -21,65 +21,73 @@ class Index extends Frontend
     protected $noNeedLogin = '*';
     protected $noNeedRight = '*';
     protected $layout = '';
-    protected $model = '';
-
 
     public function _initialize()
     {
         parent::_initialize();
+
     }
 
     public function index()
     {
 
-//        $this->model = model('app\admin\model\Wechatuser');
-//        $wchat = new \wechat\WechatOauth();
-//        if(!Session::get('MEMBER')){
-//            $code = request()->param('code',"");
-//            $user = $wchat->getUserAccessUserInfo($code);
-//            $res = $this->model->allowField(true)->save($user);
-//
-//        }
-
-//        pr($res);die;
-
 //        $contestant = $this->playerInfo(['status' => 'normal'], 'id,name,applicationimages,votes');
 
-        $contestant = Application::field('id,name,applicationimages,votes,wechat_user_id')
-            ->with(['wechat' => function ($q) {
+        $contestant = Application::field('id,name,applicationimages,votes,describe_yourself')
+            ->with(['wechatUser' => function ($q) {
                 $q->withField('id,sex');
             }])->where(['status' => 'normal'])->order('id desc')->paginate(20);
 
 
-//        pr($_SERVER);die;
         $pages = $contestant->render();
 
         $contestant = $contestant->toArray();
+
         foreach ($contestant['data'] as $k => $v) {
             $contestant['data'][$k]['applicationimages'] = $v['applicationimages'] ? explode(';', $v['applicationimages'])[0] : '';
             $contestant['data'][$k]['is_vote'] = 0;
+
         }
+        if ($contestant['data']) {
 
 
-        if (!$this->user_id) {
-            //已经投票的ID
-            $voted_id = Record::where('wechat_user_id', $this->user_id)->whereTime('votetime', 'today')->column('application_id');
+            $arr = array_values(arraySort($contestant['data'], 'votes', 1));
 
-            if ($voted_id) {
-                foreach ($contestant['data'] as $k => $v) {
-                    $contestant['data'][$k]['is_vote'] = in_array($v['id'], $voted_id) ? 1 : 0;
+            $arr = [array_merge($arr[0], ['prize' => 'https://static.yc.junyiqiche.com/uploads/top1.png']), array_merge($arr[1], ['prize' => 'https://static.yc.junyiqiche.com/uploads/top2.png']), array_merge($arr[2], ['prize' => 'https://static.yc.junyiqiche.com/uploads/top3.png'])];
+
+            foreach ($contestant['data'] as $k => $v) {
+                foreach ($arr as $key => $value) {
+                    if ($v['id'] == $value['id']) {
+                        unset($contestant['data'][$k]);
+                    }
                 }
             }
+            $as = $contestant['data'];
+            $contestant['data'] = [];
+            $contestant['data']['prize'] = $arr;
+            $contestant['data']['normal'] = $as;
+            if (!$this->user_id) {
+                //已经投票的ID
+                $voted_id = Record::where('wechat_user_id', $this->user_id)->whereTime('votetime', 'today')->column('application_id');
 
+                if ($voted_id) {
+                    foreach ($contestant['data']['normal'] as $k => $v) {
+                        $contestant['data']['normal'][$k]['is_vote'] = in_array($v['id'], $voted_id) ? 1 : 0;
+                    }
+                }
+
+
+            }
 
         }
-        //pr($contestant);
         $data = array_merge($this->publicData(), ['contestantList' => $contestant]);
 
-        $this->view->assign(['data' => $data,
-            'page' => $pages
-        ]);
+        //pr($contestant);
+            $this->view->assign(['data' => $data,
+                'page' => $pages
+            ]);
 
+//        pr($data);die;
         return $this->view->fetch();
     }
 
@@ -112,6 +120,9 @@ class Index extends Frontend
             $res = new Application();
             $data_new = $this->request->post()['datas'];
             $data_new['name'] = emoji_encode($data_new['name']);
+            $data_new['describe_yourself'] = emoji_encode($data_new['describe_yourself']);
+
+            $data = $res->allowField(true)->save($data_new);
             //判断是否重复报名
             $check = Application::get(['name'=>$data_new['name'],'applicationimages'=>$data_new['applicationimages']]);
 
@@ -339,7 +350,6 @@ class Index extends Frontend
         $is_application = 0;
 
 
-
         if ($this->user_id == true) {
 
             //已经投票的ID
@@ -361,8 +371,8 @@ class Index extends Frontend
             }
         }
 
-        $backMusicUrl = ConfigModel::get(['name'=>'link'])->value;
-        $backMusicSwitch = ConfigModel::get(['name'=>'switch'])->value;
+        $backMusicUrl = ConfigModel::get(['name' => 'link'])->value;
+        $backMusicSwitch = ConfigModel::get(['name' => 'switch'])->value;
 
         return [
             'bannerList' => $bannerList,
@@ -372,9 +382,9 @@ class Index extends Frontend
                 'voteCount' => $voteCount,
                 'visitCount' => $visitCount
             ],
-            'backGroundMusic'=>[
-                'url'=>$backMusicUrl,
-                'switch'=>$backMusicSwitch
+            'backGroundMusic' => [
+                'url' => $backMusicUrl,
+                'switch' => $backMusicSwitch
             ],
             'is_application' => $is_application,
             'isTodayVote' => $isTodayVote,
@@ -417,15 +427,17 @@ class Index extends Frontend
     public function playerInfo($where, $field, $select = null, $page = null)
     {
         $contestant = collection(Application::field($field)
-            ->with(['wechat' => function ($q) {
+            ->with(['wechatUser' => function ($q) {
                 $q->withField('id,sex');
-            }])->where($where)->page($page)->select($select))->toArray();
+            }])->where($where)->order('id desc')->page($page)->select($select))->toArray();
 
         foreach ($contestant as $k => $v) {
             $contestant[$k]['applicationimages'] = $v['applicationimages'] ? explode(';', $v['applicationimages'])[0] : '';
             $contestant[$k]['is_vote'] = 0;
         }
-        if (!$this->user_id) {
+
+
+        if ($this->user_id == true) {
             //已经投票的ID
             $voted_id = Record::where('wechat_user_id', $this->user_id)->whereTime('votetime', 'today')->column('application_id');
 
@@ -455,7 +467,7 @@ class Index extends Frontend
         $info = $this->playerInfo(['status' => 'normal'], 'id,name,applicationimages,votes,model,daily_running_water,service_points,describe_yourself', $application_id);
 
         $data = array_merge($this->publicData(), ['playerDetail' => $info[0]]);
-
+        $data['describe_yourself'] = emoji_decode($data['describe_yourself']);
         $this->view->assign('data', $data);
 
         return $this->view->fetch();
@@ -483,7 +495,7 @@ class Index extends Frontend
 
     public function music()
     {
-        Session::set('musics',input('ons'));
+        Session::set('musics', input('ons'));
     }
 
     public function clearSong()

@@ -44,13 +44,12 @@
             <p style="">日均流水：{$data['playerDetail']['daily_running_water']}</p>
             <p style="">服务分：{$data['playerDetail']['service_points']}</p>
             <p style="">自我描述：{$data['playerDetail']['describe_yourself']}</p>
+            <div class="layui-col-xs12 text-center" style="margin-bottom: 10px">
+                <div style="color: orange" class="votes-index">当前票数：{$data['playerDetail']['votes']}票</div>
+            </div>
         </div>
-        <div class="layui-col-xs12 text-center" style="margin-bottom: 10px">
-            <div style="color: orange" class="votes-index">当前票数：{$data['playerDetail']['votes']}票</div>
-        </div>
-        
 
-        <div class="layui-col-xs12 text-center voting col-xs-3" style="background-color: rgb(241,141,27);color: #fff;">
+        <div class="layui-col-xs12 text-center voting col-xs-3" style="background-color: rgb(241,141,27);color: #fff;margin: 20px 0">
 
             <a href="javascript:void(0)" class="btn  send_vote" style="">投票给<strong style="font-size: 15px" class=" application_id">{$data['playerDetail']['id']}</strong>号</a>
 

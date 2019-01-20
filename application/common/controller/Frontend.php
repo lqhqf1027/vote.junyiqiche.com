@@ -3,15 +3,14 @@
 namespace app\common\controller;
 
 use app\common\library\Auth;
-use app\wechat\controller\Wechat;
 use think\Config;
 use think\Controller;
 use think\Hook;
 use think\Lang;
+use app\wechat\controller\Wechat;
 use app\common\model\Config as ConfigModel;
 use think\Session;
 use wechat\Wx;
-
 /**
  * 前台控制器基类
  */
@@ -49,10 +48,12 @@ class Frontend extends Controller
 
     public function _initialize()
     {
-//        if(!session('MEMBER')){
-//                $wx = new Wechat();
-//                $wx->getCodes();
-//        }
+
+        //微信登陆验证
+     /*    if(!session('MEMBER')){
+            $wx = new Wechat();
+            $wx->getCodes();
+        }*/
         //移除HTML标签
         $this->request->filter('strip_tags');
         $modulename = $this->request->module();
@@ -78,8 +79,7 @@ class Frontend extends Controller
             $this->auth->init($token);
             //检测是否登录
             if (!$this->auth->isLogin()) {
-                $this->redirect('admin/user/login');
-//                $this->error(__('Please login first'), 'user/login');
+                $this->error(__('Please login first'), 'user/login');
             }
             // 判断是否需要验证权限
             if (!$this->auth->match($this->noNeedRight)) {
@@ -131,6 +131,7 @@ class Frontend extends Controller
         $user_id = session('MEMBER');
         $this->user_id = $user_id ? $user_id['id'] : 0;
         $this->assign('user_id', $this->user_id);
+
         //卡片分享参数
         $shareData = ConfigModel::where('name', ['eq', 'share_title'], ['eq', 'share_body'], ['eq', 'share_img'], 'or')->column('value');
         $this->assign(['share_title' => $shareData[2], 'share_body' => $shareData[0], 'share_img' => Config::get('upload')['cdnurl'] . $shareData[1]]);

@@ -7,9 +7,9 @@
 </style>
 <div class="text-center footer_box">
     <div class="layui-row row_style" id="title">
-        <div class="layui-col-xs4 item {if $Request.action == 'index'} bg_ourigin {/if}" id="vote">全部参赛</div>
-        <div class="layui-col-xs4 item {if $Request.action == 'ranking'} bg_ourigin {/if}" id="ranking">当前排名</div>
-        <div class="layui-col-xs4 item {if $Request.action == 'rules'} bg_ourigin {/if}" id="rules">活动规则</div>
+        <div class="layui-col-xs4 item {if $Request.action == 'index'} bg-infos {/if}" id="vote">全部参赛</div>
+        <div class="layui-col-xs4 item {if $Request.action == 'ranking'} bg-infos {/if}" id="ranking">当前排名</div>
+        <div class="layui-col-xs4 item {if $Request.action == 'rules'} bg-infos {/if}" id="rules">活动规则</div>
 
     </div>
 </div>
@@ -129,12 +129,18 @@
         //--创建页面监听，等待微信端页面加载完毕 触发音频播放
         document.addEventListener('WeixinJSBridgeReady', function () {
             var user_off = "{:session('musics')}";
-
             if (user_off == 1) {
                 audio.play();
                 timer();
+                return;
             } else if (user_off == 2) {
                 audio.pause();
+                return;
+            }
+
+            if(switchs == 1){
+                audio.play();
+                timer();
             }else{
                 var switchs = '{$data.backGroundMusic.switch}';
                 if(switchs == 1){
@@ -436,7 +442,6 @@
         });
         
     });
-
 </script>
 </body>
 
