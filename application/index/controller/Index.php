@@ -123,6 +123,14 @@ class Index extends Frontend
             $data_new['describe_yourself'] = emoji_encode($data_new['describe_yourself']);
 
             $data = $res->allowField(true)->save($data_new);
+            //判断是否重复报名
+            $check = Application::get(['name'=>$data_new['name'],'applicationimages'=>$data_new['applicationimages']]);
+
+            if(!$check){
+                $data =  $res->allowField(true)->save($data_new);
+            }else{
+                $this->error('不能重复报名');
+            }
             if ($data) {
                 $this->success('报名成功！');
             } else {
@@ -488,6 +496,11 @@ class Index extends Frontend
     public function music()
     {
         Session::set('musics', input('ons'));
+    }
+
+    public function clearSong()
+    {
+        Session::delete('musics');
     }
 
 

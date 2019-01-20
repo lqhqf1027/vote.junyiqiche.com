@@ -89,7 +89,7 @@
         var audio = document.getElementById('music').getElementsByTagName('audio')[0];
 
         var img = $('#music').find('#images');
-        var switchs = '{$data.backGroundMusic.switch}';
+
         var images = document.getElementById('images');
         var current = 0;
         var timeout = '';
@@ -142,12 +142,19 @@
                 audio.play();
                 timer();
             }else{
-                audio.pause();
+                var switchs = '{$data.backGroundMusic.switch}';
+                if(switchs == 1){
+                    audio.play();
+                    timer();
+                }else{
+                    audio.pause();
+                }
             }
+
+
 
         })
     }
-
 
     layui.use(['carousel', 'form', 'flow', 'upload', 'element'], function () {
         var $ = layui.jquery;
