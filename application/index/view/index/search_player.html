@@ -57,6 +57,7 @@
         width: auto;
         height: 250px;
     }
+
 </style>
 
         <form class="layui-form layui-form-pane " action="/index/index/searchPlayer" method="post">
@@ -79,7 +80,6 @@
             <div class=" flex_content">
                 <div class="thumbnail item_box" style="">
                     <a href="/index/index/playerDetails?application_id={$v['id']}" ><img src="{$_SERVER.REQUEST_SCHEME}://{$_SERVER.SERVER_NAME}/{$v['applicationimages']}" alt="..."></a>
-
                     <div class="row text-center  " style="margin: 0">
                         <div class="layui-col-xs6 pd_tb10-lr0 pull-left" >
                             <h4 style="font-weight: bold" class="application_name"><i class="fa {if $v['wechat_user']['sex'] == '1'} fa-male {else/} fa-female {/if}" aria-hidden="true"

@@ -55,7 +55,7 @@
     }
 
     .ctivity-time {
-        margin-top: 35px;
+        margin-top: 20px;
     }
 
     .footer_box .row_style {
@@ -68,16 +68,33 @@
     .footer_box .item {
         padding: 15px 0;
     }
-    .bg_ourigin{
-        background-color: rgb(241,141,27);
+
+    .bg-infos {
+        background-color: #009688;
         color: #fff;
 
     }
-    .bg_ourigin.voting{
+
+    .bg_ourigin.voting {
         border-bottom-left-radius: 10px;
-        border-bottom-right-radius:10px;
+        border-bottom-right-radius: 10px;
         border-top-left-radius: 0px;
-        border-top-right-radius:0px;
+        border-top-right-radius: 0px;
+    }
+
+    .btn-infos .layui-btn {
+
+    }
+
+    .btn-group-c
+    .btn:focus,
+    .btn:active:focus,
+    .btn.active:focus,
+    .btn.focus,
+    .btn:active.focus,
+    .btn.active.focus {
+        outline: none;
+        color: #fff;
     }
 </style>
 
@@ -85,6 +102,8 @@
 
 
 <div class="layui-carousel" id="test1">
+
+
     <div carousel-item>
         {foreach $data['bannerList'] as $k => $v}
         <div><img src="{$config['upload']['cdnurl']}/{$v['rotationimage']}" style=""></img>
@@ -93,7 +112,7 @@
         {/foreach}
     </div>
     <div style="position:absolute;right: 5%;top: 15%" id="music">
-        <audio src="{$data.backGroundMusic.url}"  loop="loop">
+        <audio src="{$data.backGroundMusic.url}" loop="loop">
         </audio>
         {if condition="$Think.session.musics==1"}
         <img src="https://static.yc.junyiqiche.com/yinchuan/mp3_log_img/on1.png" alt="" width="30" id="images">
@@ -109,124 +128,149 @@
     </div>
 </div>
 <div class="layui-container">
-    <div class="head_body" style="">
-        <div class="layui-row text-center ">
-            <div class="layui-col-xs12 headBox" style="">
-                <div class="layui-row pd_12" style="font-weight: bold;font-size: 16px;">
-                    <div class="layui-col-xs4">{$data['statistics']['applicationCount']}</div>
-                    <div class="layui-col-xs4 voteCount">{$data['statistics']['voteCount']}</div>
-                    <div class="layui-col-xs4">{$data['statistics']['visitCount']}</div>
-                </div>
-                <div class="layui-row " style="padding-bottom: 8px;">
-                    <div class="layui-col-xs4 headBoxColor"><i class="layui-icon layui-icon-user"></i> 参赛者</div>
-                    <div class="layui-col-xs4 headBoxColor"><i class="fa fa-line-chart" aria-hidden="true"></i> 投票数
+    <div class=" " style="background-color: #fff">
+        <div class="head_body" style="">
+            <div class="layui-row text-center ">
+                <div class="layui-col-xs12 " style="">
+                    <div class="layui-row pd_12" style="font-weight: bold;font-size: 16px;">
+                        <div class="layui-col-xs4">{$data['statistics']['applicationCount']}</div>
+                        <div class="layui-col-xs4 voteCount">{$data['statistics']['voteCount']}</div>
+                        <div class="layui-col-xs4">{$data['statistics']['visitCount']}</div>
                     </div>
-                    <div class="layui-col-xs4  headBoxColor"><i class="fa fa-eye"></i> 访问量</div>
+                    <div class="layui-row " style="padding-bottom: 8px;color: #D2D2D2">
+                        <div class="layui-col-xs4 "><i class="layui-icon layui-icon-user"></i> 参赛者</div>
+                        <div class="layui-col-xs4 "><i class="fa fa-line-chart" aria-hidden="true"></i> 投票数
+                        </div>
+                        <div class="layui-col-xs4  "><i class="fa fa-eye"></i> 访问量</div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class=" ctivity-time" style="">
-        <div class="layui-row text-center ">
-            <div class="layui-col-xs12 headBox " style="padding: 8px 0;">
-                <i class="layui-icon layui-icon-log" aria-hidden="true" style=""></i>
-                <span>投票于</span>
-                <!-- {$data['voteEndTime']} -->
-                <span class="bg-danger text-danger border-raduis-5">1</span>月
-                <span class="bg-danger text-danger border-raduis-5">25</span>日
-                <span class="bg-danger text-danger border-raduis-5">23</span>时
-                <span class="bg-danger text-danger border-raduis-5">59</span>分
-                <span class="bg-danger text-danger border-raduis-5">59</span>秒
-                <span class="text-danger">结束</span>
+        <div class=" ctivity-time" style="">
+            <div class="layui-row text-center ">
+                <div class="layui-col-xs12  " style="padding: 8px 0;">
+                    <i class="layui-icon layui-icon-log" aria-hidden="true" style=""></i>
+                    <span>投票于</span>
+                    <!-- {$data['voteEndTime']} -->
+                    <span class="bg-danger text-danger border-raduis-5">1</span>月
+                    <span class="bg-danger text-danger border-raduis-5">25</span>日
+                    <span class="bg-danger text-danger border-raduis-5">23</span>时
+                    <span class="bg-danger text-danger border-raduis-5">59</span>分
+                    <span class="bg-danger text-danger border-raduis-5">59</span>秒
+                    <span class="text-danger">结束</span>
+
+                </div>
+
+            </div>
+
+            <div class="layui-row   btn-infos btn-group-c" style="padding:20px;color: #fff">
+                <!-- {if $data['is_application'] == 1}
+                 <button class="btn    " id="details"  style="width: 80%; background-color: #d2d2d2">
+                     已报名，查看我的报名信息
+                 </button>
+                 {else /}
+                 <button class="btn btn-info " data-toggle="modal" data-target="#exampleModal" style="width: 80%">
+                     我要报名
+                 </button>
+                 {/if}-->
+                {if $data['is_application'] == 1}
+                <div class="layui-col-xs12  ">
+                    <button class="btn   " id="details" style=" background-color:  rgb(93,190,223);width: 100%">
+                        <i class="fa fa-eye"></i> 已报名,查看报名信息
+                    </button>
+                </div>
+               <!-- <div class="layui-col-xs8  text-right">
+                    <button class="btn   btn-sm" style="background-color: #FF5722"><i
+                            class="layui-icon layui-icon-share " style="font-size: 12px;"></i>
+                        分享给好友助力！
+                    </button>
+                </div>-->
+                {else /}
+                <div class="layui-col-xs12 text-left ">
+                    <button class="btn   " data-toggle="modal" data-target="#exampleModal" style="width: 100%;background-color: #009688">
+                        我要报名
+                    </button>
+                </div>
+                {/if}
+
 
             </div>
 
         </div>
-
-        <div class="layui-row text-center " style="padding-top: 20px">
-            {if $data['is_application'] == 1}
-            <button class="btn btn-lg   " id="details"  style="width: 80%; background-color: #d2d2d2">
-                已报名，查看我的报名信息
-            </button>
-            {else /}
-            <button class="btn bg_ourigin btn-lg " data-toggle="modal" data-target="#exampleModal" style="width: 80%">
-                我要报名
-            </button>
-            {/if}
-        </div>
-        <div class="layui-row text-center " style="padding-top: 20px">
-        </div>
-
-
-    </div>
-    <div class="modal " id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel" style="">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="exampleModalLabel">提交报名信息</h4>
-                </div>
-                <div class="modal-body" style="padding:15px 0 ;">
-                    <form class="layui-form container" action="">
-                        <div class="row">
-                            <div class="form-group col-xs-6">
-                                <label for="name" class="control-label">姓名:</label>
-                                <input type="text" class="form-control" class="layui-input" name="name" id="name"
-                                       placeholder="请输入你的姓名" required lay-verify="required">
+        <div class="modal " id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel" style="">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">提交报名信息</h4>
+                    </div>
+                    <div class="modal-body" style="padding:15px 0 ;">
+                        <form class="layui-form container" action="">
+                            <div class="row">
+                                <div class="form-group col-xs-6">
+                                    <label for="name" class="control-label">姓名:</label>
+                                    <input type="text" class="form-control" class="layui-input" name="name" id="name"
+                                           placeholder="请输入你的姓名" required lay-verify="required">
+                                </div>
+                                <div class="form-group col-xs-6">
+                                    <label for="model" class="control-label">车型:</label>
+                                    <input type="text" class="form-control" class="layui-input" name="model" id="model"
+                                           placeholder="请输入你的车型" required lay-verify="required">
+                                </div>
                             </div>
-                            <div class="form-group col-xs-6">
-                                <label for="model" class="control-label">车型:</label>
-                                <input type="text" class="form-control" class="layui-input" name="model" id="model"
-                                       placeholder="请输入你的车型"  required lay-verify="required">
+                            <div class="row">
+                                <div class="form-group col-xs-6">
+                                    <label for="daily_running_water" class="control-label">日均流水:</label>
+                                    <input type="text" class="form-control" class="layui-input"
+                                           name="daily_running_water"
+                                           id="daily_running_water" placeholder="请输入你的日均流水" required
+                                           lay-verify="required">
+                                </div>
+                                <div class="form-group col-xs-6">
+                                    <label for="service_points" class="control-label">服务分:</label>
+                                    <input type="text" class="form-control" class="layui-input" name="service_points"
+                                           id="service_points" placeholder="请输入你的服务分" required lay-verify="required">
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-xs-6">
-                                <label for="daily_running_water" class="control-label">日均流水:</label>
-                                <input type="text" class="form-control" class="layui-input" name="daily_running_water"
-                                       id="daily_running_water" placeholder="请输入你的日均流水"  required lay-verify="required">
-                            </div>
-                            <div class="form-group col-xs-6">
-                                <label for="service_points" class="control-label">服务分:</label>
-                                <input type="text" class="form-control" class="layui-input" name="service_points"
-                                       id="service_points" placeholder="请输入你的服务分"  required lay-verify="required">
-                            </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label for="describe_yourself" class="control-label">自我描述:</label>
-                            <input type="text" class="form-control" class="layui-input" name="describe_yourself"
-                                   id="describe_yourself" placeholder="请输入你的自我描述"  required lay-verify="required">
-                        </div>
-                        <div class="row">
-                            <div class="layui-upload col-xs-8">
-                                <label for="" class="control-label">封面展示:</label>
-                                <button type="button" class="layui-btn" id="fileUp" style="background-color: #393D49">
-                                    上传个人头像
+                            <div class="form-group">
+                                <label for="describe_yourself" class="control-label">自我描述:</label>
+                                <input type="text" class="form-control" class="layui-input" name="describe_yourself"
+                                       id="describe_yourself" placeholder="请输入你的自我描述" required lay-verify="required">
+                            </div>
+                            <div class="row">
+                                <div class="layui-upload col-xs-8">
+                                    <label for="" class="control-label">封面展示:</label>
+                                    <button type="button" class="layui-btn" id="fileUp"
+                                            style="background-color: #393D49">
+                                        上传个人头像
+                                    </button>
+                                    <input type="hidden" name="applicationimages">
+                                </div>
+                                <div class=" col-xs-4" style="margin:0">
+                                    <img class="img-responsive" id="demo1" width="">
+                                    <p id="demoText"></p>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="mobile" class="control-label">手机验证:</label>
+                                <input type="text" class="form-control" class="layui-input" name="mobile" id="mobile"
+                                       placeholder="请输入11位手机号" required lay-verify="required|phone|number">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
                                 </button>
-                                <input type="hidden" name="applicationimages">
+                                <button type="button" class="btn btn-primary " lay-submit lay-filter="go"
+                                        id="send-vote">提交报名
+                                </button>
                             </div>
-                            <div class=" col-xs-4" style="margin:0">
-                                <img class="img-responsive" id="demo1" width="">
-                                <p id="demoText"></p>
-                            </div>
-                        </div>
+                        </form>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="mobile" class="control-label">手机验证:</label>
-                            <input type="text" class="form-control" class="layui-input" name="mobile" id="mobile"
-                                   placeholder="请输入11位手机号"  required lay-verify="required|phone|number">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default"  data-dismiss="modal">关闭
-                            </button>
-                            <button type="button" class="btn btn-primary " lay-submit lay-filter="go" id="send-vote">提交报名</button>
-                        </div>
-                    </form>
+
                 </div>
-
-
             </div>
         </div>
     </div>

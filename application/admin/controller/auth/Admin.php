@@ -70,6 +70,7 @@ class Admin extends Backend
      */
     public function index()
     {
+
         if ($this->request->isAjax())
         {
             //如果发送的来源是Selectpage，则转发到Selectpage

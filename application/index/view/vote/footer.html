@@ -7,9 +7,9 @@
 </style>
 <div class="text-center footer_box">
     <div class="layui-row row_style" id="title">
-        <div class="layui-col-xs4 item {if $Request.action == 'index'} bg_ourigin {/if}" id="vote">全部参赛</div>
-        <div class="layui-col-xs4 item {if $Request.action == 'ranking'} bg_ourigin {/if}" id="ranking">当前排名</div>
-        <div class="layui-col-xs4 item {if $Request.action == 'rules'} bg_ourigin {/if}" id="rules">活动规则</div>
+        <div class="layui-col-xs4 item {if $Request.action == 'index'} bg-infos {/if}" id="vote">全部参赛</div>
+        <div class="layui-col-xs4 item {if $Request.action == 'ranking'} bg-infos {/if}" id="ranking">当前排名</div>
+        <div class="layui-col-xs4 item {if $Request.action == 'rules'} bg-infos {/if}" id="rules">活动规则</div>
 
     </div>
 </div>
@@ -87,7 +87,7 @@
         });
 
         var audio = document.getElementById('music').getElementsByTagName('audio')[0];
-        var user_off = "{:session('musics')}";
+
         var img = $('#music').find('#images');
         var switchs = '{$data.backGroundMusic.switch}';
         var images = document.getElementById('images');
@@ -128,17 +128,17 @@
 
         //--创建页面监听，等待微信端页面加载完毕 触发音频播放
         document.addEventListener('WeixinJSBridgeReady', function () {
-
+            var user_off = "{:session('musics')}";
             if (user_off == 1) {
                 audio.play();
                 timer();
                 return;
-            } else if (user_off == 0) {
+            } else if (user_off == 2) {
                 audio.pause();
                 return;
             }
 
-            if(switchs){
+            if(switchs == 1){
                 audio.play();
                 timer();
             }else{
@@ -298,6 +298,7 @@
 
 
     var isTodayVote = "{$data.isTodayVote}";
+    var isOverdue = "{$data.isOverdue}";
     if (isTodayVote == 0) {
         localStorage.removeItem("application_name");
         localStorage.removeItem("application_id");
@@ -313,6 +314,12 @@
         // alert(3);
         $(this).bind("click", {index: i}, function () {
 
+            if (isOverdue == 2) { 
+                layer.msg('该活动已经结束了哦~');
+
+                return;
+            }
+
             var that = this;
 
             var ticket = $(this).parent().find('.votes-index').text();
@@ -322,18 +329,19 @@
             var application_id = $('.application_id').eq(i).text();
             var application_name = $('.application_name').eq(i).text();
             if ($(this).hasClass('asd')) {
-                var application_name = localStorage.getItem("application_name");  
-                var application_id = localStorage.getItem("application_id");  
-                layer.msg('今天已经投票给<strong style="font-size: 15px; color: yellow">' + application_id + '号</strong>的<strong style="font-size: 15px; color: yellow">' + application_name + '</strong>，请明天再来');
+                 application_name = localStorage.getItem("application_name");
+                 application_id = localStorage.getItem("application_id");
+                layer.msg('今天已经投票给<strong style="font-size: 15px;color: yellow" class="">' + application_id + '号</strong>的<strong style="font-size: 15px;color: yellow" class="">' + application_name + '</strong>，请明天再来');
+
 
                 return;
             }
 
             // console.log(isTodayVote);
             if (isTodayVote == 1) {
-                var application_name = localStorage.getItem("application_name");  
-                var application_id = localStorage.getItem("application_id");  
-                layer.msg('今天已经投票给<strong style="font-size: 15px; color: yellow">' + application_id + '号</strong>的<strong style="font-size: 15px; color: yellow">' + application_name + '</strong>，请明天再来');
+                 application_name = localStorage.getItem("application_name");
+                 application_id = localStorage.getItem("application_id");
+                layer.msg('今天已经投票给<strong style="font-size: 15px; color: yellow">' + application_id + '号</strong>的<strong style="font-size: 15px; color: yellow" >' + application_name + '</strong>，请明天再来');
 
                 return;
             }
@@ -427,7 +435,6 @@
         });
         
     });
-
 </script>
 </body>
 

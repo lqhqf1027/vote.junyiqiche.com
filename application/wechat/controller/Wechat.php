@@ -33,17 +33,9 @@ class Wechat extends Controller
 
     public function getCodes()
     {
-        $this->Wxapis->getWxUser('https://vote.junyiqiche.com/wechat/Wechat/adduser');
-    }
 
-    /**
-     * 获取秘钥配置
-     * @return [type] 数组
-     */
-    public function wechatConfig()
-    {
-        $wechat_config = array_merge($this->wechat_config, config('oauth'));
-        return $wechat_config;
+        $a = $this->Wxapis->getWxUser('https://vote.junyiqiche.com/wechat/Wechat/adduser');
+
     }
 
     /**

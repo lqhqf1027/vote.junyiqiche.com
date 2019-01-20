@@ -2,36 +2,29 @@
 
 // 公共助手函数
 
-error_reporting(E_PARSE | E_ERROR | E_WARNING);
-
+error_reporting( E_PARSE | E_ERROR | E_WARNING);
 use think\Request;
-
 // 应用公共文件
-function pr($var)
-{
+function pr($var) {
     $template = PHP_SAPI !== 'cli' ? '<pre>%s</pre>' : "\n%s\n";
     printf($template, print_r($var, true));
 }
-
 //php 转对象
-function arrayToObject($e)
-{
-    if (gettype($e) != 'array') return;
-    foreach ($e as $k => $v) {
-        if (gettype($v) == 'array' || getType($v) == 'object')
-            $e[$k] = (object)arrayToObject($v);
+function arrayToObject($e){
+    if( gettype($e)!='array' ) return;
+    foreach($e as $k=>$v){
+        if( gettype($v)=='array' || getType($v)=='object' )
+            $e[$k]=(object)arrayToObject($v);
     }
     return (object)$e;
 }
-
 //php 转数组
-function objectToArray($e)
-{
-    $e = (array)$e;
-    foreach ($e as $k => $v) {
-        if (gettype($v) == 'resource') return;
-        if (gettype($v) == 'object' || gettype($v) == 'array')
-            $e[$k] = (array)objectToArray($v);
+function objectToArray($e){
+    $e=(array)$e;
+    foreach($e as $k=>$v){
+        if( gettype($v)=='resource' ) return;
+        if( gettype($v)=='object' || gettype($v)=='array' )
+            $e[$k]=(array)objectToArray($v);
     }
     return $e;
 }
@@ -42,60 +35,52 @@ function objectToArray($e)
  * @param int $level 节点层级, 1 为 Root.
  * @return string XML 结构的字符串
  */
-function array2xml($arr, $level = 1)
-{
+function array2xml($arr, $level = 1) {
     $s = $level == 1 ? "<xml>" : '';
-    foreach ($arr as $tagname => $value) {
+    foreach($arr as $tagname => $value) {
         if (is_numeric($tagname)) {
             $tagname = $value['TagName'];
             unset($value['TagName']);
         }
-        if (!is_array($value)) {
-            $s .= "<{$tagname}>" . (!is_numeric($value) ? '<![CDATA[' : '') . $value . (!is_numeric($value) ? ']]>' : '') . "</{$tagname}>";
+        if(!is_array($value)) {
+            $s .= "<{$tagname}>".(!is_numeric($value) ? '<![CDATA[' : '').$value.(!is_numeric($value) ? ']]>' : '')."</{$tagname}>";
         } else {
-            $s .= "<{$tagname}>" . array2xml($value, $level + 1) . "</{$tagname}>";
+            $s .= "<{$tagname}>" . array2xml($value, $level + 1)."</{$tagname}>";
         }
     }
     $s = preg_replace("/([\x01-\x08\x0b-\x0c\x0e-\x1f])+/", ' ', $s);
-    return $level == 1 ? $s . "</xml>" : $s;
+    return $level == 1 ? $s."</xml>" : $s;
 }
 
-function istrlen($string, $charset = 'UTF8')
-{
+function istrlen($string, $charset='UTF8') {
 
-    if (strtolower($charset) == 'gbk') {
+    if(strtolower($charset) == 'gbk') {
         $charset = 'gbk';
     } else {
         $charset = 'utf8';
     }
-    if (function_exists('mb_strlen')) {
+    if(function_exists('mb_strlen')) {
         return mb_strlen($string, $charset);
     } else {
         $n = $noc = 0;
         $strlen = strlen($string);
 
-        if ($charset == 'utf8') {
+        if($charset == 'utf8') {
 
-            while ($n < $strlen) {
+            while($n < $strlen) {
                 $t = ord($string[$n]);
-                if ($t == 9 || $t == 10 || (32 <= $t && $t <= 126)) {
-                    $n++;
-                    $noc++;
-                } elseif (194 <= $t && $t <= 223) {
-                    $n += 2;
-                    $noc++;
-                } elseif (224 <= $t && $t <= 239) {
-                    $n += 3;
-                    $noc++;
-                } elseif (240 <= $t && $t <= 247) {
-                    $n += 4;
-                    $noc++;
-                } elseif (248 <= $t && $t <= 251) {
-                    $n += 5;
-                    $noc++;
-                } elseif ($t == 252 || $t == 253) {
-                    $n += 6;
-                    $noc++;
+                if($t == 9 || $t == 10 || (32 <= $t && $t <= 126)) {
+                    $n++; $noc++;
+                } elseif(194 <= $t && $t <= 223) {
+                    $n += 2; $noc++;
+                } elseif(224 <= $t && $t <= 239) {
+                    $n += 3; $noc++;
+                } elseif(240 <= $t && $t <= 247) {
+                    $n += 4; $noc++;
+                } elseif(248 <= $t && $t <= 251) {
+                    $n += 5; $noc++;
+                } elseif($t == 252 || $t == 253) {
+                    $n += 6; $noc++;
                 } else {
                     $n++;
                 }
@@ -103,14 +88,12 @@ function istrlen($string, $charset = 'UTF8')
 
         } else {
 
-            while ($n < $strlen) {
+            while($n < $strlen) {
                 $t = ord($string[$n]);
-                if ($t > 127) {
-                    $n += 2;
-                    $noc++;
+                if($t>127) {
+                    $n += 2; $noc++;
                 } else {
-                    $n++;
-                    $noc++;
+                    $n++; $noc++;
                 }
             }
 
@@ -120,10 +103,9 @@ function istrlen($string, $charset = 'UTF8')
     }
 }
 
-function url_encode($str)
-{
-    if (is_array($str)) {
-        foreach ($str as $key => $value) {
+function url_encode($str) {
+    if(is_array($str)) {
+        foreach($str as $key=>$value) {
             $str[urlencode($key)] = url_encode($value);
         }
     } else {
@@ -132,15 +114,13 @@ function url_encode($str)
 
     return $str;
 }
-
 /**
  * 转义字符串的HTML
  * @param string or array $var
  * @return string or array
- *             返回转义后的字符串或是数组
+ *			 返回转义后的字符串或是数组
  */
-function ihtmlspecialchars($var)
-{
+function ihtmlspecialchars($var) {
     if (is_array($var)) {
         foreach ($var as $key => $value) {
             $var[htmlspecialchars($key)] = ihtmlspecialchars($value);
@@ -150,26 +130,23 @@ function ihtmlspecialchars($var)
     }
     return $var;
 }
-
 /**
  * 是否包含子串
  */
 
-function strexists($string, $find)
-{
+function strexists($string, $find) {
     return !(strpos($string, $find) === FALSE);
 }
 
-function ihttp_request($url, $post = '', $extra = array(), $timeout = 60)
-{
+function ihttp_request($url, $post = '', $extra = array(), $timeout = 60) {
     $urlset = parse_url($url);
-    if (empty($urlset['path'])) {
+    if(empty($urlset['path'])) {
         $urlset['path'] = '/';
     }
-    if (!empty($urlset['query'])) {
+    if(!empty($urlset['query'])) {
         $urlset['query'] = "?{$urlset['query']}";
     }
-    if (empty($urlset['port'])) {
+    if(empty($urlset['port'])) {
         $urlset['port'] = $urlset['scheme'] == 'https' ? '443' : '80';
     }
     if (strexists($url, 'https://') && !extension_loaded('openssl')) {
@@ -177,12 +154,12 @@ function ihttp_request($url, $post = '', $extra = array(), $timeout = 60)
             //die('请开启您PHP环境的openssl');
         }
     }
-    if (function_exists('curl_init') && function_exists('curl_exec')) {
+    if(function_exists('curl_init') && function_exists('curl_exec')) {
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $urlset['scheme'] . '://' . $urlset['host'] . ($urlset['port'] == '80' ? '' : ':' . $urlset['port']) . $urlset['path'] . $urlset['query']);
+        curl_setopt($ch, CURLOPT_URL, $urlset['scheme']. '://' .$urlset['host'].($urlset['port'] == '80' ? '' : ':'.$urlset['port']).$urlset['path'].$urlset['query']);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_HEADER, 1);
-        if ($post) {
+        if($post) {
             curl_setopt($ch, CURLOPT_POST, 1);
             if (is_array($post)) {
                 $post = http_build_query($post);
@@ -209,7 +186,7 @@ function ihttp_request($url, $post = '', $extra = array(), $timeout = 60)
                     $headers[] = "{$opt}: {$value}";
                 }
             }
-            if (!empty($headers)) {
+            if(!empty($headers)) {
                 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
             }
         }
@@ -218,7 +195,7 @@ function ihttp_request($url, $post = '', $extra = array(), $timeout = 60)
         $errno = curl_errno($ch);
         $error = curl_error($ch);
         curl_close($ch);
-        if ($errno || empty($data)) {
+        if($errno || empty($data)) {
             //return error(1, $error);
         } else {
             return ihttp_response_parse($data);
@@ -227,7 +204,7 @@ function ihttp_request($url, $post = '', $extra = array(), $timeout = 60)
     $method = empty($post) ? 'GET' : 'POST';
     $fdata = "{$method} {$urlset['path']}{$urlset['query']} HTTP/1.1\r\n";
     $fdata .= "Host: {$urlset['host']}\r\n";
-    if (function_exists('gzdecode')) {
+    if(function_exists('gzdecode')) {
         $fdata .= "Accept-Encoding: gzip, deflate\r\n";
     }
     $fdata .= "Connection: close\r\n";
@@ -249,7 +226,7 @@ function ihttp_request($url, $post = '', $extra = array(), $timeout = 60)
     } else {
         $fdata .= "\r\n";
     }
-    if ($urlset['scheme'] == 'https') {
+    if($urlset['scheme'] == 'https') {
         $fp = fsockopen('ssl://' . $urlset['host'], $urlset['port'], $errno, $error);
     } else {
         $fp = fsockopen($urlset['host'], $urlset['port'], $errno, $error);
@@ -268,8 +245,7 @@ function ihttp_request($url, $post = '', $extra = array(), $timeout = 60)
     }
 }
 
-function ihttp_response_parse($data, $chunked = false)
-{
+function ihttp_response_parse($data, $chunked = false) {
     $rlt = array();
     $pos = strpos($data, "\r\n\r\n");
     $split1[0] = substr($data, 0, $pos);
@@ -297,32 +273,31 @@ function ihttp_response_parse($data, $chunked = false)
         } else {
             $rlt['headers'][$key] = $value;
         }
-        if (!$isgzip && strtolower($key) == 'content-encoding' && strtolower($value) == 'gzip') {
+        if(!$isgzip && strtolower($key) == 'content-encoding' && strtolower($value) == 'gzip') {
             $isgzip = true;
         }
-        if (!$ischunk && strtolower($key) == 'transfer-encoding' && strtolower($value) == 'chunked') {
+        if(!$ischunk && strtolower($key) == 'transfer-encoding' && strtolower($value) == 'chunked') {
             $ischunk = true;
         }
     }
-    if ($chunked && $ischunk) {
+    if($chunked && $ischunk) {
         $rlt['content'] = ihttp_response_parse_unchunk($split1[1]);
     } else {
         $rlt['content'] = $split1[1];
     }
-    if ($isgzip && function_exists('gzdecode')) {
+    if($isgzip && function_exists('gzdecode')) {
         $rlt['content'] = gzdecode($rlt['content']);
     }
 
     //$rlt['meta'] = $data;
-    if ($rlt['code'] == '100') {
+    if($rlt['code'] == '100') {
         return ihttp_response_parse($rlt['content']);
     }
     return $rlt;
 }
 
-function ihttp_response_parse_unchunk($str = null)
-{
-    if (!is_string($str) or strlen($str) < 1) {
+function ihttp_response_parse_unchunk($str = null) {
+    if(!is_string($str) or strlen($str) < 1) {
         return false;
     }
     $eol = "\r\n";
@@ -332,82 +307,74 @@ function ihttp_response_parse_unchunk($str = null)
     do {
         $tmp = ltrim($tmp);
         $pos = strpos($tmp, $eol);
-        if ($pos === false) {
+        if($pos === false) {
             return false;
         }
         $len = hexdec(substr($tmp, 0, $pos));
-        if (!is_numeric($len) or $len < 0) {
+        if(!is_numeric($len) or $len < 0) {
             return false;
         }
         $str .= substr($tmp, ($pos + $add), $len);
-        $tmp = substr($tmp, ($len + $pos + $add));
+        $tmp  = substr($tmp, ($len + $pos + $add));
         $check = trim($tmp);
-    } while (!empty($check));
+    } while(!empty($check));
     unset($tmp);
     return $str;
 }
 
 
-function ihttp_get($url)
-{
+function ihttp_get($url) {
     return ihttp_request($url);
 }
 
-function ihttp_post($url, $data)
-{
+function ihttp_post($url, $data) {
     $headers = array('Content-Type' => 'application/x-www-form-urlencoded');
     return ihttp_request($url, $data, $headers);
 }
 
-function gets($url = NULL)
-{
-    if ($url) {
-        $rslt = ihttp_get($url);
-        if (strtolower(trim($rslt['status'])) == 'ok') {
+function gets($url=NULL){
+    if($url){
+        $rslt  = ihttp_get($url);
+        if(strtolower(trim($rslt['status'])) == 'ok'){
             //pr($rslt) ;exit;
-            if (is_json($rslt['content'])) { //返回格式是json 直接返回数组
-                $return = json_decode($rslt['content'], true);
-                if ($return['errcode']) //有错误
-                    exit('Error:<br>Api:' . $url . '  <br>errcode:' . $return['errcode'] . '<br>errmsg:' . $return['errmsg']);
-                return $return;
-            } else {  //先暂时直接返回，以后其它格式再增加
-                return $rslt['content'];
+            if(is_json($rslt['content'])){ //返回格式是json 直接返回数组
+                $return =  json_decode($rslt['content'],true);
+                if($return['errcode']) //有错误
+                    exit('Error:<br>Api:'.$url.'  <br>errcode:'.$return['errcode'].'<br>errmsg:'.$return['errmsg']);
+                return $return ;
+            }else{  //先暂时直接返回，以后其它格式再增加
+                return $rslt['content'] ;
             }
         }
-        exit('远程请求失败：' . $url);
+        exit('远程请求失败：'.$url);
     }
     exit('未发现远程请求地址');
 }
-
 /**
- * 远程post请求
+远程post请求
  */
-function posts($url = NULL, $data = NULL)
-{
-    if ($url && $data) {
-        $rslt = ihttp_post($url, $data);
-        if (strtolower(trim($rslt['status'])) == 'ok') {
+function posts($url=NULL, $data=NULL){
+    if($url && $data){
+        $rslt  = ihttp_post($url,$data);
+        if(strtolower(trim($rslt['status'])) == 'ok'){
             //pr($rslt) ;
-            if (is_json($rslt['content'])) { //返回格式是json 直接返回数组
-                $return = json_decode($rslt['content'], true);
-                if ($return['errcode']) //有错误
-                    exit('Error:<br>Api:' . $url . '  <br>errcode:' . $return['errcode'] . '<br>errmsg:' . $return['errmsg']);
-                return $return;
-            } else {  //先暂时直接返回，以后其它格式再增加
-                return $rslt['content'];
+            if(is_json($rslt['content'])){ //返回格式是json 直接返回数组
+                $return =  json_decode($rslt['content'],true);
+                if($return['errcode']) //有错误
+                    exit('Error:<br>Api:'.$url.'  <br>errcode:'.$return['errcode'].'<br>errmsg:'.$return['errmsg']);
+                return $return ;
+            }else{  //先暂时直接返回，以后其它格式再增加
+                return $rslt['content'] ;
             }
         }
-        exit('远程请求失败：' . $url);
+        exit('远程请求失败：'.$url);
     }
     exit('post远程请求，参数错误');
 }
-
-function is_json($string)
-{
+function is_json($string) {
     json_decode($string);
     return (json_last_error() == JSON_ERROR_NONE);
 }
-
 if (!function_exists('__')) {
 
     /**
@@ -739,5 +706,21 @@ if (!function_exists('emoji_decode')) {
         }, $str);
 
         return $strDecode;
+    }
+}
+
+if (!function_exists('arraySort')) {
+    function arraySort($array, $keys, $sort = 'asc')
+    {
+        $newArr = $valArr = array();
+        foreach ($array as $key => $value) {
+            $valArr[$key] = $value[$keys];
+        }
+        ($sort == 'asc') ? asort($valArr) : arsort($valArr);//先利用keys对数组排序，目的是把目标数组的key排好序
+        reset($valArr); //指针指向数组第一个值
+        foreach ($valArr as $key => $value) {
+            $newArr[$key] = $array[$key];
+        }
+        return $newArr;
     }
 }
