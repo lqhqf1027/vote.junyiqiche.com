@@ -1,19 +1,48 @@
-<div class="text-center" style="padding: 10px 0 80px 0;">
-    © 成都君忆汽车服务有限公司. All Rights Reserved
-</div>
-</div>
-
+ 
+</div> 
 <style>
+ 
 </style>
-<div class="text-center footer_box">
-    <div class="layui-row row_style" id="title">
-        <div class="layui-col-xs4 item {if $Request.action == 'index'} bg-infos {/if}" id="vote">全部参赛</div>
-        <div class="layui-col-xs4 item {if $Request.action == 'ranking'} bg-infos {/if}" id="ranking">当前排名</div>
-        <div class="layui-col-xs4 item {if $Request.action == 'rules'} bg-infos {/if}" id="rules">活动规则</div>
-
-    </div>
+<div class="sedTrip" style="position: fixed;bottom: 30%;right: 0;border:1px solid #FF5722;padding-right:10px;background-color: #FF5722;color:#fff">
+    <img src="https://static.sfc.junyiqiche.com/sfc/发布.png" alt="" width="25"> 发布行程
 </div>
 
+      <div class="modal  " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="exampleModalLabel">发布行程</h4>
+                    </div>
+                    <div class="modal-body" style="padding:0;border:none">
+                        <div class="layui-tab layui-tab-card">
+                            <ul class="layui-tab-title">
+                                <li class="layui-this" style="width:50%">司机</li>
+                                <li style="width:50%">乘客</li>  
+                            </ul>
+                            <div class="layui-tab-content" >
+                                <div class="layui-tab-item layui-show"> 
+                                        <form> 
+                                <div class="form-group">
+                                    <label for="recipient-name" class="control-label">联系方式:</label>
+                                    <input type="text" class="form-control" id="recipient-name" placeholder="请输入联系方式">
+                                </div>
+                                    
+                                </form>
+                                </div>
+                                <div class="layui-tab-item">2</div>
+                            </div>
+                        </div>
+                      
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                      <button type="button" class="btn btn-primary">提交</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+<!----发布行程表单页面-->
 
 <!-- jQuery -->
 <script src=https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js></script>
@@ -31,6 +60,9 @@
 
 <script src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js" type="text/javascript" charset="utf-8"></script>
 <script>
+    /**
+    * 微信转发
+    */
     window.onload = function () {
         var ajaxurl = '{:url("index/sharedata")}';
         var urll = location.href.split('#')[0];
@@ -84,365 +116,71 @@
             error: function () {
                 console.log("通信失败");
             }
-        });
-
-        var audio = document.getElementById('music').getElementsByTagName('audio')[0];
-
-        var img = $('#music').find('#images');
-
-        var images = document.getElementById('images');
-        var current = 0;
-        var timeout = '';
-        function timer() {
-            timeout = setInterval(function () {
-                images.style.transform = 'rotate(' + current + 'deg)';
-                current++;
-                if (current == 360) {
-                    current = 0;
-                }
-            }, 30);
-        }
-
-
-        audio.pause();
-
-        $(document).on('click', '#music', function () {
-            let ons = 2;
-
-            if (img.attr('src') == 'https://static.yc.junyiqiche.com/yinchuan/mp3_log_img/on1.png') {
-                audio.pause();
-                img.attr('src', 'https://static.yc.junyiqiche.com/yinchuan/mp3_log_img/off1.png');
-                clearInterval(timeout);
-            } else {
-                clearInterval(timeout);
-                // $('#music').find('audio').trigger('play');
-                audio.play();
-                img.attr('src', 'https://static.yc.junyiqiche.com/yinchuan/mp3_log_img/on1.png');
-                ons = 1;
-                timer();
-            }
-
-            $.get('{:url("index/music")}', {ons: ons});
-
-        })
-
-        //--创建页面监听，等待微信端页面加载完毕 触发音频播放
-        document.addEventListener('WeixinJSBridgeReady', function () {
-            var user_off = "{:session('musics')}";
-            if (user_off == 1) {
-                audio.play();
-                timer();
-                return;
-            } else if (user_off == 2) {
-                audio.pause();
-                return;
-            }
-
-            if(switchs == 1){
-                audio.play();
-                timer();
-            }else{
-                var switchs = '{$data.backGroundMusic.switch}';
-                if(switchs == 1){
-                    audio.play();
-                    timer();
-                }else{
-                    audio.pause();
-                }
-            }
-
-
-
-        })
+        }); 
     }
 
-    layui.use(['carousel', 'form', 'flow', 'upload', 'element'], function () {
-        var $ = layui.jquery;
+    //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
+layui.use(['element','layer','form','laydate'], function(){
+    console.log(getCurrentDate(1));
+  var element = layui.element;
+  var layer = layui.layer;
+  var form = layui.form;
+  var laydate = layui.laydate;
+  laydate.render({
+    elem: '#starting_time_1' ,//指定元素 
+    value:getCurrentDate(1),
+    min:getCurrentDate(1),
+    // format:'yyyy-MM-dd ',
+  });
+//   layer.open({
+//         type: 1,
+//         title:'发布行程',
+//         //skin: 'layui-layer-rim', //加上边框
+//         area: ['95%', '90%'], //宽高
+//         content: 'html内容'
+//         });
+    $('.sedTrip').on('click',function(){
+        $('#exampleModal').modal('show');
+    })
+  //…
 
-        var flow = layui.flow;
-        //当你执行这样一个方法时，即对页面中的全部带有lay-src的img元素开启了懒加载（当然你也可以指定相关img）
+	/**
+	 *获取当前时间
+	 *format=1精确到天
+	 *format=2精确到分
+	*/
+	function getCurrentDate(format) {
+	  var now = new Date();
+	  var year = now.getFullYear(); //得到年份
+	  var month = now.getMonth();//得到月份
+	  var date = now.getDate();//得到日期
+	  var day = now.getDay();//得到周几
+	  var hour = now.getHours();//得到小时
+	  var minu = now.getMinutes();//得到分钟 
+      var sec = now.getSeconds();//得到秒
 
-        var carousel = layui.carousel;
-        var form = layui.form;
-        var upload = layui.upload;
-
-        flow.lazyimg();
-        //普通图片上传
-        var uploadInst = upload.render({
-            elem: '#fileUp'
-            , url: "{:url('index/uploadsHeaderImg')}"
-            /*  , auto: false //选择文件后不自动上传
-              , bindAction: '#send-vote' //指向一个按钮触发上传*/
-            , choose: function (obj) {
-                //预读本地文件示例，不支持ie8
-                obj.preview(function (index, file, result) {
-                    $('#demo1').attr('src', result); //图片链接（base64）
-                });
-            }
-            , done: function (res) {
-                console.log(res);
-                //如果上传失败
-                if (res.code == 1) {
-                    $('input[type="hidden"]').val(res.data.url);
-                }
-                else {
-                    return layer.msg('上传失败');
-                }
-
-            }
-            , error: function () {
-                //演示失败状态，并实现重传
-                var demoText = $('#demoText');
-                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
-                demoText.find('.demo-reload').on('click', function () {
-                    uploadInst.upload();
-                });
-            }
-        });
-        //提交报名
-        form.on('submit(go)', function (data) {
-
-            if ($('input[type="hidden"]').val() == '') {
-                return layer.msg('请上传封面');
-            }
-            data.field.wechat_user_id = "{$user_id}";
-            // console.log(data.field);return;
-            var index = layer.load(1, {
-                shade: [0.1, '#fff'] //0.1透明度的白色背景
-            });
-            $.post("{:url('Index/sendVote')}", {datas: data.field}, function (res) {
-                console.log(res.code);
-                if (res.code == 1) {
-                    layer.close(index);
-                    layer.msg(res.msg);
-                    window.location.reload();
-                } else {
-                    layer.msg(res.msg);
-                    layer.close(index);
-
-                }
-            }).error(function (xhr,errorText,errorType) {
-                layer.msg('添加失败');
-                layer.close(index);
-
-            })
-            return false;
-        });
-        //建造实例
-        carousel.render({
-            elem: '#test1'
-            , width: '100%' //设置容器宽度
-            , height: '200px'
-            , arrow: 'none' //始终显示箭头
-            , anim: 'fade' //切换动画方式
-            , indicator: 'none'
-        });
-        //排名ID
-        var count = 1;
-        var allCount = '{$data.statistics.applicationCount}';
-        allCount = Math.ceil(parseInt(allCount)/25);
-        flow.load({
-            elem: '.user-list' //流加载容器
-            // , scrollElem: '#LAY_demo1' //滚动条所在元素，一般不用填，此处只是演示需要。
-            , done: function (page, next) { //加载下一页
-
-
-                $.ajax({
-                    dataType: 'json',
-                    type: 'POST',
-                    url: '{:url("index/rankingMore")}',
-                    data: {
-                        page: page
-                    },
-                    success: function (msg) {
-                        msg = JSON.parse(msg);
-                        // console.log(msg);
-
-                        if (msg.length == 0) {
-                            layer.msg('没有更多了');
-                        }
-
-                        //模拟插入
-                        setTimeout(function () {
-                            var lis = [];
-
-                            for (var i = 0; i < msg.length; i++) {
-                                var sex = "four";
-                                if (count == 1) {
-                                    sex = "first";
-                                }
-                                if (count == 2) {
-                                    sex = "second";
-                                }
-                                if (count == 3) {
-                                    sex = "third";
-                                }
-                                lis.push('<div class="user ' + sex + '">\n' +
-                                    '            <span class="rank ">' + count + '</span><p class="username">' + msg[i].name + '</p> \n' +
-                                    '            <span class="coupons">' + msg[i].votes + '票</span>\n' +
-                                    '        </div>');
-                                count++;
-                            }
-                            next(lis.join(''), page < allCount); //假设总页数为 6
-                        }, 500);
-                    }
-                });
-
-            }
-        });
-
-    });
-
-    document.getElementById('vote').onclick = function () {
-        window.location = '/';
-    };
-    document.getElementById('ranking').onclick = function () {
-        window.location = '/index/index/ranking';
-    };
-    document.getElementById('rules').onclick = function () {
-        window.location = '/index/index/rules';
-    };
-
-
-    var isTodayVote = "{$data.isTodayVote}";
-    var isOverdue = "{$data.isOverdue}";
-    if (isTodayVote == 0) {
-        localStorage.removeItem("application_name");
-        localStorage.removeItem("application_id");
-        $(".voting").each(function (i) {
-            if ($(this).hasClass('asd')) {
-                $(this).removeClass('asd');
-            }
-        })
+	  month = month + 1;
+	  if (month < 10) month = "0" + month;
+	  if (date < 10) date = "0" + date;
+	  if (hour < 10) hour = "0" + hour;
+	  if (minu < 10) minu = "0" + minu; 
+      if (sec < 10) sec = "0" + sec;
+	  var time = "";
+	  //精确到天
+	  if(format==1){
+		time = year + "-" + month + "-" + date;
+	  }
+	  //精确到分
+	  else if(format==2){
+		time = year + "-" + month + "-" + date+ " " + hour + ":" + minu+ ":" + sec;
+        // 
+	  }
+	  return time; 
     }
-
-    //投票
-    $(".voting").each(function (i) {
-        // alert(3);
-        $(this).bind("click", {index: i}, function () {
-
-            if (isOverdue == 2) { 
-                layer.msg('该活动已经结束了哦~');
-
-                return;
-            }
-
-            var that = this;
-
-            var ticket = $(this).parent().find('.votes-index').text();
-            ticket = ticket.replace(/[^0-9]/ig, "");
-            var check = $(this).parent();
-            check = check.hasClass('dd') ? true : false;
-            var application_id = $('.application_id').eq(i).text();
-            var application_name = $('.application_name').eq(i).text();
-            if ($(this).hasClass('asd')) {
-                 application_name = localStorage.getItem("application_name");
-                 application_id = localStorage.getItem("application_id");
-                layer.msg('今天已经投票给<strong style="font-size: 15px;color: yellow" class="">' + application_id + '号</strong>的<strong style="font-size: 15px;color: yellow" class="">' + application_name + '</strong>，请明天再来');
-
-
-                return;
-            }
-
-            // console.log(isTodayVote);
-            if (isTodayVote == 1) {
-                 application_name = localStorage.getItem("application_name");
-                 application_id = localStorage.getItem("application_id");
-                layer.msg('今天已经投票给<strong style="font-size: 15px; color: yellow">' + application_id + '号</strong>的<strong style="font-size: 15px; color: yellow" >' + application_name + '</strong>，请明天再来');
-
-                return;
-            }
-            // console.log(123);
-            var loadLayer = layer.load(1, {
-                shade: [0.1, '#fff'] //0.1透明度的白色背景
-            });
-            var ajaxurl = '{:url("index/vote")}';
-            var application_id = $('.application_id').eq(i).text();
-            var user_id = "{$user_id}";
-            // console.log(application_id);
-            // console.log(user_id);
-            $.ajax({
-                url: ajaxurl,
-                type: "post",
-                //注意序列化的值一定要放在最前面,并且不需要头部变量,不然获取的值得格式会有问题
-                data: {application_id: application_id, user_id: user_id},
-                dataType: "json",
-                success: function (data) {
-                    layer.close(loadLayer);
-                    layer.msg(data);
-                    localStorage.setItem("application_id", application_id);
-                    localStorage.setItem("application_name", application_name);
-                    var html = !check ? '<i class="fa fa-line-chart"\n' +
-                        '                                                                                       aria-hidden="true"></i>' + (parseInt(ticket) + 1) + ' 票' : '票数是：' + (parseInt(ticket) + 1) + '票';
-
-                    // window.location.reload(); //刷新当前页面
-                    // $('.votes').html("票数是：" + "{$data['playerDetail']['votes'] + 1}" + "票");
-                    $(that).parent().find('.votes-index').html(html);
-                    var voteCount = $('.voteCount').text();
-                    $('.voteCount').text(parseInt(voteCount)+1);
-                    $(".voting").each(function (i) {
-                        $(this).addClass('asd');
-                    });
-
-                },
-                error: function (data) {
-                    // alert(data);
-                    layer.close(loadLayer);
-
-                    layer.msg(data);
-                }
-            })
-        })
-    });
-
-    $('#details').click(function(){
-        var lod= layer.load();
-        var ajaxurl ='{:url("index/details")}';
-        var user_id = "{$user_id}";
-
-        $.ajax({
-
-            url: ajaxurl,
-            type: "post",
-            //注意序列化的值一定要放在最前面,并且不需要头部变量,不然获取的值得格式会有问题
-            data:{user_id: user_id},
-            dataType:"json",
-            success:function (data) {
-                layer.close(lod);
-                data = JSON.parse(data);
-
-                // layer.msg(data);
-                layer.open({
-                    type: 1,
-                    title:'我的报名信息',
-                    // skin: 'layui-layer-rim', //加上边框
-                    area: ['80%', '80%'], //宽高
-                    content: '<div class="row text-center" style="margin: 0">' +
-
-                        '<div class="layui-col-xs12" style="margin-bottom: 10px;">'+
-                            '<img src="{$_SERVER.REQUEST_SCHEME}://{$_SERVER.SERVER_NAME}/' + data.applicationimages + '" alt="..." style="width: 100%;height: auto">'+
-
-                        '</div>'+
-                        '<div class="layui-col-xs12 text-center"  id="details" style="margin-bottom: 10px">' +
-                            '<div>姓名：' + data.name + '</div>' +
-                            '<div >加入车型：' + data.model + '</div>' +
-                            '<div >日均流水：' + data.daily_running_water + '</div>' +
-                            '<div ">服务分： ' + data.service_points + '</div>' +
-                            '<div ">自我描述：' + data.describe_yourself + '</div>' +
-                        '</div>' +
-                        '<div class="layui-col-xs12 text-center" style="margin-bottom: 10px">' +
-                            '<div style="color: orange" class="votes">当前票数：' + data.votes + '票</div>' +
-                        '</div>' +
-
-                        '</div>',
-                });
-
-            },
-    
-        });
-        
-    });
+});
 </script>
+ 
+ 
 </body>
 
 </html>
