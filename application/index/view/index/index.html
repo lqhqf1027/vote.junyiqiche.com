@@ -1,71 +1,77 @@
 <!DOCTYPE html>
 <html lang="{$config.language}">
 {extend name="vote/layoutextend" /}
-{block name="body"}  
+{block name="body"}
 <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
-        <ul class="layui-tab-title" style="">
-          <li class="layui-this" style="width:50%">寻人</li>
-          
-          <li style="width:50%">找车</li>
-        </ul>
-        <div class="layui-tab-content bg-warning" style="margin:10px 0;"> 
-            <div class="layui-tab-item layui-show " >
-                <div class="layui-row " style=" ">
-                    <div class="layui-col-xs7">
-                        <img src="https://static.sfc.junyiqiche.com/sfc/日历.png" width="25" alt="出发日期"> 2019-02-01 12:23
-                    </div>
-                    <div class="layui-col-xs3 text-center">
-                        <img src="https://static.sfc.junyiqiche.com/sfc/座位.png" width="25"  alt="人数"> 2位
-                    </div>
-                    <div class="layui-col-xs2 text-right" >
-                        
-                            <a href="tel:1234555">
-                                <img src="https://static.sfc.junyiqiche.com/sfc/电话.png" width="25" alt="">
-                            </a> 
-                    </div>
-                    <div class="layui-col-xs12 text-left" style="padding:10px 0;">
-                        <img src="https://static.sfc.junyiqiche.com/sfc/6起点.png" alt="起点" width="25"> 中国四川成都
-                    </div>
-                    <div class="layui-col-xs12 text-left">
-                            <img src="https://static.sfc.junyiqiche.com/sfc/9终点.png" alt="终点" width="25"> 阿富汗
-                    </div>
-                    <div class="layui-col-xs12 text-left" style="margin-top:5px ;border:1px solid #f2f2f2">
-                        <span style="color:#d2d2d2">备注：</span>
-                    </div>
-                </div>
-                
-            </div>
-           
-            <div class="layui-tab-item">
-                <div class="layui-row " style=" ">
-                    <div class="layui-col-xs6">
-                        <img src="https://static.sfc.junyiqiche.com/sfc/日历.png" width="25" alt="出发日期"> 2019-02-01 12:23
-                    </div>
-                    <div class="layui-col-xs4 text-center">
-                        <img src="https://static.sfc.junyiqiche.com/sfc/钱.png" width="25"  alt="人数"> 150元 2位
-                    </div>
-                    <div class="layui-col-xs2 text-right" >
-                        
-                            <a href="tel:1234555">
-                                <img src="https://static.sfc.junyiqiche.com/sfc/电话.png" width="25" alt="">
-                            </a> 
-                    </div>
-                    <div class="layui-col-xs12 text-left" style="padding:10px 0;">
-                        <img src="https://static.sfc.junyiqiche.com/sfc/6起点.png" alt="起点" width="25"> 中国四川成都
-                    </div>
-                    <div class="layui-col-xs12 text-left">
-                            <img src="https://static.sfc.junyiqiche.com/sfc/9终点.png" alt="终点" width="25"> 阿富汗
-                    </div>
-                    <div class="layui-col-xs12 text-left" style="margin-top:5px ;border:1px solid #f2f2f2">
-                        <span style="color:#d2d2d2">备注：</span>
-                    </div>
-                </div>
+    <ul class="layui-tab-title" style="">
+        <li class="layui-this" style="width:50%">寻人</li>
 
-            </div>
-        </div> 
+        <li style="width:50%">找车</li>
+    </ul>
+    <div class="layui-tab-content bg-warning" style="margin:10px 0;">
+        <div class="layui-tab-item layui-show ">
 
-</div>  
+            {volist name="passengerList" id="vo"}
+            <div class="layui-row " style=" ">
+                <div class="layui-col-xs7">
+                    <img src="https://static.sfc.junyiqiche.com/sfc/日历.png" width="25" alt="出发日期"> {$vo.starting_time}
+                </div>
+                <div class="layui-col-xs3 text-center">
+                    <img src="https://static.sfc.junyiqiche.com/sfc/座位.png" width="25" alt="人数"> {$vo.number_people}位
+                </div>
+                <div class="layui-col-xs2 text-right">
+
+                    <a href="tel:1234555">
+                        <img src="https://static.sfc.junyiqiche.com/sfc/电话.png" width="25" alt="">
+                    </a>
+                </div>
+                <div class="layui-col-xs12 text-left" style="padding:10px 0;">
+                    <img src="https://static.sfc.junyiqiche.com/sfc/6起点.png" alt="起点" width="25"> {$vo.starting_point}
+                </div>
+                <div class="layui-col-xs12 text-left">
+                    <img src="https://static.sfc.junyiqiche.com/sfc/9终点.png" alt="终点" width="25"> {$vo.destination}
+                </div>
+                <div class="layui-col-xs12 text-left" style="margin-top:5px ;border:1px solid #f2f2f2">
+                    <span style="color:#d2d2d2">备注：{$vo.note}</span>
+                </div>
+            </div>
+            {/volist}
+
+
+        </div>
+
+        <div class="layui-tab-item">
+            {volist name="driverList" id="vo"}
+            <div class="layui-row " style=" ">
+                <div class="layui-col-xs6">
+                    <img src="https://static.sfc.junyiqiche.com/sfc/日历.png" width="25" alt="出发日期"> {$vo.starting_time}
+                </div>
+                <div class="layui-col-xs4 text-center">
+                    <img src="https://static.sfc.junyiqiche.com/sfc/钱.png" width="25" alt="人数"> {$vo.money}元 {$vo.number_people}位
+                </div>
+                <div class="layui-col-xs2 text-right">
+
+                    <a href="tel:1234555">
+                        <img src="https://static.sfc.junyiqiche.com/sfc/电话.png" width="25" alt="">
+                    </a>
+                </div>
+                <div class="layui-col-xs12 text-left" style="padding:10px 0;">
+                    <img src="https://static.sfc.junyiqiche.com/sfc/6起点.png" alt="起点" width="25"> {$vo.starting_point}
+                </div>
+                <div class="layui-col-xs12 text-left">
+                    <img src="https://static.sfc.junyiqiche.com/sfc/9终点.png" alt="终点" width="25"> {$vo.destination}
+                </div>
+                <div class="layui-col-xs12 text-left" style="margin-top:5px ;border:1px solid #f2f2f2">
+                    <span style="color:#d2d2d2">备注：{$vo.note}</span>
+                </div>
+            </div>
+            {/volist}
+        </div>
+    </div>
+</div>
+
 {/block}
-</html> 
+</html>
+
 
 

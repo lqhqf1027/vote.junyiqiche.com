@@ -9,6 +9,7 @@ use app\admin\model\Record;
 use app\admin\model\Banner;
 use app\admin\model\Application;
 use app\admin\model\Wechatuser;
+use app\admin\model\RideSharing;
 use app\common\model\Config as ConfigModel;
 use think\Db;
 use think\Session;
@@ -33,61 +34,98 @@ class Index extends Frontend
 
 //        $contestant = $this->playerInfo(['status' => 'normal'], 'id,name,applicationimages,votes');
 
-        $contestant = Application::field('id,name,applicationimages,votes,describe_yourself')
-            ->with(['wechatUser' => function ($q) {
-                $q->withField('id,sex');
-            }])->where(['status' => 'normal'])->order('id desc')->paginate(20);
-
-
-        $pages = $contestant->render();
-
-        $contestant = $contestant->toArray();
-
-        foreach ($contestant['data'] as $k => $v) {
-            $contestant['data'][$k]['applicationimages'] = $v['applicationimages'] ? explode(';', $v['applicationimages'])[0] : '';
-            $contestant['data'][$k]['is_vote'] = 0;
-
-        }
-        if ($contestant['data']) {
-
-
-            $arr = array_values(arraySort($contestant['data'], 'votes', 1));
-
-            $arr = [array_merge($arr[0], ['prize' => 'https://static.yc.junyiqiche.com/uploads/top1.png']), array_merge($arr[1], ['prize' => 'https://static.yc.junyiqiche.com/uploads/top2.png']), array_merge($arr[2], ['prize' => 'https://static.yc.junyiqiche.com/uploads/top3.png'])];
-
-            foreach ($contestant['data'] as $k => $v) {
-                foreach ($arr as $key => $value) {
-                    if ($v['id'] == $value['id']) {
-                        unset($contestant['data'][$k]);
-                    }
-                }
-            }
-            $as = $contestant['data'];
-            $contestant['data'] = [];
-            $contestant['data']['prize'] = $arr;
-            $contestant['data']['normal'] = $as;
-            if (!$this->user_id) {
-                //已经投票的ID
-                $voted_id = Record::where('wechat_user_id', $this->user_id)->whereTime('votetime', 'today')->column('application_id');
-
-                if ($voted_id) {
-                    foreach ($contestant['data']['normal'] as $k => $v) {
-                        $contestant['data']['normal'][$k]['is_vote'] = in_array($v['id'], $voted_id) ? 1 : 0;
-                    }
-                }
-
-
-            }
-
-        }
-        $data = array_merge($this->publicData(), ['contestantList' => $contestant]);
-
-        //pr($contestant);
-            $this->view->assign(['data' => $data,
-                'page' => $pages
-            ]);
+//        $contestant = Application::field('id,name,applicationimages,votes,describe_yourself')
+//            ->with(['wechatUser' => function ($q) {
+//                $q->withField('id,sex');
+//            }])->where(['status' => 'normal'])->order('id desc')->paginate(20);
+//
+//
+//        $pages = $contestant->render();
+//
+//        $contestant = $contestant->toArray();
+//
+//        foreach ($contestant['data'] as $k => $v) {
+//            $contestant['data'][$k]['applicationimages'] = $v['applicationimages'] ? explode(';', $v['applicationimages'])[0] : '';
+//            $contestant['data'][$k]['is_vote'] = 0;
+//
+//        }
+//        if ($contestant['data']) {
+//
+//
+//            $arr = array_values(arraySort($contestant['data'], 'votes', 1));
+//
+//            $arr = [array_merge($arr[0], ['prize' => 'https://static.yc.junyiqiche.com/uploads/top1.png']), array_merge($arr[1], ['prize' => 'https://static.yc.junyiqiche.com/uploads/top2.png']), array_merge($arr[2], ['prize' => 'https://static.yc.junyiqiche.com/uploads/top3.png'])];
+//
+//            foreach ($contestant['data'] as $k => $v) {
+//                foreach ($arr as $key => $value) {
+//                    if ($v['id'] == $value['id']) {
+//                        unset($contestant['data'][$k]);
+//                    }
+//                }
+//            }
+//            $as = $contestant['data'];
+//            $contestant['data'] = [];
+//            $contestant['data']['prize'] = $arr;
+//            $contestant['data']['normal'] = $as;
+//            if (!$this->user_id) {
+//                //已经投票的ID
+//                $voted_id = Record::where('wechat_user_id', $this->user_id)->whereTime('votetime', 'today')->column('application_id');
+//
+//                if ($voted_id) {
+//                    foreach ($contestant['data']['normal'] as $k => $v) {
+//                        $contestant['data']['normal'][$k]['is_vote'] = in_array($v['id'], $voted_id) ? 1 : 0;
+//                    }
+//                }
+//
+//
+//            }
+//
+//        }
+//        $data = array_merge($this->publicData(), ['contestantList' => $contestant]);
+//
+//        //pr($contestant);
+//            $this->view->assign(['data' => $data,
+//                'page' => $pages
+//            ]);
 
 //        pr($data);die;
+
+        $time = time();
+
+        $takeCarList = collection(RideSharing::field('id,starting_point,destination,starting_time,number_people,note,phone,money,type')
+            ->order('createtime desc')->select())->toArray();
+        $overdueId = [];
+
+        $driverList = [];
+        $passengerList = [];
+
+        foreach ($takeCarList as $k => $v) {
+            if ($time > strtotime($v['starting_time'])) {
+
+                $overdueId[] = $v['id'];
+
+            } else {
+
+                if($v['type']=='driver'){
+                    unset($v['type']);
+                    $driverList[] = $v;
+                }else{
+                    unset($v['money'],$v['type']);
+                    $passengerList[] = $v;
+                }
+
+            }
+        }
+
+        if ($overdueId) {
+            RideSharing::where('id', 'in', $overdueId)->update(['status' => 'hidden']);
+        }
+
+        $this->view->assign([
+            'driverList'=>$driverList,
+            'passengerList'=>$passengerList
+        ]);
+
         return $this->view->fetch();
     }
 
@@ -573,9 +611,6 @@ class Index extends Frontend
             }
         }
 
-        $a = new \app\common\controller\Api();
-
-        $a->success(123);
 
         if ($overdueId) {
             RideSharing::where('id', 'in', $overdueId)->update(['status' => 'hidden']);
