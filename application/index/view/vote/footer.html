@@ -1,47 +1,5 @@
  
-</div> 
-<style>
- 
-</style>
-<div class="sedTrip" style="position: fixed;bottom: 30%;right: 0;border:1px solid #FF5722;padding-right:10px;background-color: #FF5722;color:#fff">
-    <img src="https://static.sfc.junyiqiche.com/sfc/发布.png" alt="" width="25"> 发布行程
-</div>
-
-      <div class="modal  " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-            <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title" id="exampleModalLabel">发布行程</h4>
-                    </div>
-                    <div class="modal-body" style="padding:0;border:none">
-                        <div class="layui-tab layui-tab-card">
-                            <ul class="layui-tab-title">
-                                <li class="layui-this" style="width:50%">司机</li>
-                                <li style="width:50%">乘客</li>  
-                            </ul>
-                            <div class="layui-tab-content" >
-                                <div class="layui-tab-item layui-show"> 
-                                        <form> 
-                                <div class="form-group">
-                                    <label for="recipient-name" class="control-label">联系方式:</label>
-                                    <input type="text" class="form-control" id="recipient-name" placeholder="请输入联系方式">
-                                </div>
-                                    
-                                </form>
-                                </div>
-                                <div class="layui-tab-item">2</div>
-                            </div>
-                        </div>
-                      
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                      <button type="button" class="btn btn-primary">提交</button>
-                    </div>
-                  </div>
-                </div>
-            </div>
+</div>  
 <!----发布行程表单页面-->
 
 <!-- jQuery -->
@@ -56,8 +14,10 @@
 <script src="//layui.hcwl520.com.cn/layui/layui.js?v=201809030202"></script>
 <!--瀑布流插件-->
 <!--<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>-->
-<!--<script src="https://static.yc.junyiqiche.com/layer/layer.js"></script>-->
+<script src="https://static.sfc.junyiqiche.com/sf/flex.js"></script> 
+<!-- <script src="https://static.sfc.junyiqiche.com/sf/sf.js"></script>  -->
 
+<!-- <script src="https://static.sfc.junyiqiche.com/moment-with-locales.min.js"></script> -->
 <script src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js" type="text/javascript" charset="utf-8"></script>
 <script>
     /**
@@ -121,16 +81,52 @@
 
     //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
 layui.use(['element','layer','form','laydate'], function(){
-    console.log(getCurrentDate(1));
+    console.log(getCurrentDate(2));
+
   var element = layui.element;
   var layer = layui.layer;
   var form = layui.form;
   var laydate = layui.laydate;
-  laydate.render({
-    elem: '#starting_time_1' ,//指定元素 
-    value:getCurrentDate(1),
-    min:getCurrentDate(1),
-    // format:'yyyy-MM-dd ',
+  var laydate1 = layui.laydate;
+  $(".fixed_button").click(function(){
+	    //console.log('发布行程');
+	    $(".backDiv").fadeIn();
+   });
+   $(".closeArea").click(function(){
+        $(".backDiv").fadeOut();
+   });
+
+   $('.switchItem').click(function(){
+   	    //type  passenger-乘客  driver-司机
+        var type=$(this).attr('type');
+        console.log('type:',type);
+        //请求顺风车列表
+        //成功后添加activeItem 类
+        $(this).addClass('activeItem').siblings().removeClass('activeItem');
+        
+   });
+   $('.form-switchItem').click(function(){
+   	    //type  passenger-乘客  driver-司机
+        var type = $('.layui-form').find('input[name="type"]');
+        var form_type=$(this).attr('type')=='driver'
+        ?type.val('passenger')&&$('.creat_form_item_left').hide().find('input[name="money"]').removeAttr('required  lay-verify')
+        :type.val('driver')&&$('.creat_form_item_left').show().find('input[name="money"]').attr({'required':true,'lay-verify':"required"});
+        console.log('form_type:',form_type); 
+        //请求顺风车列表
+        //成功后添加activeItem 类
+        $(this).addClass('activeItem').siblings().removeClass('activeItem');
+        
+   });
+   form.on('submit(formDemo)', function(data){
+       $.post('{:url("index/submit_tailwind")}',{datas:data.field},function(res){
+           console.log(res.msg)
+           
+       },function(res){
+           layer.msg(res);
+       })
+    // layer.msg(JSON.stringify(data.field));
+    console.log(data.field);
+    return false;
   });
 //   layer.open({
 //         type: 1,
@@ -141,9 +137,9 @@ layui.use(['element','layer','form','laydate'], function(){
 //         });
     $('.sedTrip').on('click',function(){
         $('#exampleModal').modal('show');
+       
     })
-  //…
-
+    
 	/**
 	 *获取当前时间
 	 *format=1精确到天
@@ -156,15 +152,14 @@ layui.use(['element','layer','form','laydate'], function(){
 	  var date = now.getDate();//得到日期
 	  var day = now.getDay();//得到周几
 	  var hour = now.getHours();//得到小时
-	  var minu = now.getMinutes();//得到分钟 
-      var sec = now.getSeconds();//得到秒
-
+	  var minu = now.getMinutes();//得到分钟
+	  var sec = now.getSeconds();//得到秒
 	  month = month + 1;
 	  if (month < 10) month = "0" + month;
 	  if (date < 10) date = "0" + date;
 	  if (hour < 10) hour = "0" + hour;
-	  if (minu < 10) minu = "0" + minu; 
-      if (sec < 10) sec = "0" + sec;
+	  if (minu < 10) minu = "0" + minu;
+	  if (sec < 10) sec = "0" + sec;
 	  var time = "";
 	  //精确到天
 	  if(format==1){
@@ -172,12 +167,17 @@ layui.use(['element','layer','form','laydate'], function(){
 	  }
 	  //精确到分
 	  else if(format==2){
-		time = year + "-" + month + "-" + date+ " " + hour + ":" + minu+ ":" + sec;
-        // 
+		time = year + "-" + month + "-" + date+ " " + hour + ":" + minu + ":" + sec;
 	  }
-	  return time; 
-    }
+	  return time;
+	} 
 });
+
+$(document).ready(function(){
+   
+});
+
+
 </script>
  
  

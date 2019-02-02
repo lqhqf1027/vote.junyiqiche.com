@@ -21,16 +21,7 @@ class RideSharing extends Model
 
     protected $updateTime = 'updatetime';
 
-    public function setStartingTimeAttr($value)
-    {
-        return strtotime($value);
-    }
-
-    public function getStartingTimeAttr($value)
-    {
-        return date('Y-m-d H:i',$value);
-    }
-
+   
     // 定义全局的查询范围
     protected function base($query)
     {
