@@ -42,12 +42,12 @@ class Index extends Frontend
         $passengerList = [];
 
         foreach ($takeCarList as $k => $v) {
-            if ($time > $v['starting_time']) {
+            // if ($time > $v['starting_time']) {
 
-                $overdueId[] = $v['id'];
+            //     $overdueId[] = $v['id'];
 
-            } else {
-                $v['starting_time'] = date('m-d H:i',$v['starting_time']);
+            // } else {
+            //     $v['starting_time'] = date('m-d H:i',$v['starting_time']);
                 if($v['type']=='driver'){
                     unset($v['type']);
                     $driverList[] = $v;
@@ -56,10 +56,10 @@ class Index extends Frontend
                     $passengerList[] = $v;
                 }
 
-            }
+            // }
         }
         if ($overdueId) {
-            RideSharing::where('id', 'in', $overdueId)->update(['status' => 'hidden']);
+            // RideSharing::where('id', 'in', $overdueId)->update(['status' => 'hidden']);
         }
 
         $shares = Db::name('config')
