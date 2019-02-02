@@ -52,18 +52,18 @@
                         }
                     });*/
                     wx.onMenuShareTimeline({
-                        title: '{$share_title}', // 分享标题
+                        title: '{$share.share_title}', // 分享标题
                         link: s.url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                        imgUrl: "{$share_img}", // 分享图标 使用绝对路径
+                        imgUrl: "{$share.share_image}", // 分享图标 使用绝对路径
                         success: function () {
 
                         }
                     });
                     wx.onMenuShareAppMessage({
-                        title: '{$share_title}',
-                        desc: "{$share_body}", // 分享描述
+                        title: '{$share.share_title}',
+                        desc: "{$share.share_content}", // 分享描述
                         link: s.url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                        imgUrl: "{$share_img}", // 分享图标 使用绝对路径
+                        imgUrl: "{$share.share_image}", // 分享图标 使用绝对路径
                         type: '', // 分享类型,music、video或link，不填默认为link
                         dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
                         success: function () {
@@ -103,6 +103,20 @@ layui.use(['element','layer','form','laydate'], function(){
         //请求顺风车列表
         //成功后添加activeItem 类
         $(this).addClass('activeItem').siblings().removeClass('activeItem');
+
+       var a = $('.switchItem').index(this);
+
+       $('.peopleList').each(function (i){
+           if(i==a){
+               if($(this).hasClass('status-list')){
+                   $(this).removeClass('status-list');
+               }
+           }else{
+
+               $(this).addClass('status-list');
+
+           }
+       })
         
    });
    $('.form-switchItem').click(function(){
@@ -120,7 +134,8 @@ layui.use(['element','layer','form','laydate'], function(){
    form.on('submit(formDemo)', function(data){
        $.post('{:url("index/submit_tailwind")}',{datas:data.field},function(res){
            console.log(res.msg)
-           
+           // window.location.reload();
+           window.location.href='';
        },function(res){
            layer.msg(res);
        })

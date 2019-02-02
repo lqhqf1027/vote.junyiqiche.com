@@ -12,44 +12,87 @@
    </div>
 
    <div class="searchPeople">
-     <div class="peopleList">
- 
-    <div class="listItem">
-      <div class="listItemCont">
-         <div class="listItemRow1">
-            <div class='itemTime'>
-                <img src="https://static.sfc.junyiqiche.com/sf/images/date-icon.png">
-                <p>01-31 09:00</p>
-            </div>
-            <div class='itemMoney'>
-                <img src="https://static.sfc.junyiqiche.com/sf/images/money-icon.png">
-                <p>30元</p>
-                <p>2位</p>
-            </div>
-            <div class="itemIcon">
-                <img src="https://static.sfc.junyiqiche.com/sf/images/sf-share-icon.png">
-                <a href="18942517308">
-                  <img src="https://static.sfc.junyiqiche.com/sf/images/sf-call-icon.png">
-                </a>
-            </div>
-         </div>
+       <div class="peopleList ">
 
-         <div class="listItemRow2">
-            <p>起</p>
-            <p>成都东</p>
-         </div>
-         <div class="listItemRow3">
-            <p>终</p>
-            <p>西安</p>
-         </div>
-        
-      </div>
-      <div class="context">
-         <p>备注：备注</p>
-      </div>
-   </div>
-   
-  </div>
+           {volist name="passengerList" id="vo"}
+           <div class="listItem ">
+               <div class="listItemCont">
+                   <div class="listItemRow1">
+                       <div class='itemTime'>
+                           <img src="https://static.sfc.junyiqiche.com/sf/images/date-icon.png">
+                           <p>{$vo.starting_time}</p>
+                       </div>
+                       <div class='itemMoney'>
+                           <img src="https://static.sfc.junyiqiche.com/sf/images/money-icon.png">
+                           <!-- <p>20元</p> -->
+                           <p>{$vo.number_people}位</p>
+                       </div>
+                       <div class="itemIcon">
+                           <img src="https://static.sfc.junyiqiche.com/sf/images/sf-share-icon.png">
+                           <a href="18942517308">
+                               <img src="/assets/img/call.png">
+                           </a>
+                       </div>
+                   </div>
+
+                   <div class="listItemRow2">
+                       <p>起</p>
+                       <p>{$vo.starting_point}</p>
+                   </div>
+                   <div class="listItemRow3">
+                       <p>终</p>
+                       <p>{$vo.destination}</p>
+                   </div>
+
+               </div>
+               <div class="context">
+                   <p>备注：{$vo.note}</p>
+               </div>
+           </div>
+           {/volist}
+       </div>
+
+       <div class="peopleList status-list">
+
+           {volist name="driverList" id="vo"}
+           <div class="listItem">
+               <div class="listItemCont">
+                   <div class="listItemRow1">
+                       <div class='itemTime'>
+                           <img src="https://static.sfc.junyiqiche.com/sf/images/date-icon.png">
+                           <p>{$vo.starting_time}</p>
+                       </div>
+                       <div class='itemMoney'>
+                           <img src="https://static.sfc.junyiqiche.com/sf/images/money-icon.png">
+                           <p>{$vo.money}元</p>
+                           <p>{$vo.number_people}位</p>
+                       </div>
+                       <div class="itemIcon">
+                           <img src="https://static.sfc.junyiqiche.com/sf/images/sf-share-icon.png">
+                           <a href="18942517308">
+                               <img src="https://static.sfc.junyiqiche.com/sf/images/sf-call-icon.png">
+                           </a>
+                       </div>
+                   </div>
+
+                   <div class="listItemRow2">
+                       <p>起</p>
+                       <p>{$vo.starting_point}</p>
+                   </div>
+                   <div class="listItemRow3">
+                       <p>终</p>
+                       <p>{$vo.destination}</p>
+                   </div>
+
+               </div>
+               <div class="context">
+                   <p>备注：{$vo.note}</p>
+               </div>
+           </div>
+           {/volist}
+
+
+       </div>
 </div>
 
 <!--悬浮-->
@@ -150,7 +193,9 @@
  </div>
 </div>
 
-
+{php}
+//dump($passengerList);
+{/php}
 {/block}
 </html>
 

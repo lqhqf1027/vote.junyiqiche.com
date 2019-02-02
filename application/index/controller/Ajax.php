@@ -4,6 +4,7 @@ namespace app\index\controller;
 
 use app\common\controller\Frontend;
 use think\Lang;
+use think\Ac;
 
 /**
  * Ajax异步请求接口

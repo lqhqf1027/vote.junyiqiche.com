@@ -2,8 +2,8 @@
 html{font-size: 100px;}
 body{font-size: 0.14rem;/*实际相当于14px*/}
 body{
-    padding:0;
-    margin:0;
+  padding:0;
+  margin:0;
 }
 
 .switchButton,.form-switchButton{
@@ -11,7 +11,7 @@ body{
   width: 2.1rem;
   height: 0.4rem;
   line-height: 0.4rem;
-  border: 1px solid #888;
+  border: 1px solid #F7F8F9;
   margin: 0.16rem auto;
   border-radius: 0.2rem;
   justify-content:space-between;
@@ -24,12 +24,11 @@ body{
   border-radius: 0.15rem;
 }
 .switchItem{
-   width:1.05rem; 
-   text-align: center;
-   height: 0.4rem;
-   line-height: 0.4rem;
-   float: left;
-   overflow: hidden;
+  width:1.05rem;
+  text-align: center;
+  line-height: 0.4rem;
+  float: left;
+  overflow: hidden;
 }
 .switchItem:nth-child(1){
   border-radius: 0 0.2rem 0.2rem 0;
@@ -38,24 +37,24 @@ body{
   border-radius: 0.2rem  0 0 0.2rem;
 }
 .switchItem p{
-   width: 100%;
-   font-size: 0.16rem;
-   color: #353535;
-   display: block;
-   float: left;
-   text-align: center;
-   height: 0.4rem;
-   line-height: 0.4rem;
-   margin: 0;
+  width: 100%;
+  font-size: 0.16rem;
+  color: #353535;
+  display: block;
+  float: left;
+  text-align: center;
+  height: 0.4rem;
+  line-height: 0.4rem;
+  margin: 0;
 }
 
 .form-switchItem{
-   width:1.05rem; 
-   text-align: center;
-   height: 0.3rem;
-   line-height: 0.3rem;
-   float: left;
-   overflow: hidden;
+  width:1.05rem;
+  text-align: center;
+  height: 0.3rem;
+  line-height: 0.3rem;
+  float: left;
+  overflow: hidden;
 }
 .form-switchItem:nth-child(1){
   border-radius: 0 0.15rem 0.15rem 0;
@@ -64,15 +63,15 @@ body{
   border-radius: 0.15rem  0 0 0.151rem;
 }
 .form-switchItem p{
-   width: 100%;
-   font-size: 0.14rem;
-   color: #353535;
-   display: block;
-   float: left;
-   text-align: center;
-   height: 0.3rem;
-   line-height: 0.3rem;
-   margin: 0;
+  width: 100%;
+  font-size: 0.14rem;
+  color: #353535;
+  display: block;
+  float: left;
+  text-align: center;
+  height: 0.3rem;
+  line-height: 0.3rem;
+  margin: 0;
 }
 
 .activeItem{
@@ -87,13 +86,13 @@ body{
   padding: 0 0.12rem;
 }
 .listItem{
-   padding:0.16rem 0;
-   border-top: 1px solid #c3cbd6;
+  padding:0.16rem 0;
+  border-top: 1px solid #F3F4F3;
 }
 
 .listItemCont img{
   width:0.22rem;
- 
+
 }
 .listItemRow1{
   display: flex;
@@ -144,28 +143,28 @@ body{
 }
 
 .listItemRow2 p:nth-child(1),.listItemRow3 p:nth-child(1){
-   font-size:0.14rem;
+  font-size:0.14rem;
   color: #fff;
   display: inline-block;
-  background-color: #888;
+  background-color: #00CC00;
   border-radius: 0.03rem;
   width: 0.22rem;
   height: 0.22rem;
   text-align: center;
   line-height:0.22rem;
   margin-right: 0.15rem;
-  
+
 }
 .listItemRow3 p:nth-child(1){
-   background-color: #ef4631;
+  background-color: #ef4631;
 }
 .listItemRow2 p:nth-child(2),.listItemRow3 p:nth-child(2){
   font-size:0.15rem;
- 
+
   color: #353535;
 }
 .listItem:last-child{
-  border-bottom: 1px solid #c3cbd6;
+  border-bottom: 1px solid #F3F4F3;
 }
 .itemLeft{
   flex: 1;
@@ -247,6 +246,7 @@ p.secondText{
   background-color: #f7f7f8;
   padding:0.15px 0.22rem;
   margin-top: 0.15rem;
+  border-radius: 0.04rem;
 }
 .context p{
   font-size:0.14rem;
@@ -271,21 +271,21 @@ p.secondText{
   bottom:0;
   left: 0;
   background-color: #fff;
-  border-radius: 0.02rem 0.02rem 0 0;
+  border-radius: 0.1rem 0.1rem 0 0;
 }
 @keyframes fadeInFromNone {
-    0% { 
-        display: none;   
-        opacity: 0;
-    }
-    1% {  
-        display: block;    
-        opacity: 0;
-    }
-    100% {  
-        display: block;  
-        opacity: 1;
-    }
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  1% {
+    display: block;
+    opacity: 0;
+  }
+  100% {
+    display: block;
+    opacity: 1;
+  }
 }
 .creat_hitch_hiking{
   height: 0.45rem;
@@ -303,9 +303,9 @@ p.secondText{
   right:0.12rem;
 }
 .closeArea p{
-   font-size: 0.15rem;
-   color: #888;
-   margin: 0;
+  font-size: 0.15rem;
+  color: #888;
+  margin: 0;
 }
 
 
@@ -372,7 +372,7 @@ p.secondText{
 }
 .create_button{
   padding:0.1rem 0.12rem 0.15rem 0.12rem;
-} 
+}
 .create_button button{
   width: 100%;
   height:0.425rem;
@@ -385,12 +385,12 @@ p.secondText{
 }
 .fixed_button{
   position: fixed;
-  top: 70%;
+  top: 52%;
   right: 0;
   background-color: #ef4631;
   color: #fff;
   width:1.07rem;
-  height:0.47rem;
+  height:0.36rem;
   line-height: 0.3rem;
   border-radius:0.235rem 0 0 0.235rem;
   text-align: center;
@@ -465,10 +465,10 @@ p.secondText{
 .logAreaChoose button{
   width: 273rpx;
   height: 85rpx;
- opacity: 0;
- position: absolute;
- bottom: 0;
- right: 0;
+  opacity: 0;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 .placeholder{
