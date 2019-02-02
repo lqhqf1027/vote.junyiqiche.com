@@ -28,4 +28,5 @@ class RideSharing extends Model
         $query->where('status','normal');
     }
 
+
 }

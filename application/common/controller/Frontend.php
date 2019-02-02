@@ -50,10 +50,10 @@ class Frontend extends Controller
     {
 
         //微信登陆验证
-     /*    if(!session('MEMBER')){
+         if(!session('MEMBER')){
             $wx = new Wechat();
             $wx->getCodes();
-        }*/
+        }
         //移除HTML标签
         $this->request->filter('strip_tags');
         $modulename = $this->request->module();

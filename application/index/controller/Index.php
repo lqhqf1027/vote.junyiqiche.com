@@ -31,10 +31,57 @@ class Index extends Frontend
 
     public function index()
     {
-        $datas =collection(RideSharing::all(['status'=>'normal']))->toArray() ;
-         //查询config表分享配置一起assign出去
-        pr($datas);die;
-        $this->assign('resData',$datas);
+//        $datas =collection(RideSharing::all(['status'=>'normal']))->toArray() ;
+
+        $time = time();
+
+        $takeCarList = collection(RideSharing::field('id,starting_point,destination,starting_time,number_people,note,phone,money,type')
+            ->order('createtime desc')->select())->toArray();
+        $overdueId = [];
+        $driverList = [];
+        $passengerList = [];
+
+        foreach ($takeCarList as $k => $v) {
+            if ($time > $v['starting_time']) {
+
+                $overdueId[] = $v['id'];
+
+            } else {
+                $v['starting_time'] = date('m-d H:i',$v['starting_time']);
+                if($v['type']=='driver'){
+                    unset($v['type']);
+                    $driverList[] = $v;
+                }else{
+                    unset($v['money'],$v['type']);
+                    $passengerList[] = $v;
+                }
+
+            }
+        }
+        if ($overdueId) {
+            RideSharing::where('id', 'in', $overdueId)->update(['status' => 'hidden']);
+        }
+
+        $shares = Db::name('config')
+        ->where('group','share')
+        ->field('name,value')
+        ->select();
+
+        $share = [];
+
+        foreach ($shares as $k=>$v){
+            $share[$v['name']] = $v['value'];
+        }
+
+        $this->view->assign([
+            'driverList'=>$driverList,
+            'passengerList'=>$passengerList,
+            'share'=>$share
+        ]);
+//        pr($driverList);
+        //查询config表分享配置一起assign出去
+//        pr($datas);die;
+//        $this->assign('resData',$datas);
         return $this->view->fetch();
     }
 
