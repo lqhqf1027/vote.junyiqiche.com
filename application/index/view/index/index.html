@@ -2,73 +2,154 @@
 <html lang="{$config.language}">
 {extend name="vote/layoutextend" /}
 {block name="body"}
-<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
-    <ul class="layui-tab-title" style="">
-        <li class="layui-this" style="width:50%">寻人</li>
-
-        <li style="width:50%">找车</li>
-    </ul>
-    <div class="layui-tab-content bg-warning" style="margin:10px 0;">
-        <div class="layui-tab-item layui-show ">
-
-            {volist name="passengerList" id="vo"}
-            <div class="layui-row " style=" ">
-                <div class="layui-col-xs7">
-                    <img src="https://static.sfc.junyiqiche.com/sfc/日历.png" width="25" alt="出发日期"> {$vo.starting_time}
-                </div>
-                <div class="layui-col-xs3 text-center">
-                    <img src="https://static.sfc.junyiqiche.com/sfc/座位.png" width="25" alt="人数"> {$vo.number_people}位
-                </div>
-                <div class="layui-col-xs2 text-right">
-
-                    <a href="tel:1234555">
-                        <img src="https://static.sfc.junyiqiche.com/sfc/电话.png" width="25" alt="">
-                    </a>
-                </div>
-                <div class="layui-col-xs12 text-left" style="padding:10px 0;">
-                    <img src="https://static.sfc.junyiqiche.com/sfc/6起点.png" alt="起点" width="25"> {$vo.starting_point}
-                </div>
-                <div class="layui-col-xs12 text-left">
-                    <img src="https://static.sfc.junyiqiche.com/sfc/9终点.png" alt="终点" width="25"> {$vo.destination}
-                </div>
-                <div class="layui-col-xs12 text-left" style="margin-top:5px ;border:1px solid #f2f2f2">
-                    <span style="color:#d2d2d2">备注：{$vo.note}</span>
-                </div>
-            </div>
-            {/volist}
-
-
+<div class="switchButton">
+        <div class="switchItem activeItem" type="passenger">
+            <p>寻人</p>
         </div>
-
-        <div class="layui-tab-item">
-            {volist name="driverList" id="vo"}
-            <div class="layui-row " style=" ">
-                <div class="layui-col-xs6">
-                    <img src="https://static.sfc.junyiqiche.com/sfc/日历.png" width="25" alt="出发日期"> {$vo.starting_time}
-                </div>
-                <div class="layui-col-xs4 text-center">
-                    <img src="https://static.sfc.junyiqiche.com/sfc/钱.png" width="25" alt="人数"> {$vo.money}元 {$vo.number_people}位
-                </div>
-                <div class="layui-col-xs2 text-right">
-
-                    <a href="tel:1234555">
-                        <img src="https://static.sfc.junyiqiche.com/sfc/电话.png" width="25" alt="">
-                    </a>
-                </div>
-                <div class="layui-col-xs12 text-left" style="padding:10px 0;">
-                    <img src="https://static.sfc.junyiqiche.com/sfc/6起点.png" alt="起点" width="25"> {$vo.starting_point}
-                </div>
-                <div class="layui-col-xs12 text-left">
-                    <img src="https://static.sfc.junyiqiche.com/sfc/9终点.png" alt="终点" width="25"> {$vo.destination}
-                </div>
-                <div class="layui-col-xs12 text-left" style="margin-top:5px ;border:1px solid #f2f2f2">
-                    <span style="color:#d2d2d2">备注：{$vo.note}</span>
-                </div>
-            </div>
-            {/volist}
+        <div class="switchItem"  type="driver">
+            <p>寻车</p>
         </div>
-    </div>
+   </div>
+
+   <div class="searchPeople">
+     <div class="peopleList">
+ 
+    <div class="listItem">
+      <div class="listItemCont">
+         <div class="listItemRow1">
+            <div class='itemTime'>
+                <img src="https://static.sfc.junyiqiche.com/sf/images/date-icon.png">
+                <p>01-31 09:00</p>
+            </div>
+            <div class='itemMoney'>
+                <img src="https://static.sfc.junyiqiche.com/sf/images/money-icon.png">
+                <p>30元</p>
+                <p>2位</p>
+            </div>
+            <div class="itemIcon">
+                <img src="https://static.sfc.junyiqiche.com/sf/images/sf-share-icon.png">
+                <a href="18942517308">
+                  <img src="https://static.sfc.junyiqiche.com/sf/images/sf-call-icon.png">
+                </a>
+            </div>
+         </div>
+
+         <div class="listItemRow2">
+            <p>起</p>
+            <p>成都东</p>
+         </div>
+         <div class="listItemRow3">
+            <p>终</p>
+            <p>西安</p>
+         </div>
+        
+      </div>
+      <div class="context">
+         <p>备注：备注</p>
+      </div>
+   </div>
+   
+  </div>
 </div>
+
+<!--悬浮-->
+<div class="fixed_button">
+  <img src="https://static.sfc.junyiqiche.com/sf/images/submit-icon.png">
+  <p>发布行程</p>
+</div>
+<!--弹窗-->
+<div class="backDiv" >
+ <div class="backDivCont">
+         <div class="creat_hitch_hiking">
+             <div class="form-switchButton">
+                 <div class="form-switchItem  activeItem" type="passenger">
+                     <p>司机</p>
+                 </div>
+                 <div class="form-switchItem "  type="driver">
+                     <p>乘客</p>
+                 </div>
+             </div>
+             <div class="closeArea">
+               <p>取消</p>
+             </div>
+         </div>
+        <form action="" class="layui-form" >
+         <div class="creat_form_item">
+             <div class='creat_form_title'>
+                 <p>我的联系方式</p>
+             </div>
+             <div class='creat_form_cont'>
+               <input placeholder='输入联系方式' type="number" required  lay-verify="required" class="layui-input" name="phone">
+             </div>
+         </div>
+
+         <div class="creat_form_item">
+             <div class='creat_form_title'>
+                 <p>输入时间</p>
+             </div>
+             <div class='creat_form_cont'>
+               
+                   <input placeholder='如2月2号 09:00' required  lay-verify="required" value='' class="layui-input" name="starting_time">
+             </div>
+         </div>
+
+         <div class="creat_form_item">
+             <div class='creat_form_title'>
+                 <p>出发地(19个字以内)</p>
+             </div>
+             <div class='creat_form_cont'>
+               <input  value=""  class="" required  lay-verify="required" name="starting_point"></input>
+             </div>
+         </div>
+
+         <div class="creat_form_item">
+             <div class='creat_form_title'>
+                 <p>目的地(19个字以内)</p>
+             </div>
+             <div class='creat_form_cont'>
+               <input value=""  class="layui-input" name="destination" required  lay-verify="required"></input>
+             </div>
+         </div>
+
+         <div class="creat_form_item">
+             <div class="creat_form_item_left" >
+                <div class='creat_form_title'>
+                    <p>设置价格</p>
+                </div>
+                <div class='creat_form_cont'>
+                   <input placeholder='如150' value='' required  lay-verify="required" class="layui-input" name="money"></input>
+                </div>
+             </div>
+             <div class="creat_form_item_right" >
+                <div class='creat_form_title'>
+                    <p>几位</p>
+                </div>
+                <div class='creat_form_cont'>
+                   <input placeholder='如2位' value='' required  lay-verify="required" class="layui-input" name="number_people" ></input>
+                </div>
+             </div>
+             
+         </div>
+         
+           <div class="creat_form_item">
+             <div class='creat_form_title'>
+                 <p>备注</p>
+             </div>
+             <div class='creat_form_cont'>
+               <textarea placeholder='备注' value=''  class="" name="note"></textarea>
+             </div>
+         </div>
+         
+         <div class="create_button" >
+          <button lay-submit lay-filter="formDemo">提交</button>
+         </div> 
+        <input type="hidden" name="user_id" class="" value="{$user_id}">
+        <input type="hidden" name="type" class="" value="driver">
+
+        </form>
+ </div>
+</div>
+
 
 {/block}
 </html>
