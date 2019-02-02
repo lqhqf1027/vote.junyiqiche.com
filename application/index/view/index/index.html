@@ -1,224 +1,158 @@
-<!doctype html>
-<html>
-<head>
-    <meta charset="UTF-8" />
-    <meta name="format-detection" content="telephone=yes"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <title>移动h5自适应布局</title>
-
-    <script src="/assets/js/frontend/flex.js"></script>
-
-    <script src=https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js></script>
-    <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
-
-</head>
-<body>
-
+<!DOCTYPE html>
+<html lang="{$config.language}">
+{extend name="vote/layoutextend" /}
+{block name="body"}
 <div class="switchButton">
-    <div class="switchItem activeItem" type="passenger">
-        <p>寻人</p>
-    </div>
-    <div class="switchItem"  type="driver">
-        <p>寻车</p>
-    </div>
-</div>
-
-<div class="searchPeople">
-    <div class="peopleList">
-
-        <div class="listItem">
-            <div class="listItemCont">
-                <div class="listItemRow1">
-                    <div class='itemTime'>
-                        <img src="/assets/img/date-icon.png">
-                        <p>01-31 09:00</p>
-                    </div>
-                    <div class='itemMoney'>
-                        <img src="/assets/img/money-icon.png">
-                        <p>30元</p>
-                        <p>2位</p>
-                    </div>
-                    <div class="itemIcon">
-                        <img src="/assets/img/sf-share-icon.png">
-                        <a href="18942517308">
-                            <img src="/assets/img/sf-call-icon.png">
-                        </a>
-                    </div>
-                </div>
-
-                <div class="listItemRow2">
-                    <p>起</p>
-                    <p>成都东</p>
-                </div>
-                <div class="listItemRow3">
-                    <p>终</p>
-                    <p>西安</p>
-                </div>
-
-            </div>
-            <div class="context">
-                <p>备注：备注</p>
-            </div>
+        <div class="switchItem activeItem" type="passenger">
+            <p>寻人</p>
         </div>
-
-    </div>
-
-    <div class="peopleList">
-
-        <div class="listItem ">
-            <div class="listItemCont">
-                <div class="listItemRow1">
-                    <div class='itemTime'>
-                        <img src="/assets/img/date-icon.png">
-                        <p>01-31 09:00</p>
-                    </div>
-                    <div class='itemMoney'>
-                        <img src="/assets/img/money-icon.png">
-                        <p>30元</p>
-                        <p>2位</p>
-                    </div>
-                    <div class="itemIcon">
-                        <img src="/assets/img/sf-share-icon.png">
-                        <a href="18942517308">
-                            <img src="/assets/img/sf-call-icon.png">
-                        </a>
-                    </div>
-                </div>
-
-                <div class="listItemRow2">
-                    <p>起</p>
-                    <p>成都东</p>
-                </div>
-                <div class="listItemRow3">
-                    <p>终</p>
-                    <p>西安</p>
-                </div>
-
-            </div>
-            <div class="context">
-                <p>备注：备注</p>
-            </div>
+        <div class="switchItem"  type="driver">
+            <p>寻车</p>
         </div>
+   </div>
 
-    </div>
+   <div class="searchPeople">
+     <div class="peopleList">
+ 
+    <div class="listItem">
+      <div class="listItemCont">
+         <div class="listItemRow1">
+            <div class='itemTime'>
+                <img src="https://static.sfc.junyiqiche.com/sf/images/date-icon.png">
+                <p>01-31 09:00</p>
+            </div>
+            <div class='itemMoney'>
+                <img src="https://static.sfc.junyiqiche.com/sf/images/money-icon.png">
+                <p>30元</p>
+                <p>2位</p>
+            </div>
+            <div class="itemIcon">
+                <img src="https://static.sfc.junyiqiche.com/sf/images/sf-share-icon.png">
+                <a href="18942517308">
+                  <img src="https://static.sfc.junyiqiche.com/sf/images/sf-call-icon.png">
+                </a>
+            </div>
+         </div>
+
+         <div class="listItemRow2">
+            <p>起</p>
+            <p>成都东</p>
+         </div>
+         <div class="listItemRow3">
+            <p>终</p>
+            <p>西安</p>
+         </div>
+        
+      </div>
+      <div class="context">
+         <p>备注：备注</p>
+      </div>
+   </div>
+   
+  </div>
 </div>
 
 <!--悬浮-->
 <div class="fixed_button">
-    <img src="./images/submit-icon.png">
-    <p>发布行程</p>
+  <img src="https://static.sfc.junyiqiche.com/sf/images/submit-icon.png">
+  <p>发布行程</p>
 </div>
 <!--弹窗-->
 <div class="backDiv" >
-    <div class="backDivCont">
-        <div class="creat_hitch_hiking">
-            <div class="form-switchButton">
-                <div class="form-switchItem  activeItem" type="passenger">
-                    <p>司机</p>
-                </div>
-                <div class="form-switchItem "  type="driver">
-                    <p>乘客</p>
-                </div>
-            </div>
-            <div class="closeArea">
-                <p>取消</p>
-            </div>
-        </div>
+ <div class="backDivCont">
+         <div class="creat_hitch_hiking">
+             <div class="form-switchButton">
+                 <div class="form-switchItem  activeItem" type="passenger">
+                     <p>司机</p>
+                 </div>
+                 <div class="form-switchItem "  type="driver">
+                     <p>乘客</p>
+                 </div>
+             </div>
+             <div class="closeArea">
+               <p>取消</p>
+             </div>
+         </div>
+        <form action="" class="layui-form" >
+         <div class="creat_form_item">
+             <div class='creat_form_title'>
+                 <p>我的联系方式</p>
+             </div>
+             <div class='creat_form_cont'>
+               <input placeholder='输入联系方式' type="number" required  lay-verify="required" class="layui-input" name="phone">
+             </div>
+         </div>
 
-        <div class="creat_form_item">
-            <div class='creat_form_title'>
-                <p>我的联系方式</p>
-            </div>
-            <div class='creat_form_cont'>
-                <input placeholder='输入联系方式'  >
-            </div>
-        </div>
+         <div class="creat_form_item">
+             <div class='creat_form_title'>
+                 <p>输入时间</p>
+             </div>
+             <div class='creat_form_cont'>
+               
+                   <input placeholder='如2月2号 09:00' required  lay-verify="required" value='' class="layui-input" name="starting_time">
+             </div>
+         </div>
 
-        <div class="creat_form_item">
-            <div class='creat_form_title'>
-                <p>输入时间</p>
-            </div>
-            <div class='creat_form_cont'>
+         <div class="creat_form_item">
+             <div class='creat_form_title'>
+                 <p>出发地(19个字以内)</p>
+             </div>
+             <div class='creat_form_cont'>
+               <input  value=""  class="" required  lay-verify="required" name="starting_point"></input>
+             </div>
+         </div>
 
-                <input placeholder='如2月2号 09:00'  value='' >
-            </div>
-        </div>
+         <div class="creat_form_item">
+             <div class='creat_form_title'>
+                 <p>目的地(19个字以内)</p>
+             </div>
+             <div class='creat_form_cont'>
+               <input value=""  class="layui-input" name="destination" required  lay-verify="required"></input>
+             </div>
+         </div>
 
-        <div class="creat_form_item">
-            <div class='creat_form_title'>
-                <p>出发地(19个字以内)</p>
-            </div>
-            <div class='creat_form_cont'>
-                <input  value=""  ></input>
-            </div>
-        </div>
-
-        <div class="creat_form_item">
-            <div class='creat_form_title'>
-                <p>目的地(19个字以内)</p>
-            </div>
-            <div class='creat_form_cont'>
-                <input value=""  ></input>
-            </div>
-        </div>
-
-        <div class="creat_form_item">
-            <div class="creat_form_item_left" wx:if="{{switchType == 'driver'}}">
+         <div class="creat_form_item">
+             <div class="creat_form_item_left" >
                 <div class='creat_form_title'>
                     <p>设置价格</p>
                 </div>
                 <div class='creat_form_cont'>
-                    <input placeholder='如150' value=''></input>
+                   <input placeholder='如150' value='' required  lay-verify="required" class="layui-input" name="money"></input>
                 </div>
-            </div>
-            <div class="creat_form_item_right" >
+             </div>
+             <div class="creat_form_item_right" >
                 <div class='creat_form_title'>
                     <p>几位</p>
                 </div>
                 <div class='creat_form_cont'>
-                    <input placeholder='如2位' value=''  ></input>
+                   <input placeholder='如2位' value='' required  lay-verify="required" class="layui-input" name="number_people" ></input>
                 </div>
-            </div>
+             </div>
+             
+         </div>
+         
+           <div class="creat_form_item">
+             <div class='creat_form_title'>
+                 <p>备注</p>
+             </div>
+             <div class='creat_form_cont'>
+               <textarea placeholder='备注' value=''  class="" name="note"></textarea>
+             </div>
+         </div>
+         
+         <div class="create_button" >
+          <button lay-submit lay-filter="formDemo">提交</button>
+         </div> 
+        <input type="hidden" name="user_id" class="" value="{$user_id}">
+        <input type="hidden" name="type" class="" value="driver">
 
-        </div>
-
-        <div class="creat_form_item">
-            <div class='creat_form_title'>
-                <p>备注</p>
-            </div>
-            <div class='creat_form_cont'>
-                <textarea placeholder='备注' value=''></textarea>
-            </div>
-        </div>
-
-        <div class="create_button">
-            <button >提交</button>
-        </div>
-    </div>
+        </form>
+ </div>
 </div>
 
 
-<!--<div class="logAreaBg"  wx:if="{{settingShow}}"  bindtouchmove='bindtouchmove'>
-    <div class="logArea">
-      <div class="logAreaTitle">
-          <p>您暂未登录</p>
-      </div>
-      <div class="logAreaDes">
-          <p>请授权登录您的账号</p>
-
-      </div>
-      <div class="logAreaChoose">
-          <p bindtap='close_the_log'>取消</p>
-          <p catchtap='request_pay' >去登录</p>
-          <button open-type='getUserInfo' bindgetuserinfo="getuserinfo"></button>
-      </div>
-    </div>
-</div>-->
-<script src="/assets/js/frontend/sf.js"></script>
-
-</body>
-<script>
-
-
-</script>
+{/block}
 </html>
+
+
+
